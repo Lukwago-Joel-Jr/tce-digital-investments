@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "TCE Digital Investments",
-  description: "TCE Digital Investments you're way to digital wealth",
+  title: "Wealth Builder Academy",
+  description: "Wealth Builder Academy you're way to digital wealth",
   icons: {
     icon: '/favicon.ico'}
 };

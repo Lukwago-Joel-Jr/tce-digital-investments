@@ -32,7 +32,7 @@ export default function CoursePage() {
           Our digital wealth course is launching soon. Get ready to level up.
         </p>
 
-        <button className="bg-green-900 hover:bg-amber-700 text-white px-6 py-3 rounded-full transition">
+        <button className="bg-green-900 hover:bg-green-800 text-white px-6 py-3 rounded-full transition">
           Notify Me
         </button>
       </div>
