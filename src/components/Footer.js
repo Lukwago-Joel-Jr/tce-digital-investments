@@ -45,7 +45,7 @@ export default function Footer() {
 
         {/* Copyright */}
         <div className="text-center text-gray-400 border-t border-gray-200 pt-4 text-xs">
-          © {new Date().getFullYear()} CoachBrand. All rights reserved.
+          © {new Date().getFullYear()} Wealth Builder Academy. All rights reserved.
         </div>
       </div>
     </footer>

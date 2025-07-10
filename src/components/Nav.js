@@ -10,12 +10,13 @@ export default function Navbar() {
         
         {/* Logo */}
         <Link href="/" className="text-xl font-bold text-gray-900">
-           <Image
-        src="/logo.png" // path is relative to /public
-        alt="Hero background"
-       width={120}
-              height={40}
-      />
+          <Image
+          src="/logo.png" // path is relative to /public
+          alt="Hero background"
+          width={120}
+          height={40}
+          />
+         
         </Link>
 
         {/* Right Side */}
