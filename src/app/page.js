@@ -1,8 +1,10 @@
+import StatsHighlights from '@/components/Stats'
 import React from 'react'
 
 function Home() {
   return (
-    <div>TCE Digital Investments
+    <div>
+      <StatsHighlights/>
     </div>
   )
 }

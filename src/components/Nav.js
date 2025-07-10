@@ -1,6 +1,7 @@
 // components/Navbar.js
 import Link from 'next/link'
 import { FaInstagram } from 'react-icons/fa'
+import Image from 'next/image'
 
 export default function Navbar() {
   return (
@@ -9,7 +10,12 @@ export default function Navbar() {
         
         {/* Logo */}
         <Link href="/" className="text-xl font-bold text-gray-900">
-          TCE
+           <Image
+        src="/logo.png" // path is relative to /public
+        alt="Hero background"
+       width={120}
+              height={40}
+      />
         </Link>
 
         {/* Right Side */}
@@ -24,7 +30,7 @@ export default function Navbar() {
           </a>
           
           <Link href="/course">
-            <button className="bg-amber-800 text-white px-6 py-2 rounded-full text-lg hover:bg-amber-700 transition">
+            <button className="bg-green-900 text-white px-6 py-2 rounded-full text-lg hover:bg-green-800 transition">
               Join Now
             </button>
           </Link>
