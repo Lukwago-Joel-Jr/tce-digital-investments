@@ -19,7 +19,7 @@ export default function CoursePage() {
           <Player
             autoplay
             loop
-            src="/animations/hourglass.json"
+            src="/animations/Hourglass.json"
             style={{ height: '120px', width: '120px' }}
           />
         </div>
