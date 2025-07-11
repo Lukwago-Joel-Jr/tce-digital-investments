@@ -1,7 +1,7 @@
 export default function HeroSection() {
   return (
     <section className="bg-white min-h-screen flex items-center">
-      <div className="max-w-7xl mx-auto px-4 w-full">
+      <div className="max-w-7xl mx-auto p-0 w-full">
         {/* Desktop/Large Screen Hero */}
         <div className="hidden lg:flex flex-col-reverse lg:flex-row items-center justify-between gap-12">
           {/* Left content */}
@@ -19,7 +19,7 @@ export default function HeroSection() {
           <div className="w-full lg:w-1/2 h-full">
             <div className="overflow-hidden">
               <img
-                src="https://images.pexels.com/photos/8555676/pexels-photo-8555676.jpeg"
+                src="/images/sandra-reading-bible.jpg"
                 alt="Digital Skills"
                 className="object-cover w-full h-200"
               />
@@ -27,7 +27,7 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* Mobile Hero */}
+     
        {/* Mobile Hero */}
 <div className="relative flex flex-col items-center justify-center text-center gap-6 lg:hidden min-h-screen w-full">
   {/* Background Image */}
@@ -35,7 +35,7 @@ export default function HeroSection() {
     className="absolute inset-0 bg-cover bg-center w-full h-full"
     style={{
       backgroundImage:
-        "url('https://images.pexels.com/photos/8555676/pexels-photo-8555676.jpeg')",
+        "url(/images/sandra-reading-bible.jpg)",
       opacity: 0.3,
     }}
   ></div>

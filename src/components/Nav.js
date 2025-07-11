@@ -13,8 +13,8 @@ export default function Navbar() {
           <Image
           src="/logo.png" // path is relative to /public
           alt="Hero background"
-          width={120}
-          height={40}
+          width={180}
+          height={180}
           />
          
         </Link>
