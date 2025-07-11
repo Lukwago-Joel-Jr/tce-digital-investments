@@ -6,8 +6,8 @@ export default function HeroSection() {
         <div className="hidden lg:flex flex-col-reverse lg:flex-row items-center justify-between gap-12">
           {/* Left content */}
           <div className="max-w-3xl text-center lg:text-left">
-            <h1 className="sm:text-7xl font-extrabold text-gray-900 leading-tight">
-              <span className="text-4xl">Learn the Skills to Build</span> <br />
+            <h1 className="sm:text-8xl font-extrabold text-gray-900 leading-tight">
+              <span className="text-2xl leading-2">Learn the Skills to Build</span> <br />
               Digital <span className="text-green-900 text-8xl">Wealth & Freedom</span>
             </h1>
             <p className="mt-8 text-xl text-gray-600 max-w-xl mx-auto lg:mx-0">
