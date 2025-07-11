@@ -26,7 +26,7 @@ export const metadata = {
     siteName: "Wealth Builder Academy",
     images: [
       {
-        url: "/images/logo-512x512.png",
+        url: "/images/original.png",
         width: 1200,
         height: 630,
         alt: "Wealth Builder Academy OG Image"
