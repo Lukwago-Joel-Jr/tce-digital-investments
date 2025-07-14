@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function HeroSection() {
   return (
     <section className="bg-white min-h-screen flex items-center">
@@ -16,15 +18,27 @@ export default function HeroSection() {
           </div>
 
           {/* Right image */}
-          <div className="w-full lg:w-1/2 h-full">
+          {/* <div className="w-full lg:w-1/2 h-full">
             <div className="overflow-hidden">
               <img
                 src="/images/sandra-reading-bible.jpg"
                 alt="Digital Skills"
                 className="object-cover w-full h-200"
               />
+              
             </div>
-          </div>
+          </div> */}
+          <div className="w-full lg:w-1/2 h-full">
+  <div className="relative w-full h-[800px] overflow-hidden">
+    <Image
+      src="/images/sandra-reading-bible.jpg"
+      alt="Digital Skills"
+      fill
+      className="object-cover"
+    />
+  </div>
+</div>
+
         </div>
 
      
