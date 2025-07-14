@@ -1,3 +1,4 @@
+import About from '@/components/About'
 import HeroSection from '@/components/Hero'
 import StatsHighlights from '@/components/Stats'
 import React from 'react'
@@ -7,6 +8,7 @@ function Home() {
     <div>
       <HeroSection/>
       <StatsHighlights/>
+      <About/>
     </div>
   )
 }

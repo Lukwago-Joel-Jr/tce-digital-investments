@@ -22,7 +22,7 @@ export default function Navbar() {
         {/* Right Side */}
         <div className="flex items-center gap-4">
           <a
-            href="https://instagram.com/yourusername"
+            href="https://www.instagram.com/the.cityentrepreneur"
             target="_blank"
             rel="noopener noreferrer"
             className="text-gray-600 hover:text-pink-500 transition"
