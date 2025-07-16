@@ -21,9 +21,9 @@ function Books() {
                 
                 <div className='flex flex-col gap-1'>
                 
-                <h1 className='text-2xl font-bold'>wealth build academy sandras bei seller</h1>
+                <h1 className='text-2xl font-bold capitalize'>wealth build Academy Best Seller</h1>
                 
-                <p className='text-sm'>wealth build academy sandras best seller</p>
+                <p className='text-sm capitalize'>wealth build academy sandras best seller</p>
                 
                 <button className="bg-green-900 text-white px-6 py-2 rounded-full text-lg hover:bg-green-800 transition">
                     I Need This
@@ -49,9 +49,9 @@ function Books() {
                 
                 <div className='flex flex-col gap-1'>
                 
-                <h1 className='text-2xl font-bold'>wealth build academy sandras bei seller</h1>
+                <h1 className='text-2xl font-bold capitalize'>wealth build Academy Best Seller</h1>
                 
-                <p className='text-sm'>wealth build academy sandras best seller</p>
+                <p className='text-sm capitalize'>wealth build academy sandras best seller</p>
                 
                 <button className="bg-green-900 text-white px-6 py-2 rounded-full text-lg hover:bg-green-800 transition">
                     I Need This
