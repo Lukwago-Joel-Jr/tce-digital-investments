@@ -1,4 +1,5 @@
 import About from '@/components/About'
+import Books from '@/components/Books'
 import Company from '@/components/Company'
 import HeroSection from '@/components/Hero'
 import StatsHighlights from '@/components/Stats'
@@ -10,6 +11,7 @@ function Home() {
       <HeroSection/>
       
       <About/>
+      <Books/>
       <StatsHighlights/>
       <Company/>
     </div>
