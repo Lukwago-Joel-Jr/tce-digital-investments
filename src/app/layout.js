@@ -1,7 +1,26 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Parisienne, Baskervville, Inter, Host_Grotesk,Cormorant_Infant } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Nav";
 import Footer from "@/components/Footer";
+
+const parisienne = Parisienne({
+  variable: "--font-parisienne",
+  weight: '400',
+  subsets: ["latin"],
+});
+const montserrat = Host_Grotesk({
+  weight: ['400', '800'],
+  subsets: ["latin"],
+});
+const cormorat = Cormorant_Infant({
+  weight:'400',
+  subsets: ["latin"],
+});
+
+const baskervville = Baskervville({
+  weight:'400',
+  subsets: ["latin"],
+});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -48,7 +67,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${montserrat.className} antialiased`}
       >
         <Navbar/>
         {children}

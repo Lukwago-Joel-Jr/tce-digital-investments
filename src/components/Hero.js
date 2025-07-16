@@ -1,43 +1,51 @@
 import Image from "next/image";
+import { Parisienne,Baskervville,Cormorant_Infant } from 'next/font/google'
+
+
+const parisienne = Parisienne({
+  weight:'400',
+  subsets: ["latin"],
+});
+
+const baskervville = Baskervville({
+  weight:'400',
+  subsets: ["latin"],
+});
+
+const cormorat = Cormorant_Infant({
+  weight:'400',
+  subsets: ["latin"],
+});
+
 
 export default function HeroSection() {
   return (
+
+
     <section className="bg-white min-h-screen flex items-center">
       <div className="max-w-7xl mx-auto p-0 w-full">
         {/* Desktop/Large Screen Hero */}
         <div className="hidden lg:flex flex-col-reverse lg:flex-row items-center justify-between gap-12">
           {/* Left content */}
           <div className="max-w-3xl text-center lg:text-left">
-            <h1 className="sm:text-8xl font-extrabold text-gray-900 leading-tight">
-              <span className="text-2xl leading-2">Learn the Skills to Build</span> <br />
+            <h1 className="sm:text-8xl font-extrabold text-gray-900 leading-tighter">
+              <span className="text-6xl">Learn the Skills to Build</span> <br />
               Digital <span className="text-green-900 text-8xl">Wealth & Freedom</span>
             </h1>
-            <p className="mt-8 text-xl text-gray-600 max-w-xl mx-auto lg:mx-0">
-              Join thousands of others taking control of their future. No fluff. Just results.
-            </p>
-          </div>
-
-          {/* Right image */}
-          {/* <div className="w-full lg:w-1/2 h-full">
-            <div className="overflow-hidden">
-              <img
-                src="/images/sandra-reading-bible.jpg"
-                alt="Digital Skills"
-                className="object-cover w-full h-200"
-              />
-              
-            </div>
-          </div> */}
-          <div className="w-full lg:w-1/2 h-full">
-  <div className="relative w-full h-[800px] overflow-hidden">
-    <Image
-      src="/images/sandra-reading-bible.jpg"
-      alt="Digital Skills"
-      fill
-      className="object-cover"
-    />
+            <p className={`${cormorat.className} italic text-4xl md:text-3xl `}>
+      <i>Join thousands of others taking control of their future.</i>
+    </p>
   </div>
-</div>
+      <div className="w-full lg:w-1/2 h-full">
+      <div className="relative w-full h-[800px] overflow-hidden">
+        <Image
+          src="/images/sandra-reading-bible.jpg"
+          alt="Digital Skills"
+          fill
+          className="object-cover"
+        />
+      </div>
+    </div>
 
         </div>
 
@@ -55,13 +63,13 @@ export default function HeroSection() {
   ></div>
 
   {/* Content */}
-  <div className="relative z-10 px-4">
-    <h1 className="text-2xl font-extrabold text-black leading-tight">
-      Learn the Skills<br/> to Build <br />
-      <span className="text-green-900 text-6xl">Wealth & Freedom</span>
+  <div className="relative z-10 px-4 text-left">
+    <h1 className="text-4xl font-extrabold text-black leading-tight">
+      Learn the Skills to <br/> <span className="text-6xl">Build</span> <br />
+      <span className="text-green-900 text-7xl">Wealth & Freedom</span>
     </h1>
-    <p className="text-lg text-gray-700 mt-4">
-      Join thousands of others taking control of their future.
+    <p className={`${cormorat.className} italic text-2xl  `}>
+      <i>Join thousands of others taking control of their future.</i>
     </p>
   </div>
 </div>
