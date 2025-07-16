@@ -24,7 +24,7 @@ const About =()=>{
                 </div>
                 <div className=" flex flex-col">
                 <div className="w-fill px-5 md:p-2 md:w-100 md:mb-0 mb-2">
-                <h1 className={`italic bg-orange-200 text-3xl md:text-4xl font-light text-center  md:text-left`}>I'm Sandra N Sserumaga</h1>
+                <h1 className="italic bg-orange-200 text-3xl md:text-4xl font-light text-center  md:text-left">I'm Sandra N Sserumaga</h1>
                 </div>
                 <div className=" w-fill px-5 md:p-2 md:w-100 mb:m-2">
                 <p>I am wife, mother, entrepreneur, and a Christian who accepted Jesus to be my personal 
@@ -37,7 +37,7 @@ const About =()=>{
 
             <div className="flex flex-col items-center justify-center md:w-2/3 rounded-2xl shadow-1xl bg-white p-5 md:p-15 mb-5 gap-4 md:mt-[-40px]">
             <div className="flex flex-col md:flex-row items-center gap-8 ">
-            <div className=""> <p className="text-lg font-bold">I have a background in finance and a passion for helping low income earner women and men achieve financial success. With over years of 
+            <div> <p className="text-lg font-bold">I have a background in finance and a passion for helping low income earner women and men achieve financial success. With over years of 
                     experience n the industry, I've worked with clients from all walks of life and understand the nique challenges faced by underrepresented communities. 
                     Through my work as a financial advisor and advocate, strive to create more equitable access to financial education, resources and generally better livelihood for all through creating generational wealth. I'm thrilled to be the author of this Ebook, and to share my perspective and expertise with people everywhere.</p></div>  
             {/* <div className=""> <p className="text-lg">I promise you I'm not special, I'm an ordinary busy mom who decided to find out if this was even possible. So if you're looking for a way to enter the digital marketing space, make money you did not know was quite possible, and be taught as a complete beginner, you’ve found the right place!</p></div>  
