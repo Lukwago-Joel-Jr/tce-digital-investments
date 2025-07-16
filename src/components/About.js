@@ -43,7 +43,8 @@ const About =()=>{
                 </div>
                 <div className=" w-fill px-5 md:p-2 md:w-100 mb:m-2">
                 <p>I am wife, mother, entrepreneur, and a Christian who accepted Jesus to be my personal 
-                LORD and Savior l've seen firsthand the power of financial Jiteracy and the impact it can have on people's lives when God is put in first Place when running Business. Deuteronomy 8:18 Remember the LORD your God, for it is He who gives you the ability to produce wealth. I'm excited to share my knowledge and insights in this Ebook on how i was able to grow 2m-200m in capital through money leading in a space of 3 years , and to help others build the financial confidence and security they deserve. </p>
+                LORD and Savior l've seen firsthand the power of financial Jiteracy and the impact it can 
+                have on people's lives when God is put in first Place when running Business. Deuteronomy 8:18 Remember the LORD your God, for it is He who gives you the ability to produce wealth. I'm excited to share my knowledge and insights in this Ebook on how i was able to grow 2m-200m in capital through money leading in a space of 3 years , and to help others build the financial confidence and security they deserve. </p>
                 </div>
                 </div>
             </div>
@@ -54,7 +55,7 @@ const About =()=>{
             <div className=""> <p className="text-lg font-bold">I have a background in finance and a passion for helping low income earner women and men achieve financial success. With over years of 
                     experience n the industry, I've worked with clients from all walks of life and understand the nique challenges faced by underrepresented communities. 
                     Through my work as a financial advisor and advocate, strive to create more equitable access to financial education, resources and generally better livelihood for all through creating generational wealth. I'm thrilled to be the author of this Ebook, and to share my perspective and expertise with people everywhere.</p></div>  
-            {/* <div className=""> <p className="text-lg"> promise you I'm not special, I'm an ordinary busy mom who decided to find out if this was even possible. So if you're looking for a way to enter the digital marketing space, make money you did not know was quite possible, and be taught as a complete beginner, you’ve found the right place!</p></div>  
+            {/* <div className=""> <p className="text-lg">I promise you I'm not special, I'm an ordinary busy mom who decided to find out if this was even possible. So if you're looking for a way to enter the digital marketing space, make money you did not know was quite possible, and be taught as a complete beginner, you’ve found the right place!</p></div>  
                 */}
              </div>
               <button className="bg-green-900 text-white px-6 py-2 rounded-full text-lg hover:bg-green-800 transition">
