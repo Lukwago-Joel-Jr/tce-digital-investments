@@ -102,7 +102,7 @@ export async function generateMetadata({ params }) {
         {
           url: book.cover.startsWith("http")
             ? book.cover
-            : `https://www.tcedigitalinvestments.com${book.cover}`,
+            : `${book.cover}`,
           width: 1200,
           height: 630,
           alt: `${book.title} Cover`
