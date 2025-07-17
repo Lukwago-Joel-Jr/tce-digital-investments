@@ -32,9 +32,41 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+// export const metadata = {
+//   title: "Wealth Builder Academy",
+//   description: "Wealth Builder Academy you're way to digital wealth",
+//   keywords: "digital wealth, online courses, financial freedom, entrepreneurship, skills development",
+//   authors: [{ name: "Wealth Builder Academy", url: "https://www.tcedigitalinvestments.com" }],
+//   creator: "Wealth Builder Academy",
+//   openGraph: {
+//     title: "Wealth Builder Academy",
+//     description: "Learn the skills to build digital wealth and freedom.",
+//     url: "https://www.tcedigitalinvestments.com",
+//     siteName: "Wealth Builder Academy",
+//     images: [
+//       {
+//         url: "/images/original.png",
+//         width: 1200,
+//         height: 630,
+//         alt: "Wealth Builder Academy OG Image"
+//       }
+//     ],
+//     locale: "en_US",
+//     type: "website"
+//   },
+//   twitter: {
+//     card: "summary_large_image",
+//     site: "@wealthbuilderacademy",
+//     creator: "@wealthbuilderacademy"
+//   },  
+//   icons: {
+//     icon: '/favicon.ico'}
+// };
+
 export const metadata = {
+  metadataBase: new URL('https://www.tcedigitalinvestments.com'), // ✅ Add this line
   title: "Wealth Builder Academy",
-  description: "Wealth Builder Academy you're way to digital wealth",
+  description: "Wealth Builder Academy — your way to digital wealth",
   keywords: "digital wealth, online courses, financial freedom, entrepreneurship, skills development",
   authors: [{ name: "Wealth Builder Academy", url: "https://www.tcedigitalinvestments.com" }],
   creator: "Wealth Builder Academy",
@@ -60,8 +92,10 @@ export const metadata = {
     creator: "@wealthbuilderacademy"
   },  
   icons: {
-    icon: '/favicon.ico'}
+    icon: '/favicon.ico'
+  }
 };
+
 
 export default function RootLayout({ children }) {
   return (
