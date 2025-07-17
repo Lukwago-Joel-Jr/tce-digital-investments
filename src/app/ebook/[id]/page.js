@@ -16,14 +16,15 @@ export default function EbookDetails({ params }) {
   }
 
   return (
-    <div className="bg-gray-100 min-h-screen flex justify-center items-center p-6 md:p-12">
+    <div className="bg-gray-100 min-h-screen flex justify-center items-center p-4 md:p-12">
+    <div className="mt-30 md:mt-50">
       <div className="bg-white rounded-2xl shadow-lg max-w-4xl w-full flex flex-col md:flex-row overflow-hidden">
         <div className="md:w-1/2">
           <Image
             src={book.cover}
             alt={book.title}
-            width={400}
-            height={600}
+            width={500}
+            height={650}
             className="object-cover"
           />
         </div>
@@ -51,11 +52,12 @@ export default function EbookDetails({ params }) {
             <p className="text-xl font-semibold mb-6">{book.price}</p>
           </div>
 
-          <button className="bg-green-900 text-white px-8 py-3 rounded-full text-lg hover:bg-green-800 transition w-full md:w-auto">
+          {/* <button className="bg-green-900 text-white px-8 py-3 rounded-full text-lg hover:bg-green-800 transition w-full md:w-auto">
             I Need This
-          </button>
+          </button> */}
         </div>
       </div>
+    </div>
     </div>
   );
 }
