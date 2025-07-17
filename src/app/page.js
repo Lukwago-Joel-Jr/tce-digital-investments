@@ -1,6 +1,7 @@
 import About from '@/components/About'
-import Books from '@/components/Books'
+
 import Company from '@/components/Company'
+import EbooksSection from '@/components/EbooksSection'
 import HeroSection from '@/components/Hero'
 import StatsHighlights from '@/components/Stats'
 import React from 'react'
@@ -11,7 +12,7 @@ function Home() {
       <HeroSection/>
       
       <About/>
-      <Books/>
+      <EbooksSection/>
       <StatsHighlights/>
       <Company/>
     </div>
