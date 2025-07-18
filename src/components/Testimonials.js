@@ -4,10 +4,10 @@ import { testimonials } from "./Data/testomonials";
 
 function Testimonials() {
   return (
-    <div className="w-full flex justify-center items-center md:my-20">
+    <div className="w-full flex justify-center items-center md:my-20 overflow-hidden">
       <div className="flex flex-col md:flex-row w-full">
         {/* Image Section */}
-        <div className="relative w-full md:w-2/5 aspect-[3/4] overflow-hidden rounded-r-[60px]">
+        <div className="relative w-full md:w-[35%] aspect-[3/4] overflow-hidden rounded-r-[60px] ">
           <Image
             src="/images/sandra-seated.jpg"
             alt="Digital Skills"
@@ -17,7 +17,7 @@ function Testimonials() {
         </div>
 
         {/* Testimonials Section */}
-        <div className="w-full md:w-3/5 flex flex-col justify-center">
+        <div className="w-full md:w-[60%] flex flex-col justify-center ">
           <div className="m-4 md:m-20 md:mr-40 p-4 md:p-8 space-y-12">
             {testimonials.map((testimonial, index) => (
               <div
@@ -27,11 +27,19 @@ function Testimonials() {
                 <p className="font-semibold text-2xl">{testimonial.title}</p>
                 <p className="font-light text-lg">{testimonial.description}</p>
                 <p className="font-extrabold uppercase text-lg">
-                  -{testimonial.name}
+                  —{testimonial.name}
                 </p>
               </div>
             ))}
           </div>
+        </div>
+        <div className="md:w-[5%] md:block hidden  md:mr-6">
+          <h1
+            className="text-8xl font-extrabold text-gray-300"
+            style={{ writingMode: "vertical-rl", textOrientation: "mixed" }}
+          >
+            what others say
+          </h1>
         </div>
       </div>
     </div>
