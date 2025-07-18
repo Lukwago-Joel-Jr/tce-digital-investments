@@ -2,7 +2,8 @@ export const ebooks = [
   {
     id: "KINGDOM-LENDING-AND-GENERATIONAL-WEALTH-GROWTH-GUIDE",
     title: "KINGDOM LENDING AND GENERATIONAL WEALTH GROWTH GUIDE",
-    shortDescription: "Master digital income streams and build real wealth online.",
+    shortDescription:
+      "Master digital income streams and build real wealth online.",
     description:
       "This comprehensive guide from Wealth Build Academy reveals proven strategies to build and grow sustainable digital income streams from scratch. Whether you're a freelancer, content creator, or entrepreneur, you'll learn how to create online products, reach your audience, and turn your skills into wealth.",
     cover: "/images/KINGDOM LENDING AND GENERATIONAL WEALTH GROWTH GUIDE.png",
@@ -33,5 +34,4 @@ export const ebooks = [
     ISBN: "978-1-98765-432-1",
     rating: 4.8,
   },
-  
 ];

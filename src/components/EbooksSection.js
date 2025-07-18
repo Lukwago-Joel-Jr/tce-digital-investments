@@ -1,4 +1,3 @@
-
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -23,7 +22,9 @@ function EbooksSection() {
             />
             <div className="py-2 px-4 flex flex-col gap-1">
               <h1 className="text-2xl font-bold capitalize">{book.title}</h1>
-              <p className="text-sm capitalize font-thin">{book.shortDescription}</p>
+              <p className="text-sm capitalize font-thin">
+                {book.shortDescription}
+              </p>
               <p className="text-lg font-semibold">{book.price}</p>
               <button className="bg-green-900 text-white px-6 py-2 rounded-full text-lg hover:bg-green-800 transition mt-2 w-full mb-5">
                 I Need This

@@ -1,15 +1,16 @@
-
-import Link from 'next/link'
-import { FaInstagram } from 'react-icons/fa'
-import Image from 'next/image'
+import Link from "next/link";
+import { FaInstagram } from "react-icons/fa";
+import Image from "next/image";
 
 export default function Navbar() {
   return (
     <header className="fixed top-0 left-0 w-full z-50 mt-5">
       <div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-3">
-        
         {/* Logo */}
-        <Link href="/" className="text-xl font-bold text-gray-900 flex items-center">
+        <Link
+          href="/"
+          className="text-xl font-bold text-gray-900 flex items-center"
+        >
           <Image
             src="/logo.png"
             alt="Logo"
@@ -38,5 +39,5 @@ export default function Navbar() {
         </div>
       </div>
     </header>
-  )
+  );
 }

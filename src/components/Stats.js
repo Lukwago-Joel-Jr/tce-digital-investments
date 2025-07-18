@@ -1,11 +1,14 @@
-
-import { FaLaptop, FaMoneyBillWave, FaUsers, FaChartLine } from 'react-icons/fa'
+import {
+  FaLaptop,
+  FaMoneyBillWave,
+  FaUsers,
+  FaChartLine,
+} from "react-icons/fa";
 
 export default function StatsHighlights() {
   return (
     <section className="bg-green-900 text-white py-20 px-4">
       <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12 text-center">
-
         {/* Stat 1 */}
         <div>
           <FaLaptop size={48} className="mx-auto mb-4" />
@@ -13,7 +16,8 @@ export default function StatsHighlights() {
             100,000+ <br /> Students Worldwide
           </h3>
           <p className="mt-2 text-sm opacity-90">
-            Our community grows every day with people ready to build their digital marketing business
+            Our community grows every day with people ready to build their
+            digital marketing business
           </p>
         </div>
 
@@ -24,7 +28,8 @@ export default function StatsHighlights() {
             $40M+ in <br /> Student Earnings
           </h3>
           <p className="mt-2 text-sm opacity-90">
-            Our students have collectively earned over forty million dollars using our strategies
+            Our students have collectively earned over forty million dollars
+            using our strategies
           </p>
         </div>
 
@@ -35,7 +40,8 @@ export default function StatsHighlights() {
             400K+ <br /> Organic Followers
           </h3>
           <p className="mt-2 text-sm opacity-90">
-            Built my brand organically through authentic connection and posting reels
+            Built my brand organically through authentic connection and posting
+            reels
           </p>
         </div>
 
@@ -51,6 +57,5 @@ export default function StatsHighlights() {
         </div>
       </div>
     </section>
-  )
+  );
 }
-
