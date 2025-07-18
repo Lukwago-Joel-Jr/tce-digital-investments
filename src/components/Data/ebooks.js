@@ -1,12 +1,12 @@
 export const ebooks = [
   {
-    id: "1",
-    title: "Wealth Build Academy: Best Seller",
+    id: "KINGDOM-LENDING-AND-GENERATIONAL-WEALTH-GROWTH-GUIDE",
+    title: "KINGDOM LENDING AND GENERATIONAL WEALTH GROWTH GUIDE",
     shortDescription: "Master digital income streams and build real wealth online.",
     description:
-      "This comprehensive guide from Wealth Build Academy reveals proven strategies to build and grow sustainable digital income streams from scratch. Whether you're a freelancer, content creator, or entrepreneur, you'll learn how to create online products, reach your audience, and turn your skills into wealth. With real-world case studies, actionable checklists, and step-by-step frameworks, this bestseller is your blueprint for financial freedom in the digital age.",
-    cover: "/images/sandra-reading-bible.jpg",
-    price: "$100.99",
+      "This comprehensive guide from Wealth Build Academy reveals proven strategies to build and grow sustainable digital income streams from scratch. Whether you're a freelancer, content creator, or entrepreneur, you'll learn how to create online products, reach your audience, and turn your skills into wealth.",
+    cover: "/images/KINGDOM LENDING AND GENERATIONAL WEALTH GROWTH GUIDE.png",
+    price: "$84",
     author: "Sandra N Sserumaga",
     pages: 250,
     publisher: "Wealth Build Press",
@@ -17,7 +17,7 @@ export const ebooks = [
     rating: 4.7,
   },
   {
-    id: "2",
+    id: "002",
     title: "Digital Monetization Masterclass",
     shortDescription: "Turn your digital skills into passive income streams.",
     description:

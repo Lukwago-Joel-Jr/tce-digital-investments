@@ -2,7 +2,7 @@
 // import Image from "next/image";
 
 
-// const About =()=>{
+// const AboutSection =()=>{
 //     return(
 //         <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 py-10 ">
 //             <div className=" flex flex-col items-center justify-center mb-p-10 py-0">
@@ -50,13 +50,13 @@
 //         </div>
 //     )
 // }
-// export default About
+// export default AboutSection
 
 
 import React from "react";
 import Image from "next/image";
 
-const About = () => {
+const AboutSection = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 py-10 ">
       <div className="flex flex-col items-center justify-center mb-p-10 py-0">
@@ -127,4 +127,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default AboutSection;

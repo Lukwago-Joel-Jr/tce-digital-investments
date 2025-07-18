@@ -67,7 +67,6 @@
 import Image from "next/image";
 import { ebooks } from "@/components/Data/ebooks";
 
-// ✅ Dynamic metadata function
 export async function generateMetadata({ params }) {
   const { id } = params;
 
@@ -126,7 +125,7 @@ export async function generateMetadata({ params }) {
   };
 }
 
-// ✅ Page component
+
 export default function EbookDetails({ params }) {
   const { id } = params;
 
@@ -141,7 +140,7 @@ export default function EbookDetails({ params }) {
   }
 
   return (
-    <div className="bg-gray-100 min-h-screen flex justify-center items-center p-4 md:p-12">
+    <div className="bg-gray-100 min-h-screen flex justify-center items-center p-2 md:p-12">
       <div className="mt-30 md:mt-50">
         <div className="bg-white rounded-2xl shadow-lg max-w-4xl w-full flex flex-col md:flex-row overflow-hidden">
           <div className="md:w-1/2">
@@ -154,7 +153,7 @@ export default function EbookDetails({ params }) {
             />
           </div>
 
-          <div className="md:w-1/2 p-8 flex flex-col justify-between">
+          <div className="md:w-1/2 p-4 md:p-8 flex flex-col justify-between">
             <div>
               <h1 className="text-3xl font-bold capitalize mb-3">
                 {book.title}
