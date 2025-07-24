@@ -15,16 +15,16 @@ export const ebooks = [
     category: "Business & Money",
     language: "English",
     ISBN: "978-1-23456-789-0",
-    rating: 4.7,
+    rating: 5,
   },
   {
-    id: "002",
-    title: "Digital Monetization Masterclass",
+    id: "START-SELLING-RIGHT-AWAY_DFY",
+    title: "START SELLING RIGHT AWAY _DFY",
     shortDescription: "Turn your digital skills into passive income streams.",
     description:
       "The Digital Monetization Masterclass is your complete roadmap to transforming your digital skills and online presence into multiple streams of income. Learn the secrets top creators and entrepreneurs use to launch online courses, grow YouTube channels, build digital products, and automate revenue. Packed with tools, expert tips, and insider insights, this book is a must-have for anyone serious about building passive income online.",
-    cover: "/images/sandra-smile3.jpg",
-    price: "$124.99",
+    cover: "/images/START SELLING RIGHT AWAY _DFY.png",
+    price: "$27",
     author: "Sandra N Sserumaga",
     pages: 320,
     publisher: "Digital Wealth Press",
@@ -35,3 +35,4 @@ export const ebooks = [
     rating: 4.8,
   },
 ];
+
