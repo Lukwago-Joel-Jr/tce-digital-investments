@@ -57,7 +57,7 @@ const AboutSection = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 py-10 ">
       <div className="flex flex-col items-center justify-center mb-p-10 py-0">
-        <h1 className="text-2xl md:text-4xl">Digital marketing Changed.</h1>
+        <h1 className="text-2xl md:text-4xl">Digital marketing Changed</h1>
         <h1 className="text-5xl md:text-8xl uppercase font-extrabold">
           Everything
         </h1>
