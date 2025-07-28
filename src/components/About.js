@@ -3,12 +3,12 @@ import Image from "next/image";
 
 const AboutSection = () => {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 md:py-30 ">
-      <div className="flex flex-col items-center justify-center mb-p-10 py-0">
-        <h1 className="text-2xl md:text-4xl">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 md:py-30 overflow-hidden">
+      <div className="flex flex-col items-center justify-center px-20 mb-p-10 pt-10">
+        <h1 className="text-2xl md:text-4xl text-center">
           Venture Capital and Private Equity Changed
         </h1>
-        <h1 className="text-5xl md:text-8xl uppercase font-extrabold">
+        <h1 className="text-5xl md:text-8xl uppercase font-extrabold text-center">
           Everything
         </h1>
         <h1 className="text-2xl md:text-4xl">for me</h1>
