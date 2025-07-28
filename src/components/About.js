@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const AboutSection = () => {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 py-10 ">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 md:py-30 ">
       <div className="flex flex-col items-center justify-center mb-p-10 py-0">
         <h1 className="text-2xl md:text-4xl">
           Venture Capital and Private Equity Changed
@@ -70,14 +70,18 @@ const AboutSection = () => {
               transformed so many people&apos;s lives (Young and Old), but
               making money doesn&apos;t mean keeping it or multiplying it for
               generations to come, if you don&apos;t get the necessary
-              wisdom/knowledge to multiply it through investments!!!! It&apos;s
-              just a matter of time before you go back to hustle mode. Proverbs
-              1:5&hellip;&hellip;A wise man will hear and increase learning, And
-              a man of understanding will attain wise counsel&hellip;&hellip;
-              &ldquo;That&apos;s why I created Wealth Builders Academy — a
-              step-by-step coaching program that teaches you how to think,
-              invest, and build wealth like a venture capitalist or private
-              equity pro while honoring God at the same time.&rdquo;
+              wisdom/knowledge to{" "}
+              <span className="bg-yellow-200">
+                multiply it through investments!!!!
+              </span>{" "}
+              It&apos;s just a matter of time before you go back to hustle mode.
+              Proverbs 1:5&hellip;&hellip;A wise man will hear and increase
+              learning, And a man of understanding will attain wise
+              counsel&hellip;&hellip; &ldquo;That&apos;s why I created Wealth
+              Builders Academy — a step-by-step coaching program that teaches
+              you how to think, invest, and build wealth like a venture
+              capitalist or private equity pro while honoring God at the same
+              time.&rdquo;
             </p>
           </div>
         </div>

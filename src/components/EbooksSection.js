@@ -5,7 +5,7 @@ import { ebooks } from "./Data/ebooks";
 
 function EbooksSection() {
   return (
-    <div className="bg-gray-100 h-auto md:h-screen my-5 md:my-0 flex flex-col justify-center items-center ">
+    <div className="bg-gray-100 h-auto md:h-screen my-5 md:my-0 flex flex-col justify-center items-center md:py-100">
       <div className="flex flex-col md:flex-row gap-5 md:gap-30 ">
         {ebooks.map((book) => (
           <Link

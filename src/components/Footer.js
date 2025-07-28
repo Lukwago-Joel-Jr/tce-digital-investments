@@ -30,7 +30,7 @@ export default function Footer() {
               Home
             </Link>
             <Link href="/about" className="hover:text-green-900">
-              About
+              Learn About Wealth Builder Academy
             </Link>
             <Link href="/community" className="hover:text-green-900">
               Community
