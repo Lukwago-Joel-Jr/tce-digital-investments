@@ -61,20 +61,21 @@ const AboutSection = () => {
 
           <div className="md:w-[50%]">
             <p className="text-lg">
-              “You&apos;ve heard that the wealthy invest differently — but no
-              one ever taught you how. You&apos;re working hard, but your money
-              isn&apos;t multiplying the way it should…” Digital marketing and
-              AI has transformed so many people&apos;s lives (Young and Old) but
-              making money doesn&apos;t mean keeping it or multiplying it for
-              generations to come, if you don't get the necessary
-              wisdom/knowledge to multiply it through investments!!!! It&apos;s
-              just a matter of time before you go back to hustle mode. Proverbs
-              1:5…..A wise man will hear and increase learning,And a man of
-              understanding will attain wise counsel…… “That&apos;s why I
-              created Wealth Builders Academy — a step-by-step coaching program
-              that teaches you how to think, invest, and build wealth like a
-              venture capitalist or private equity pro while honoring God at the
-              same time.
+              &ldquo;You&apos;ve heard that the wealthy invest differently — but
+              no one ever taught you how. You&apos;re working hard, but your
+              money isn&apos;t multiplying the way it should&hellip;&rdquo;
+              Digital marketing and AI has transformed so many people&apos;s
+              lives (Young and Old), but making money doesn&apos;t mean keeping
+              it or multiplying it for generations to come, if you don&apos;t
+              get the necessary wisdom/knowledge to multiply it through
+              investments!!!! It&apos;s just a matter of time before you go back
+              to hustle mode. Proverbs 1:5&hellip;&hellip;A wise man will hear
+              and increase learning, And a man of understanding will attain wise
+              counsel&hellip;&hellip; &ldquo;That&apos;s why I created Wealth
+              Builders Academy — a step-by-step coaching program that teaches
+              you how to think, invest, and build wealth like a venture
+              capitalist or private equity pro while honoring God at the same
+              time.&rdquo;
             </p>
           </div>
         </div>
