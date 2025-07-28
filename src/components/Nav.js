@@ -31,7 +31,7 @@ export default function Navbar() {
             <FaInstagram size={22} />
           </a>
 
-          <Link href="/course">
+          <Link href="/wealth-builder-program">
             <button className="bg-green-900 text-white px-6 py-2 rounded-full text-lg hover:bg-green-800 transition">
               Join Now
             </button>

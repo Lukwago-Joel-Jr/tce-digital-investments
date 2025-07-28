@@ -45,14 +45,15 @@ import Image from "next/image";
 
 export default function CoursePage() {
   return (
-    <div className="bg-white text-gray-900 px-6 py-16 space-y-20 mt-20 md:mt-40">
+    <div className="bg-white text-gray-900 px-6 py-16 space-y-20 mt-20 md:mt-30">
       {/* Hero Section */}
       <section className="text-center max-w-3xl mx-auto">
-        <h1 className="text-4xl sm:text-5xl font-bold mb-4">
+        <h1 className="md:text-8xl text-5xl font-bold mb-4">
           Wealth Builder Coaching Program
         </h1>
         <p className="text-lg text-gray-700 mb-6">
-          You&apos;re going to learn how to think like an investor, analyze
+          You&apos;re going to learn how to{" "}
+          <span className="bg-yellow-200">think like an investor</span>, analyze
           deals, and even structure your own micro fund. But more than that,
           you&apos;ll walk away knowing how to turn knowledge into capital and
           capital into legacy.

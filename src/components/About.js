@@ -25,7 +25,7 @@ const AboutSection = () => {
         </div>
         <div className="flex flex-col">
           <div className="w-fill px-5 md:p-2 md:w-100 md:mb-0 mb-2">
-            <h1 className="italic bg-orange-200 text-3xl md:text-4xl font-light text-center md:text-left">
+            <h1 className="italic bg-yellow-200 text-3xl md:text-4xl font-light text-center md:text-left">
               I&apos;m Sandra N Sserumaga
             </h1>
           </div>
