@@ -44,7 +44,7 @@ const AboutSection = () => {
       </div>
 
       <div className="flex flex-col items-center justify-center md:w-2/3 rounded-2xl shadow-1xl bg-white p-5 md:p-15 mb-5 gap-4 md:mt-[-40px]">
-        <div className="flex flex-col md:flex-row items-center gap-8 ">
+        <div className="flex flex-col md:flex-row items-start gap-8 ">
           <div className="md:w-[50%]">
             <h2 className="text-2xl text-green-900 font-bold">
               What&apos;s holding back Kingdom-minded leaders from investing
@@ -60,22 +60,24 @@ const AboutSection = () => {
           </div>
 
           <div className="md:w-[50%]">
-            <p className="text-lg">
+            <h2 className="text-2xl text-green-900 font-bold">
               &ldquo;You&apos;ve heard that the wealthy invest differently — but
-              no one ever taught you how. You&apos;re working hard, but your
-              money isn&apos;t multiplying the way it should&hellip;&rdquo;
-              Digital marketing and AI has transformed so many people&apos;s
-              lives (Young and Old), but making money doesn&apos;t mean keeping
-              it or multiplying it for generations to come, if you don&apos;t
-              get the necessary wisdom/knowledge to multiply it through
-              investments!!!! It&apos;s just a matter of time before you go back
-              to hustle mode. Proverbs 1:5&hellip;&hellip;A wise man will hear
-              and increase learning, And a man of understanding will attain wise
-              counsel&hellip;&hellip; &ldquo;That&apos;s why I created Wealth
-              Builders Academy — a step-by-step coaching program that teaches
-              you how to think, invest, and build wealth like a venture
-              capitalist or private equity pro while honoring God at the same
-              time.&rdquo;
+              no one ever taught you how.
+            </h2>
+            <p className="text-sm">
+              You&apos;re working hard, but your money isn&apos;t multiplying
+              the way it should&hellip;&rdquo; Digital marketing and AI has
+              transformed so many people&apos;s lives (Young and Old), but
+              making money doesn&apos;t mean keeping it or multiplying it for
+              generations to come, if you don&apos;t get the necessary
+              wisdom/knowledge to multiply it through investments!!!! It&apos;s
+              just a matter of time before you go back to hustle mode. Proverbs
+              1:5&hellip;&hellip;A wise man will hear and increase learning, And
+              a man of understanding will attain wise counsel&hellip;&hellip;
+              &ldquo;That&apos;s why I created Wealth Builders Academy — a
+              step-by-step coaching program that teaches you how to think,
+              invest, and build wealth like a venture capitalist or private
+              equity pro while honoring God at the same time.&rdquo;
             </p>
           </div>
         </div>

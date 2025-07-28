@@ -35,4 +35,3 @@ export const ebooks = [
     rating: 4.8,
   },
 ];
-
