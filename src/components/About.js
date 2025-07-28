@@ -1,55 +1,3 @@
-// import React from "react";
-// import Image from "next/image";
-
-// const AboutSection =()=>{
-//     return(
-//         <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 py-10 ">
-//             <div className=" flex flex-col items-center justify-center mb-p-10 py-0">
-//                     <h1 className=" text-2xl md:text-4xl">Digital marketing Changed </h1>
-//                     <h1 className=" text-5xl md:text-8xl uppercase font-extrabold">Everything</h1>
-//                     <h1 className=" text-2xl md:text-4xl">for me</h1>
-//             </div>
-
-//             <div className="flex flex-col md:flex-row justify-center items-center mb:mt-4 ">
-//                 <div className=" flex items-center justify-center">
-
-//                 <Image
-//                 src="/images/sandra-smile2.png"
-//                 alt="Sandra smiling"
-//                 width={400} // width in **pixels**
-//                 height={500} // height in **pixels**
-
-//                 />
-//                 </div>
-//                 <div className=" flex flex-col">
-//                 <div className="w-fill px-5 md:p-2 md:w-100 md:mb-0 mb-2">
-//                 <h1 className="italic bg-orange-200 text-3xl md:text-4xl font-light text-center  md:text-left">I'm Sandra N Sserumaga</h1>
-//                 </div>
-//                 <div className=" w-fill px-5 md:p-2 md:w-100 mb:m-2">
-//                 <p>I am wife, mother, entrepreneur, and a Christian who accepted Jesus to be my personal
-//                 LORD and Savior l've seen firsthand the power of financial Jiteracy and the impact it can
-//                 have on people's lives when God is put in first Place when running Business. Deuteronomy 8:18 Remember the LORD your God, for it is He who gives you the ability to produce wealth. I'm excited to share my knowledge and insights in this Ebook on how i was able to grow 2m-200m in capital through money leading in a space of 3 years , and to help others build the financial confidence and security they deserve. </p>
-//                 </div>
-//                 </div>
-//             </div>
-
-//             <div className="flex flex-col items-center justify-center md:w-2/3 rounded-2xl shadow-1xl bg-white p-5 md:p-15 mb-5 gap-4 md:mt-[-40px]">
-//             <div className="flex flex-col md:flex-row items-center gap-8 ">
-//             <div> <p className="text-lg font-bold">I have a background in finance and a passion for helping low income earner women and men achieve financial success. With over years of
-//                     experience n the industry, I've worked with clients from all walks of life and understand the nique challenges faced by underrepresented communities.
-//                     Through my work as a financial advisor and advocate, strive to create more equitable access to financial education, resources and generally better livelihood for all through creating generational wealth. I'm thrilled to be the author of this Ebook, and to share my perspective and expertise with people everywhere.</p></div>
-//             {/* <div className=""> <p className="text-lg">I promise you I'm not special, I'm an ordinary busy mom who decided to find out if this was even possible. So if you're looking for a way to enter the digital marketing space, make money you did not know was quite possible, and be taught as a complete beginner, you’ve found the right place!</p></div>
-//                 */}
-//              </div>
-//               <button className="bg-green-900 text-white px-6 py-2 rounded-full text-lg hover:bg-green-800 transition">
-//               Join Now
-//             </button>
-//              </div>
-//         </div>
-//     )
-// }
-// export default AboutSection
-
 import React from "react";
 import Image from "next/image";
 
@@ -57,7 +5,9 @@ const AboutSection = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 py-10 ">
       <div className="flex flex-col items-center justify-center mb-p-10 py-0">
-        <h1 className="text-2xl md:text-4xl">Digital marketing Changed</h1>
+        <h1 className="text-2xl md:text-4xl">
+          Venture Capital and Private Equity Changed
+        </h1>
         <h1 className="text-5xl md:text-8xl uppercase font-extrabold">
           Everything
         </h1>
@@ -81,16 +31,13 @@ const AboutSection = () => {
           </div>
           <div className="w-fill px-5 md:p-2 md:w-100 mb:m-2">
             <p className="font-light text-base">
-              I am wife, mother, entrepreneur, and a Christian who accepted
-              Jesus to be my personal LORD and Savior. I&apos;ve seen firsthand
-              the power of financial literacy and the impact it can have on
-              people&apos;s lives when God is put in first Place when running
-              Business. Deuteronomy 8:18 Remember the LORD your God, for it is
-              He who gives you the ability to produce wealth. I&apos;m excited
-              to share my knowledge and insights in this Ebook on how I was able
-              to grow 2m-200m in capital through money lending in a space of 3
-              years, and to help others build the financial confidence and
-              security they deserve.
+              I&apos;m Sandra N SSerumaga, a venture-minded entrepreneur,
+              investor, and coach. I&apos;ve built businesses, funded others,
+              and now I&apos;m showing you how to step into this world too —
+              especially if you&apos;re starting from scratch.” For years I
+              thought saving was the only way to build wealth. But after
+              discovering how the rich use equity, VC, and PE — my entire
+              financial strategy changed.
             </p>
           </div>
         </div>
@@ -98,30 +45,38 @@ const AboutSection = () => {
 
       <div className="flex flex-col items-center justify-center md:w-2/3 rounded-2xl shadow-1xl bg-white p-5 md:p-15 mb-5 gap-4 md:mt-[-40px]">
         <div className="flex flex-col md:flex-row items-center gap-8 ">
-          <div className="">
+          <div className="md:w-[50%]">
+            <h2 className="text-2xl text-green-900 font-bold">
+              What&apos;s holding back Kingdom-minded leaders from investing
+              boldly?
+            </h2>
             <p className="text-lg font-bold">
-              I have a background in finance and a passion for helping low
-              income earner women and men achieve financial success. With over
-              years of experience in the industry, I&apos;ve worked with clients
-              from all walks of life and understand the unique challenges faced
-              by underrepresented communities. Through my work as a financial
-              advisor and advocate, I strive to create more equitable access to
-              financial education, resources, and generally better livelihood
-              for all through creating generational wealth. I&apos;m thrilled to
-              be the author of this Ebook, and to share my perspective and
-              expertise with people everywhere.
+              You feel called to wealth creation but don&apos;t know where to
+              start. The world of venture capital and private equity seems
+              intimidating or inaccessible. You&apos;ve been a steward — but now
+              you&apos;re ready to multiply. You want to invest in alignment
+              with your values, not compromise them.
             </p>
           </div>
-          {/* 
-          <div className="">
+
+          <div className="md:w-[50%]">
             <p className="text-lg">
-              I promise you I&apos;m not special, I&apos;m an ordinary busy mom who decided to find out if this was
-              even possible. So if you&apos;re looking for a way to enter the digital marketing space,
-              make money you did not know was quite possible, and be taught as a complete beginner,
-              you&apos;ve found the right place!
+              “You&apos;ve heard that the wealthy invest differently — but no
+              one ever taught you how. You&apos;re working hard, but your money
+              isn&apos;t multiplying the way it should…” Digital marketing and
+              AI has transformed so many people&apos;s lives (Young and Old) but
+              making money doesn't mean keeping it or multiplying it for
+              generations to come, if you don't get the necessary
+              wisdom/knowledge to multiply it through investments!!!! It's just
+              a matter of time before you go back to hustle mode. Proverbs
+              1:5…..A wise man will hear and increase learning,And a man of
+              understanding will attain wise counsel…… “That&apos;s why I
+              created Wealth Builders Academy — a step-by-step coaching program
+              that teaches you how to think, invest, and build wealth like a
+              venture capitalist or private equity pro while honoring God at the
+              same time.
             </p>
-          </div> 
-          */}
+          </div>
         </div>
         <button className="bg-green-900 text-white px-6 py-2 rounded-full text-lg hover:bg-green-800 transition">
           Join Now
