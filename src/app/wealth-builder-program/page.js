@@ -38,8 +38,20 @@
 //   )
 // }
 
+import { Pacifico, Meow_Script } from "next/font/google";
+import { FaCircleCheck } from "react-icons/fa6";
 import React from "react";
 import Image from "next/image";
+
+const pacifico = Pacifico({
+  weight: "400",
+  subsets: ["latin"],
+});
+
+const meow = Meow_Script({
+  weight: "400",
+  subsets: ["latin"],
+});
 
 export const metadata = {
   metadataBase: new URL("https://www.tcedigitalinvestments.com"),
@@ -117,6 +129,115 @@ export default function CoursePage() {
         />
       </section>
 
+      {/* What&apos;s Included */}
+      <section className="max-w-4xl mx-auto text-center px-6">
+        <h2 className="text-6xl font-semibold mb-4">What&apos;s Included</h2>
+        <ul className="list-disc list-inside text-gray-700 text-left max-w-xl mx-auto space-y-5">
+          <li className="list-none">
+            <div className="bg-green-800 list-none p-4 shadow-sm relative">
+              <p className="text-white text-center text-xl">
+                Self-paced video modules
+              </p>
+              <span className="absolute bottom-[-19px] left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-[20px] border-r-[20px] border-t-[20px] border-t-green-800 border-l-transparent border-r-transparent"></span>
+            </div>
+          </li>
+
+          <li className="list-none">
+            <div className="bg-green-800 list-none p-4 shadow-sm relative">
+              <p className="text-white text-center text-xl">
+                Bi-weekly live coaching
+              </p>
+              <span className="absolute bottom-[-19px] left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-[20px] border-r-[20px] border-t-[20px] border-t-green-800 border-l-transparent border-r-transparent"></span>
+            </div>
+          </li>
+
+          <li className="list-none">
+            <div className="bg-green-800 list-none p-4 shadow-sm relative">
+              <p className="text-white text-center text-xl">
+                Private community support
+              </p>
+              <span className="absolute bottom-[-19px] left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-[20px] border-r-[20px] border-t-[20px] border-t-green-800 border-l-transparent border-r-transparent"></span>
+            </div>
+          </li>
+
+          <li className="list-none">
+            <div className="bg-green-800 list-none p-4 shadow-sm relative">
+              <p className="text-white text-center text-xl">
+                Real-world assignment + final project
+              </p>
+              <span className="absolute bottom-[-19px] left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-[20px] border-r-[20px] border-t-[20px] border-t-green-800 border-l-transparent border-r-transparent"></span>
+            </div>
+          </li>
+
+          <li className="list-none">
+            <div className="bg-green-800 list-none p-4 shadow-sm relative">
+              <p className="text-white text-center text-xl">
+                Tools, templates, and roadmaps
+              </p>
+              <span className="absolute bottom-[-19px] left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-[20px] border-r-[20px] border-t-[20px] border-t-green-800 border-l-transparent border-r-transparent"></span>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      {/* Who It&apos;s For */}
+      <section className="max-w-4xl mx-auto text-center px-6 bg-yellow-200 p-8 flex flex-col items-center justify-center">
+        <div className="max-w-xl">
+          <h2 className="text-6xl font-bold mb-4">Who It&apos;s For</h2>
+          <p className="text-gray-700 mb-4">
+            What if you could build wealth, fund innovation, and structure your
+            own fund — while staying rooted in Biblical principles?
+          </p>
+        </div>
+        <ul className="list-disc list-inside text-gray-700 text-left max-w-xl mx-auto list-none space-y-6">
+          <li className="">
+            <div className="flex items-center w-full h-19 bg-white">
+              <div className="bg-green-800 p-6">
+                <FaCircleCheck size={30} className="text-white" />{" "}
+              </div>
+              <div className="p-7 w-full">
+                <p className="">Aspiring Kingdom investors</p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div className="flex items-center w-full h-19 bg-white">
+              <div className="bg-green-800 p-6">
+                <FaCircleCheck size={30} className="text-white" />{" "}
+              </div>
+              <div className="p-7 w-full">
+                <p className="">Entrepreneurs ready to become funders</p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div className="flex items-center w-full h-19 bg-white">
+              <div className="bg-green-800 p-6">
+                <FaCircleCheck size={30} className="text-white" />{" "}
+              </div>
+              <div className="p-7 w-full">
+                <p className="">
+                  Faith-driven leaders ready to multiply influence
+                </p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div className="flex items-center w-full h-19 bg-white">
+              <div className="bg-green-800 p-6">
+                <FaCircleCheck size={30} className="text-white" />{" "}
+              </div>
+              <div className="p-7 w-full">
+                <p className="">
+                  Anyone seeking to grow wealth without losing spiritual
+                  integrity
+                </p>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </section>
+
       {/* Modules */}
       <section className="max-w-4xl mx-auto px-6">
         <h2 className="text-2xl font-semibold mb-6 text-center">
@@ -176,41 +297,13 @@ export default function CoursePage() {
         </ul>
       </section>
 
-      {/* Who It&apos;s For */}
-      <section className="max-w-4xl mx-auto text-center px-6">
-        <h2 className="text-2xl font-semibold mb-4">Who It&apos;s For</h2>
-        <p className="text-gray-700 mb-4">
-          What if you could build wealth, fund innovation, and structure your
-          own fund — while staying rooted in Biblical principles?
-        </p>
-        <ul className="list-disc list-inside text-gray-700 text-left max-w-xl mx-auto">
-          <li>Aspiring Kingdom investors</li>
-          <li>Entrepreneurs ready to become funders</li>
-          <li>Faith-driven leaders ready to multiply influence</li>
-          <li>
-            Anyone seeking to grow wealth without losing spiritual integrity
-          </li>
-        </ul>
-      </section>
-
-      {/* What&apos;s Included */}
-      <section className="max-w-4xl mx-auto text-center px-6">
-        <h2 className="text-2xl font-semibold mb-4">What&apos;s Included</h2>
-        <ul className="list-disc list-inside text-gray-700 text-left max-w-xl mx-auto space-y-1">
-          <li>Self-paced video modules</li>
-          <li>Bi-weekly live coaching</li>
-          <li>Private community support</li>
-          <li>Real-world assignment + final project</li>
-          <li>Tools, templates, and roadmaps</li>
-        </ul>
-      </section>
-
       {/* Pricing Section */}
       <section className="max-w-2xl mx-auto text-center border-t border-gray-300 pt-10 px-6">
         <h2 className="text-3xl font-bold mb-4">$342</h2>
-        <p className="text-gray-700 mb-6">
+        <p className={`${meow.className}  text-4xl md:text-4xl font-light `}>
           One-time payment for full course access + community and coaching
         </p>
+
         <button className="bg-green-900 hover:bg-green-800 text-white px-10 py-4 rounded-full text-lg transition">
           Join Now
         </button>
