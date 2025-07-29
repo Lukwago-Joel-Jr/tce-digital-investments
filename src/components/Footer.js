@@ -38,7 +38,10 @@ export default function Footer() {
             <Link href="/contact" className="hover:text-green-900">
               Contact
             </Link>
-            <Link href="/course" className="hover:text-green-900">
+            <Link
+              href="/wealth-builder-program"
+              className="hover:text-green-900"
+            >
               Course
             </Link>
           </div>
