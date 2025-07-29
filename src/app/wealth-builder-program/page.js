@@ -51,14 +51,14 @@ export default function CoursePage() {
         <h1 className="md:text-8xl text-4xl font-bold mb-4">
           Wealth Builder Coaching Program
         </h1>
-        <p className="text-lg text-gray-700 mb-6">
+        <p className="text-lg text-gray-700 mb-6 text-left">
           You&apos;re going to learn how to{" "}
           <span className="bg-yellow-200">think like an investor</span>, analyze
           deals, and even structure your own micro fund. But more than that,
           you&apos;ll walk away knowing how to turn knowledge into capital and
           capital into legacy.
         </p>
-        <p className="text-md text-gray-600 mb-6">
+        <p className="text-md text-gray-600 mb-6 text-left">
           This is the program that&apos;s going to shift how you build wealth —
           not by trading your time for money, but by owning equity and investing
           smart, like the top 1%.
