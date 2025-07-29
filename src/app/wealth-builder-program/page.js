@@ -63,7 +63,7 @@ export const metadata = {
     siteName: "Wealth Builder Academy",
     images: [
       {
-        url: "/images/boss2-1200x630.png",
+        url: "/images/boss2-1200x630.jpeg",
         width: 1200,
         height: 630,
         alt: "Wealth Builder Program OG Image",
@@ -109,11 +109,11 @@ export default function CoursePage() {
 
       <section className="flex justify-center items-center max-w-6xl mx-auto">
         <Image
-          src="/images/boss.jpg"
+          src="/images/better.jpg"
           alt="Course Preview 1"
-          width={600}
+          width={700}
           height={250}
-          className="rounded-t-[48%]"
+          className="rounded-t-[47%]"
         />
       </section>
 
