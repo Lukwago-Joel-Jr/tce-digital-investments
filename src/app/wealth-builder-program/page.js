@@ -47,8 +47,8 @@ export default function CoursePage() {
   return (
     <div className="bg-white text-gray-900 px-6 py-16 space-y-20 mt-20 md:mt-30">
       {/* Hero Section */}
-      <section className="text-center max-w-3xl mx-auto">
-        <h1 className="md:text-8xl text-5xl font-bold mb-4">
+      <section className="text-center md:max-w-3xl md:mx-auto w-full bg-green-300">
+        <h1 className="md:text-8xl text-4xl font-bold mb-4">
           Wealth Builder Coaching Program
         </h1>
         <p className="text-lg text-gray-700 mb-6">

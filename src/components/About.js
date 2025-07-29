@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 const AboutSection = () => {
   return (
@@ -85,9 +86,12 @@ const AboutSection = () => {
             </p>
           </div>
         </div>
-        <button className="bg-green-900 text-white px-6 py-2 rounded-full text-lg hover:bg-green-800 transition">
-          Join Now
-        </button>
+
+        <Link href="/wealth-builder-program">
+          <button className="bg-green-900 text-white px-6 py-2 rounded-full text-lg hover:bg-green-800 transition">
+            Join Now
+          </button>
+        </Link>
       </div>
     </div>
   );
