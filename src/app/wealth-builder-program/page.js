@@ -63,10 +63,10 @@ export const metadata = {
     siteName: "Wealth Builder Academy",
     images: [
       {
-        url: "/images/boss.jpg", // Change this to an image related to the coaching program
+        url: "/images/original.png",
         width: 1200,
         height: 630,
-        alt: "Wealth Builder Coaching Program OG Image",
+        alt: "Wealth Builder Program OG Image",
       },
     ],
     locale: "en_US",
