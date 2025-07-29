@@ -38,10 +38,49 @@
 //   )
 // }
 
-"use client";
-
 import React from "react";
 import Image from "next/image";
+
+export const metadata = {
+  metadataBase: new URL("https://www.tcedigitalinvestments.com"),
+  title: "Wealth Builder Coaching Program", // Update for program
+  description:
+    "Wealth Builder Coaching Program — learn how to build wealth through smart investing, coaching, and fund structuring.",
+  keywords:
+    "wealth coaching, investment coaching, digital wealth, fund building, financial freedom, entrepreneurship, Biblical investing, wealth building courses",
+  authors: [
+    {
+      name: "Wealth Builder Academy",
+      url: "https://www.tcedigitalinvestments.com",
+    },
+  ],
+  creator: "Wealth Builder Academy",
+  openGraph: {
+    title: "Wealth Builder Coaching Program", // Update for program
+    description:
+      "Join the Wealth Builder Coaching Program to learn how to think like an investor and structure your own micro fund.",
+    url: "https://www.tcedigitalinvestments.com/wealth-build-program", // Ensure this matches your actual URL
+    siteName: "Wealth Builder Academy",
+    images: [
+      {
+        url: "/images/coaching-preview.jpg", // Change this to an image related to the coaching program
+        width: 1200,
+        height: 630,
+        alt: "Wealth Builder Coaching Program OG Image",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@wealthbuilderacademy",
+    creator: "@wealthbuilderacademy",
+  },
+  icons: {
+    icon: "/favicon.ico",
+  },
+};
 
 export default function CoursePage() {
   return (
@@ -68,29 +107,14 @@ export default function CoursePage() {
         </button>
       </section>
 
-      {/* Demo Images */}
-      <section className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+      <section className="flex justify-center items-center max-w-6xl mx-auto">
         <Image
-          src="/images/sandra-smile2.png"
+          src="/images/boss.jpg"
           alt="Course Preview 1"
-          width={400}
+          width={600}
           height={250}
-          className="rounded-lg"
+          className="rounded-t-[48%]"
         />
-        {/* <Image
-          src="/images/sandra-smile2.png"
-          alt="Course Preview 2"
-          width={400}
-          height={250}
-          className="rounded-lg"
-        />
-        <Image
-          src="/images/sandra-smile2.png"
-          alt="Course Preview 3"
-          width={400}
-          height={250}
-          className="rounded-lg"
-        /> */}
       </section>
 
       {/* Modules */}
