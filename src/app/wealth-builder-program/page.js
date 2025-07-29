@@ -131,7 +131,9 @@ export default function CoursePage() {
 
       {/* What&apos;s Included */}
       <section className="max-w-4xl mx-auto text-center px-6">
-        <h2 className="text-6xl font-semibold mb-4">What&apos;s Included</h2>
+        <h2 className="md:text-6xl text-3xl font-semibold mb-4">
+          What&apos;s Included
+        </h2>
         <ul className="list-disc list-inside text-gray-700 text-left max-w-xl mx-auto space-y-5">
           <li className="list-none">
             <div className="bg-green-800 list-none p-4 shadow-sm relative">
@@ -183,8 +185,10 @@ export default function CoursePage() {
       {/* Who It&apos;s For */}
       <section className="max-w-4xl mx-auto text-center px-6 bg-yellow-200 p-8 flex flex-col items-center justify-center">
         <div className="max-w-xl">
-          <h2 className="text-6xl font-bold mb-4">Who It&apos;s For</h2>
-          <p className="text-gray-700 mb-4">
+          <h2 className="md:text-6xl text-3xl font-bold mb-4">
+            Who It&apos;s For
+          </h2>
+          <p className="text-gray-700 mb-4 text-xl">
             What if you could build wealth, fund innovation, and structure your
             own fund — while staying rooted in Biblical principles?
           </p>
