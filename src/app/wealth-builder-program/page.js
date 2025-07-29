@@ -196,7 +196,7 @@ export default function CoursePage() {
                 <FaCircleCheck size={30} className="text-white" />{" "}
               </div>
               <div className="p-7 w-full">
-                <p className="">Aspiring Kingdom investors</p>
+                <p className="md:text-xl text-sm">Aspiring Kingdom investors</p>
               </div>
             </div>
           </li>
@@ -206,7 +206,9 @@ export default function CoursePage() {
                 <FaCircleCheck size={30} className="text-white" />{" "}
               </div>
               <div className="p-7 w-full">
-                <p className="">Entrepreneurs ready to become funders</p>
+                <p className="md:text-xl text-sm">
+                  Entrepreneurs ready to become funders
+                </p>
               </div>
             </div>
           </li>
@@ -216,7 +218,7 @@ export default function CoursePage() {
                 <FaCircleCheck size={30} className="text-white" />{" "}
               </div>
               <div className="p-7 w-full">
-                <p className="">
+                <p className="md:text-xl text-sm">
                   Faith-driven leaders ready to multiply influence
                 </p>
               </div>
@@ -228,7 +230,7 @@ export default function CoursePage() {
                 <FaCircleCheck size={30} className="text-white" />{" "}
               </div>
               <div className="p-7 w-full">
-                <p className="">
+                <p className="md:text-xl text-sm">
                   Anyone seeking to grow wealth without losing spiritual
                   integrity
                 </p>
