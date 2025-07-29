@@ -59,11 +59,11 @@ export const metadata = {
     title: "Wealth Builder Coaching Program", // Update for program
     description:
       "Join the Wealth Builder Coaching Program to learn how to think like an investor and structure your own micro fund.",
-    url: "https://www.tcedigitalinvestments.com/wealth-build-program", // Ensure this matches your actual URL
+    url: "https://www.tcedigitalinvestments.com/wealth-builder-program",
     siteName: "Wealth Builder Academy",
     images: [
       {
-        url: "/images/coaching-preview.jpg", // Change this to an image related to the coaching program
+        url: "/images/boss.jpg", // Change this to an image related to the coaching program
         width: 1200,
         height: 630,
         alt: "Wealth Builder Coaching Program OG Image",
@@ -84,9 +84,9 @@ export const metadata = {
 
 export default function CoursePage() {
   return (
-    <div className="bg-white text-gray-900 px-6 py-16 space-y-20 mt-20 md:mt-30">
+    <div className="bg-white text-gray-900  py-16 space-y-20 mt-20 md:mt-30">
       {/* Hero Section */}
-      <section className="text-center md:max-w-3xl md:mx-auto w-full">
+      <section className="text-center md:max-w-3xl md:mx-auto w-full px-6">
         <h1 className="md:text-8xl text-4xl font-bold mb-4">
           Wealth Builder Coaching Program
         </h1>
@@ -118,7 +118,7 @@ export default function CoursePage() {
       </section>
 
       {/* Modules */}
-      <section className="max-w-4xl mx-auto">
+      <section className="max-w-4xl mx-auto px-6">
         <h2 className="text-2xl font-semibold mb-6 text-center">
           Course Modules
         </h2>
@@ -162,7 +162,7 @@ export default function CoursePage() {
       </section>
 
       {/* Bonus Content */}
-      <section className="max-w-4xl mx-auto">
+      <section className="max-w-4xl mx-auto px-6">
         <h2 className="text-2xl font-semibold mb-4 text-center">
           🎁 Bonus Content
         </h2>
@@ -177,7 +177,7 @@ export default function CoursePage() {
       </section>
 
       {/* Who It&apos;s For */}
-      <section className="max-w-4xl mx-auto text-center">
+      <section className="max-w-4xl mx-auto text-center px-6">
         <h2 className="text-2xl font-semibold mb-4">Who It&apos;s For</h2>
         <p className="text-gray-700 mb-4">
           What if you could build wealth, fund innovation, and structure your
@@ -194,7 +194,7 @@ export default function CoursePage() {
       </section>
 
       {/* What&apos;s Included */}
-      <section className="max-w-4xl mx-auto text-center">
+      <section className="max-w-4xl mx-auto text-center px-6">
         <h2 className="text-2xl font-semibold mb-4">What&apos;s Included</h2>
         <ul className="list-disc list-inside text-gray-700 text-left max-w-xl mx-auto space-y-1">
           <li>Self-paced video modules</li>
@@ -206,7 +206,7 @@ export default function CoursePage() {
       </section>
 
       {/* Pricing Section */}
-      <section className="max-w-2xl mx-auto text-center border-t border-gray-300 pt-10">
+      <section className="max-w-2xl mx-auto text-center border-t border-gray-300 pt-10 px-6">
         <h2 className="text-3xl font-bold mb-4">$342</h2>
         <p className="text-gray-700 mb-6">
           One-time payment for full course access + community and coaching
