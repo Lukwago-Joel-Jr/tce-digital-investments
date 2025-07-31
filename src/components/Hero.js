@@ -28,6 +28,7 @@ export default function HeroSection() {
               <span className="text-6xl">Learn the Skills to Build</span> <br />
               Digital{" "}
               <span className="text-green-900 text-8xl">Wealth & Freedom</span>
+              <span className="text-3xl"> Just Like The Top 1%</span>
             </h1>
             <p className={`${cormorat.className} italic text-4xl md:text-3xl `}>
               <i>Join thousands of others taking control of their future.</i>
@@ -61,7 +62,8 @@ export default function HeroSection() {
             <h1 className="text-4xl font-extrabold text-black leading-tight">
               Learn the Skills to <br /> <span className="text-6xl">Build</span>{" "}
               <br />
-              <span className="text-green-900 text-7xl">Wealth & Freedom</span>
+              <span className="text-green-900 text-7xl">Wealth & Freedom </span>
+              <span>Just Like The Top 1%</span>
             </h1>
             <p className={`${cormorat.className} italic text-2xl  `}>
               <i>Join thousands of others taking control of their future.</i>

@@ -3,29 +3,29 @@ export const ebooks = [
     id: "KINGDOM-LENDING",
     title: "KINGDOM LENDING",
     shortDescription:
-      "Build Wealth God&apos;s Way Through Lending. Discover How I Grew My Lending Business from 2M to 200M in 3 Years—By Partnering with God.",
+      "Build Wealth God’s Way Through Lending. Discover How I Grew My Lending Business from 2M to 200M in 3 Years—By Partnering with God.",
     description:
-      "Build Wealth God&apos;s Way Through Lending. Discover How I Grew My Lending Business from 2M to 200M in 3 Years—By Partnering with God. A powerful, biblical blueprint to help you start and grow a profitable, God-honoring lending business—without fear, confusion, or guesswork.",
+      "Build Wealth God’s Way Through Lending. Discover How I Grew My Lending Business from 2M to 200M in 3 Years—By Partnering with God. A powerful, biblical blueprint to help you start and grow a profitable, God-honoring lending business—without fear, confusion, or guesswork.",
     testimonials: [
       {
         name: "Winnie",
         testimonial:
-          "Sandy I finally structured my lending business, and for the first time, I&apos;m getting paid back consistently!",
+          "Sandy I finally structured my lending business, and for the first time, I’m getting paid back consistently!",
       },
       {
         name: "Jackie",
         testimonial:
-          "This Blueprint gave me confidence. I&apos;ve created my first repayment plan and contract! This is passive income indeed.",
+          "This Blueprint gave me confidence. I’ve created my first repayment plan and contract! This is passive income indeed.",
       },
       {
         name: "Dan",
         testimonial:
-          "It was the clarity I&apos;ve been praying for. Thank you Sandy!",
+          "It was the clarity I’ve been praying for. Thank you Sandy!",
       },
     ],
     Whothisisfor:
-      "This eBook is for you if: \n- You feel called to lend and build wealth in a Kingdom-aligned way. \n- You&apos;ve lost money from lending casually or without structure. \n- You want passive income but don&apos;t know where to start. \n- You&apos;ve been praying for guidance to grow your finances with faith. \n- You&apos;re ready to turn your giving heart into a sustainable business.",
-    cover: "/images/KINGDOM LENDING AND GENERATIONAL WEALTH GROWTH GUIDE.png",
+      "This eBook is for you if: \n- You feel called to lend and build wealth in a Kingdom-aligned way. \n- You’ve lost money from lending casually or without structure. \n- You want passive income but don’t know where to start. \n- You’ve been praying for guidance to grow your finances with faith. \n- You’re ready to turn your giving heart into a sustainable business.",
+    cover: "/images/KINGDOMLENDING.png",
     price: "$84",
     author: "Sandra N Sserumaga",
     pages: 250,
@@ -36,9 +36,9 @@ export const ebooks = [
     ISBN: "978-1-23456-789-0",
     rating: 5,
     faithBasedBeliefSection:
-      "The Lord will open to you His good treasure… and you shall lend to many nations but not borrow. — Deuteronomy 28:12\nThis isn&apos;t just about business. It&apos;s about walking in your God-given authority to create wealth, bless others, and build legacy—with wisdom and spiritual alignment. This guide will show you how.",
+      "The Lord will open to you His good treasure… and you shall lend to many nations but not borrow. — Deuteronomy 28:12\nThis isn’t just about business. It’s about walking in your God-given authority to create wealth, bless others, and build legacy—with wisdom and spiritual alignment. This guide will show you how.",
     valueStack:
-      "What&apos;s the value of getting this right?\n✔ Avoiding costly mistakes — worth THOUSANDS\n✔ Proven systems and templates — worth MONTHS of trial and error\n✔ Faith-based confidence and clarity — priceless\n\nYou get all this for just: 💰 $84 USD\n✅ Step into your calling.\n✅ Lend with clarity.\n✅ Build wealth that honors God.",
+      "What’s the value of getting this right?\n✔ Avoiding costly mistakes — worth THOUSANDS\n✔ Proven systems and templates — worth MONTHS of trial and error\n✔ Faith-based confidence and clarity — priceless\n\nYou get all this for just: 💰 $84 USD\n✅ Step into your calling.\n✅ Lend with clarity.\n✅ Build wealth that honors God.",
     faq: [
       {
         question: "Do I need to be a registered business to start?",
@@ -59,7 +59,7 @@ export const ebooks = [
     bonus: {
       title: "BONUS 🌈 9 POWERFUL BUSINESS WORKSHEETS",
       description:
-        "Exclusive 9 Powerful Business Worksheets to Launch & Scale Your Kingdom Lending Business\nWhen you invest in the Kingdom Lending Guide, you&apos;ll receive 9 comprehensive, ready-to-use worksheets a game-changing toolkit designed to streamline every aspect of your money-lending business.",
+        "Exclusive 9 Powerful Business Worksheets to Launch & Scale Your Kingdom Lending Business\nWhen you invest in the Kingdom Lending Guide, you’ll receive 9 comprehensive, ready-to-use worksheets a game-changing toolkit designed to streamline every aspect of your money-lending business.",
       worksheetList: [
         "Client Database Sheet",
         "5-Year Business Projection",
@@ -82,7 +82,7 @@ export const ebooks = [
     shortDescription:
       "Turn Your Ideas Into Income — Learn How to Make Money Online with Digital Products!",
     description:
-      "A proven step-by-step roadmap to help you create, launch, and profit from your own digital products — even if you&apos;re starting from scratch. Discover how thousands are creating financial freedom by selling digital products — and how you can start today for just $27.",
+      "A proven step-by-step roadmap to help you create, launch, and profit from your own digital products — even if you’re starting from scratch. Discover how thousands are creating financial freedom by selling digital products — and how you can start today for just $27.",
     testimonials: [
       {
         name: "Anonymous",
@@ -96,7 +96,7 @@ export const ebooks = [
     ],
     Whothisisfor:
       "This is perfect for: \n- Stay-at-home moms \n- Creatives & coaches \n- Side hustlers \n- Students & fresh graduates \n- Anyone tired of 9-5 and wants an online income.",
-    cover: "/images/START SELLING RIGHT AWAY _DFY.png",
+    cover: "/images/DIGITALENTREPRENUURSHIP1.png",
     price: "$27",
     author: "Sandra N Sserumaga",
     pages: 250,
@@ -107,9 +107,9 @@ export const ebooks = [
     ISBN: "978-1-23456-789-0",
     rating: 5,
     faithBasedBeliefSection:
-      "You don&apos;t need a big following, a fancy website, or tech skills to start making money online. You just need a roadmap — and that&apos;s exactly what this is.",
+      "You don’t need a big following, a fancy website, or tech skills to start making money online. You just need a roadmap — and that’s exactly what this is.",
     valueStack:
-      "🎁 What&apos;s included for just $27:\n- A step-by-step roadmap to create and launch digital products.\n- Tools and templates to make it easy.\n- Clear and practical advice, no tech overwhelm!\n- Passive income strategies to get paid even while you sleep.\n\nThis guide is beginner-friendly and actionable, so you can start earning money online fast.",
+      "🎁 What’s included for just $27:\n- A step-by-step roadmap to create and launch digital products.\n- Tools and templates to make it easy.\n- Clear and practical advice, no tech overwhelm!\n- Passive income strategies to get paid even while you sleep.\n\nThis guide is beginner-friendly and actionable, so you can start earning money online fast.",
     faq: [
       {
         question: "Do I need to have an idea already?",
@@ -117,7 +117,7 @@ export const ebooks = [
           "No! The guide helps you come up with a profitable idea from scratch.",
       },
       {
-        question: "What if I&apos;m not tech-savvy?",
+        question: "What if I’m not tech-savvy?",
         answer:
           "No worries — this is beginner-friendly and guides you through step by step.",
       },
@@ -149,6 +149,6 @@ export const ebooks = [
       ],
     },
     noRefundPolicy:
-      "Due to the digital nature of this product, we cannot offer refunds. Please ensure you&apos;re ready to start your digital entrepreneurship journey before purchasing.",
+      "Due to the digital nature of this product, we cannot offer refunds. Please ensure you're ready to start your digital entrepreneurship journey before purchasing.",
   },
 ];

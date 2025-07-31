@@ -70,6 +70,12 @@ export default function EbookDetails({ params }) {
     );
   }
 
+  // utils.js (or inside your component file, if you prefer)
+  const escapeQuotes = (str) => {
+    if (!str) return str; // If the string is empty or undefined, just return it as is.
+    return str.replace(/"/g, "&quot;").replace(/'/g, "&apos;");
+  };
+
   return (
     <div className="bg-gray-100 min-h-screen flex justify-center items-center p-2 md:p-12">
       <div className="mt-30 md:mt-50">
@@ -123,7 +129,7 @@ export default function EbookDetails({ params }) {
               <div className="space-y-4">
                 {book.testimonials.map((testimonial, index) => (
                   <div key={index} className="border-l-4 border-blue-500 pl-4">
-                    <p className="italic">"{testimonial.testimonial}"</p>
+                    <p className="italic">{testimonial.testimonial}</p>
                     <p className="font-bold mt-1">— {testimonial.name}</p>
                   </div>
                 ))}

@@ -44,8 +44,8 @@ const AboutSection = () => {
         </div>
       </div>
 
-      <div className="flex flex-col items-center justify-center md:w-2/3 rounded-2xl shadow-1xl bg-white p-5 md:p-15 mb-5 gap-4 md:mt-[-40px]">
-        <div className="flex flex-col md:flex-row items-start gap-8 ">
+      <div className="flex flex-col items-center justify-center md:w-2/3 rounded-2xl shadow-1xl bg-white p-5 md:p-15 mb-5 gap-4 mt-18 md:mt-[-40px]">
+        <div className="flex flex-col md:flex-row items-start gap-18 md:gap-8 ">
           <div className="md:w-[50%]">
             <h2 className="text-2xl text-green-900 font-bold">
               What&apos;s holding back Kingdom-minded leaders from investing
