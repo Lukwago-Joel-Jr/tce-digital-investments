@@ -18,7 +18,7 @@ const AboutSection = () => {
       <div className="flex flex-col md:flex-row justify-center items-center mb:mt-4 ">
         <div className="flex items-center justify-center">
           <Image
-            src="/images/sandra-smile2.png"
+            src="/images/result.png"
             alt="Sandra smiling"
             width={400}
             height={500}

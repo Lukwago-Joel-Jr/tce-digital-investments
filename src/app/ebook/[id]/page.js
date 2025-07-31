@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { ebooks } from "@/components/Data/ebooks";
+import Link from "next/link";
 
 export async function generateMetadata({ params }) {
   const { id } = params;
@@ -70,12 +71,6 @@ export default function EbookDetails({ params }) {
     );
   }
 
-  // utils.js (or inside your component file, if you prefer)
-  const escapeQuotes = (str) => {
-    if (!str) return str; // If the string is empty or undefined, just return it as is.
-    return str.replace(/"/g, "&quot;").replace(/'/g, "&apos;");
-  };
-
   return (
     <div className="bg-gray-100 min-h-screen flex justify-center items-center p-2 md:p-12">
       <div className="mt-30 md:mt-50">
@@ -115,11 +110,18 @@ export default function EbookDetails({ params }) {
 
               <p className="text-xl font-semibold mb-6">{book.price}</p>
             </div>
+            {/* <Link href="/wealth-builder-program"> */}
+            <div>
+              <button className="bg-green-900 text-white px-6 py-2 rounded-full text-lg hover:bg-green-800 transition">
+                Buy Now
+              </button>
+            </div>
+            {/* </Link> */}
           </div>
         </div>
 
         {/* Additional Details Section */}
-        <div className="bg-white rounded-2xl shadow-lg max-w-4xl w-full flex flex-col  overflow-hidden mt-10 p-8">
+        <div className="bg-white rounded-2xl shadow-lg max-w-4xl w-full flex flex-col  overflow-hidden mt-10 p-4 md:p-8">
           {/* Testimonials */}
           {book.testimonials && book.testimonials.length > 0 && (
             <div className="mb-8">
