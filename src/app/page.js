@@ -1,28 +1,30 @@
-
-import AboutSection from '@/components/About'
-import Company from '@/components/Company'
-import EbooksSection from '@/components/EbooksSection'
-import HeroSection from '@/components/Hero'
-import StatsHighlights from '@/components/Stats'
-import Testimonials from '@/components/Testimonials'
-import React from 'react'
+import AboutSection from "@/components/About";
+import Company from "@/components/Company";
+import EbooksSection from "@/components/EbooksSection";
+import HeroSection from "@/components/Hero";
+import StatsHighlights from "@/components/Stats";
+import Testimonials from "@/components/Testimonials";
+import VideoSection from "@/components/Video";
+import React from "react";
 
 function Home() {
   return (
     <div>
-      <HeroSection/>
+      <HeroSection />
 
-      <AboutSection/>
+      <VideoSection />
 
-      <EbooksSection/>
+      <AboutSection />
 
-      <Testimonials/>
+      <EbooksSection />
 
-      <StatsHighlights/>
-      
-      <Company/>
+      <Testimonials />
+
+      <StatsHighlights />
+
+      <Company />
     </div>
-  )
+  );
 }
 
-export default Home
+export default Home;

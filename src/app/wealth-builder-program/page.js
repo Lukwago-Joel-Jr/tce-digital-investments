@@ -42,6 +42,7 @@ import { Pacifico, Meow_Script } from "next/font/google";
 import { FaCircleCheck } from "react-icons/fa6";
 import React from "react";
 import Image from "next/image";
+import MarqueeSection from "@/components/TextCarousel";
 
 const pacifico = Pacifico({
   weight: "400",
@@ -145,7 +146,7 @@ export default function CoursePage() {
           </div>
         </div>
       </div> */}
-
+      <MarqueeSection />
       <section className="flex justify-center items-center max-w-6xl mx-auto">
         <Image
           src="/images/better.jpg"
