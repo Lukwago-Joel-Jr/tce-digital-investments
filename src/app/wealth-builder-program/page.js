@@ -119,6 +119,33 @@ export default function CoursePage() {
         </button>
       </section>
 
+      {/* <div className="flex max-w-4xl mx-auto justify-center bg-green-100 ">
+        <div className=" ">
+          <Image
+            src="/images/better.jpg"
+            alt="Course Preview 1"
+            width={400}
+            height={250}
+          />
+        </div>
+        <div className="w-[50%] flex flex-col justify-start items-center bg-yellow-400 p-4">
+          <div className="bg-blue-200">
+            <p className="text-lg text-gray-700 mb-6 text-left">
+              You&apos;re going to learn how to
+              <span className="bg-yellow-200">think like an investor</span>,
+              analyze deals, and even structure your own micro fund. But more
+              than that, you&apos;ll walk away knowing how to turn knowledge
+              into capital and capital into legacy.
+            </p>
+            <p className="text-md text-gray-600 mb-6 text-left">
+              This is the program that&apos;s going to shift how you build
+              wealth — not by trading your time for money, but by owning equity
+              and investing smart, like the top 1%.
+            </p>
+          </div>
+        </div>
+      </div> */}
+
       <section className="flex justify-center items-center max-w-6xl mx-auto">
         <Image
           src="/images/better.jpg"

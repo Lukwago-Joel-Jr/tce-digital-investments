@@ -49,7 +49,7 @@ export default function StatsHighlights() {
         <div>
           <FaChartLine size={48} className="mx-auto mb-4" />
           <h3 className="text-lg font-bold tracking-wide uppercase">
-            7-Figures <br /> In 6 Months
+            200M <br /> In 3yrs
           </h3>
           <p className="mt-2 text-sm opacity-90">
             My personal success story that inspired me to create this academy
