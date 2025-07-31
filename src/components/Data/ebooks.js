@@ -26,6 +26,7 @@ export const ebooks = [
     Whothisisfor:
       "This eBook is for you if: \n- You feel called to lend and build wealth in a Kingdom-aligned way. \n- You’ve lost money from lending casually or without structure. \n- You want passive income but don’t know where to start. \n- You’ve been praying for guidance to grow your finances with faith. \n- You’re ready to turn your giving heart into a sustainable business.",
     cover: "/images/KINGDOMLENDING.png",
+    metacover: "/images/kingdomog.png",
     price: "$84",
     author: "Sandra N Sserumaga",
     pages: 59,
@@ -97,6 +98,7 @@ export const ebooks = [
     Whothisisfor:
       "This is perfect for: \n- Stay-at-home moms \n- Creatives & coaches \n- Side hustlers \n- Students & fresh graduates \n- Anyone tired of 9-5 and wants an online income.",
     cover: "/images/DIGITALENTREPRENUURSHIP1.png",
+    metacover: "/images/digitalog.png",
     price: "$27",
     author: "Sandra N Sserumaga",
     pages: 35,

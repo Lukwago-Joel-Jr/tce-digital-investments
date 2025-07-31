@@ -34,7 +34,9 @@ export async function generateMetadata({ params }) {
       siteName: "Wealth Builder Academy",
       images: [
         {
-          url: book.cover.startsWith("http") ? book.cover : `${book.cover}`,
+          url: book.cover.startsWith("http")
+            ? book.metacover
+            : `${book.metacover}`,
           width: 1200,
           height: 630,
           alt: `${book.title} Cover`,
@@ -130,7 +132,7 @@ export default function EbookDetails({ params }) {
               </h2>
               <div className="space-y-4">
                 {book.testimonials.map((testimonial, index) => (
-                  <div key={index} className="border-l-4 border-blue-500 pl-4">
+                  <div key={index} className="border-l-4 border-green-800 pl-4">
                     <p className="italic">{testimonial.testimonial}</p>
                     <p className="font-bold mt-1">— {testimonial.name}</p>
                   </div>
