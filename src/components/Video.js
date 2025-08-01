@@ -47,7 +47,7 @@ export default function VideoSection() {
       <section className="relative bg-white py-16 px-4 md:px-10 flex flex-col  items-center ">
         <div className=" mb-4 md:w-4xl max-w-4xl flex justify-start">
           <div className="-rotate-30  w-50 flex items-center ">
-            <FaChessRook size={28} className="text-green-200" />
+            <FaChessRook size={28} className="" />
             <p
               className={`${meow.className} text-4xl md:text-4xl font-light text-gray `}
             >
