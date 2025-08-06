@@ -17,7 +17,7 @@ export default function StatsHighlights() {
           </h3>
           <p className="mt-2 text-sm opacity-90">
             Our community grows every day with people ready to build their
-            digital marketing business
+            Venture Capital and Private Equity business
           </p>
         </div>
 
