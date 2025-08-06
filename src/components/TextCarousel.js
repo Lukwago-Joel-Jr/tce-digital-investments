@@ -46,7 +46,7 @@ export default function MarqueeSection() {
           {[...marqueeItems, ...marqueeItems].map((item, index) => (
             <span
               key={index}
-              className="text-lg md:text-xl font-semibold text-gray-800"
+              className="text-lg md:text-2xl font-semibold text-gray-800"
             >
               {item}
             </span>

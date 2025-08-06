@@ -13,7 +13,7 @@ export default function StatsHighlights() {
         <div>
           <FaLaptop size={48} className="mx-auto mb-4" />
           <h3 className="text-lg font-bold tracking-wide uppercase">
-            100,000+ <br /> Students Worldwide
+            our goal is 100,000+ <br /> Students Worldwide
           </h3>
           <p className="mt-2 text-sm opacity-90">
             Our community grows every day with people ready to build their
@@ -25,7 +25,7 @@ export default function StatsHighlights() {
         <div>
           <FaMoneyBillWave size={48} className="mx-auto mb-4" />
           <h3 className="text-lg font-bold tracking-wide uppercase">
-            $40M+ in <br /> Student Earnings
+            our Goal is $40M+ in <br /> Student Earnings
           </h3>
           <p className="mt-2 text-sm opacity-90">
             Our students have collectively earned over forty million dollars
@@ -37,7 +37,7 @@ export default function StatsHighlights() {
         <div>
           <FaUsers size={48} className="mx-auto mb-4" />
           <h3 className="text-lg font-bold tracking-wide uppercase">
-            400K+ <br /> Organic Followers
+            10.3K+ <br /> Organic Followers
           </h3>
           <p className="mt-2 text-sm opacity-90">
             Built my brand organically through authentic connection and posting
