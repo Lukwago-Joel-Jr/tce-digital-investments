@@ -13,7 +13,7 @@ export default function StatsHighlights() {
         <div>
           <FaLaptop size={48} className="mx-auto mb-4" />
           <h3 className="text-lg font-bold tracking-wide uppercase">
-            our goal is 100,000+ <br /> Students Worldwide
+            our goal is 1,000,000+ <br /> Students Worldwide
           </h3>
           <p className="mt-2 text-sm opacity-90">
             Our community grows every day with people ready to build their
