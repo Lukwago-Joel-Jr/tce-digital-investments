@@ -188,15 +188,6 @@ export default function EbookDetails({ params }) {
               </div>
             </div>
           )}
-
-          {/* No Refund Policy */}
-          {book.noRefundPolicy && (
-            <div className="mb-8">
-              {/* <p className="text-red-600 font-semibold">
-                {book.noRefundPolicy}
-              </p> */}
-            </div>
-          )}
         </div>
       </div>
     </div>
