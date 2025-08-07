@@ -21,7 +21,7 @@ function Company() {
         <div
           className={`${baskervville.className} italic text-2xl md:text-4xl font-light text-center`}
         >
-          <p className="italic">your one stop shop to Investment Pathway</p>
+          <p className="italic">Your one stop shop to Investment Pathway</p>
         </div>
       </div>
     </div>
