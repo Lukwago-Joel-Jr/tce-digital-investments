@@ -70,7 +70,7 @@ export default function EbookBuyButton({ book }) {
     }
 
     try {
-      const res = await fetch("/api/pesapal/pay", {
+      const res = await fetch("/api/pesapal", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
