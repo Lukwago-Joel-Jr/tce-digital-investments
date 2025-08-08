@@ -83,7 +83,7 @@ export const ebooks = [
     id: "DIGITAL-ENTREPRENEURSHIP",
     title: "DIGITAL ENTREPRENEURSHIP",
     linktobook:
-      "https://store.pesapal.com/shop/yb8tkz-tcedigitalinvestmentsltd?productCode=40fcadda-a9c1-4c17-bd61-344d74c51fc4",
+      "https://store.pesapal.com/shop/yb8tkz-tcedigitalinvestmentsltd?productCode=d732703e-4e68-4ecb-b83b-9d8932106f90",
     shortDescription:
       "Turn Your Ideas Into Income — Learn How to Make Money Online with Digital Products!",
     description:

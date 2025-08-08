@@ -119,7 +119,7 @@ export default function EbookDetails({ params }) {
 
               <Link href={book.linktobook}>
                 <button className="bg-green-900 text-white px-6 py-2 rounded-full text-lg hover:bg-green-800 transition">
-                  Join Now
+                  Buy Now
                 </button>
               </Link>
             </div>
