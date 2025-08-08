@@ -2,6 +2,8 @@ export const ebooks = [
   {
     id: "KINGDOM-LENDING",
     title: "KINGDOM LENDING",
+    linktobook:
+      "https://store.pesapal.com/shop/yb8tkz-tcedigitalinvestmentsltd?productCode=40fcadda-a9c1-4c17-bd61-344d74c51fc4",
     shortDescription:
       "Build Wealth God’s Way Through Lending. Discover How I Grew My Lending Business from 2M to 200M in 3 Years—By Partnering with God.",
     description:
@@ -80,6 +82,8 @@ export const ebooks = [
   {
     id: "DIGITAL-ENTREPRENEURSHIP",
     title: "DIGITAL ENTREPRENEURSHIP",
+    linktobook:
+      "https://store.pesapal.com/shop/yb8tkz-tcedigitalinvestmentsltd?productCode=40fcadda-a9c1-4c17-bd61-344d74c51fc4",
     shortDescription:
       "Turn Your Ideas Into Income — Learn How to Make Money Online with Digital Products!",
     description:

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { ebooks } from "@/components/Data/ebooks";
 import Link from "next/link";
-import EbookBuyButton from "@/components/BuyButton";
+// import EbookBuyButton from "@/components/BuyButton";
 
 export async function generateMetadata({ params }) {
   const { id } = params;
@@ -115,7 +115,13 @@ export default function EbookDetails({ params }) {
             </div>
             {/* <Link href="/wealth-builder-program"> */}
             <div>
-              <EbookBuyButton book={book} />
+              {/* <EbookBuyButton book={book} /> */}
+
+              <Link href={book.linktobook}>
+                <button className="bg-green-900 text-white px-6 py-2 rounded-full text-lg hover:bg-green-800 transition">
+                  Join Now
+                </button>
+              </Link>
             </div>
             {/* </Link> */}
           </div>
