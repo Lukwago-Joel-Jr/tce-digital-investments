@@ -16,8 +16,8 @@ export default function StatsHighlights() {
             our goal is 1,000,000+ <br /> Students Worldwide
           </h3>
           <p className="mt-2 text-sm opacity-90">
-            Our community grows every day with people ready to build their
-            Venture Capital and Private Equity business
+            Our community grows every day with people ready to build wealth
+            through Venture Capital and Private Equity investment
           </p>
         </div>
 
@@ -28,8 +28,8 @@ export default function StatsHighlights() {
             our Goal is $40M+ in <br /> Student Earnings
           </h3>
           <p className="mt-2 text-sm opacity-90">
-            Our students have collectively earned over forty million dollars
-            using our strategies
+            Our students collectively earn over forty million dollars using our
+            strategies
           </p>
         </div>
 
