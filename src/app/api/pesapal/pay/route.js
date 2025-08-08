@@ -97,7 +97,7 @@ export async function POST(request) {
         last_name: lastName,
         line_1: "N/A",
         city: "Kampala",
-        country_code: "UG",
+        country_code: "USD",
       },
     };
 
