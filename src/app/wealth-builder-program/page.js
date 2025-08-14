@@ -82,7 +82,7 @@ export default function CoursePage() {
           }
         >
           <button className="bg-green-900 hover:bg-green-800 text-white px-10 py-4 rounded-full text-lg transition">
-            Join Now
+            Join Academy
           </button>
         </Link>
       </section>
@@ -311,7 +311,7 @@ export default function CoursePage() {
           }
         >
           <button className="bg-green-900 hover:bg-green-800 text-white px-10 py-4 rounded-full text-lg transition">
-            Join Now
+            Join Academy
           </button>
         </Link>
       </section>

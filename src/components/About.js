@@ -232,11 +232,9 @@ const AboutSection = () => {
           </div>
         </div>
 
-        <Link href="/wealth-builder-program">
-          <button className="bg-green-900 text-white px-6 py-2 rounded-full text-lg hover:bg-green-800 transition">
-            Join Now
-          </button>
-        </Link>
+        <button className="bg-green-900 hover:bg-green-800 text-white px-10 py-4 rounded-full text-lg transition">
+          Join Academy
+        </button>
       </motion.div>
     </div>
   );
