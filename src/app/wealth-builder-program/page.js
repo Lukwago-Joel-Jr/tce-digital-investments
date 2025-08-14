@@ -1,21 +1,13 @@
-import { Pacifico, Meow_Script } from "next/font/google";
-import { FaCircleCheck } from "react-icons/fa6";
 import React from "react";
-import Image from "next/image";
 import MarqueeSection from "@/components/TextCarousel";
-import Link from "next/link";
+import { Academyimage } from "@/components/Academy/Academyimage";
 import { Included } from "@/components/Academy/Included";
 import { Whose } from "@/components/Academy/Whose";
-
-const pacifico = Pacifico({
-  weight: "400",
-  subsets: ["latin"],
-});
-
-const meow = Meow_Script({
-  weight: "400",
-  subsets: ["latin"],
-});
+import { BonusContent } from "@/components/Academy/BonusContent";
+import { CourseModules } from "@/components/Academy/CourseModules";
+import { HeroText } from "@/components/Academy/HeroText";
+import { InvestmentWisdom } from "@/components/Academy/InvestmentWisdom";
+import { PricingSection } from "@/components/Academy/PricingSection";
 
 export const metadata = {
   metadataBase: new URL("https://www.tcedigitalinvestments.com"),
@@ -62,142 +54,20 @@ export default function CoursePage() {
   return (
     <div className="bg-white text-gray-900  py-16 space-y-20 mt-20 md:mt-30">
       {/* Hero Section */}
-      <section className="text-center md:max-w-3xl md:mx-auto w-full px-6">
-        <h1 className="md:text-8xl text-4xl font-bold mb-4">
-          Wealth Builder Coaching Program
-        </h1>
-        <p className="text-lg text-gray-700 mb-6 text-left">
-          You&apos;re going to learn how to{" "}
-          <span className="bg-yellow-200">think like an investor</span>, analyze
-          deals, and even structure your own micro fund. But more than that,
-          you&apos;ll walk away knowing how to turn knowledge into capital and
-          capital into legacy.
-        </p>
-        <p className="text-md text-gray-600 mb-6 text-left">
-          This is the program that&apos;s going to shift how you build wealth —
-          not by trading your time for money, but by owning equity and investing
-          smart, like the top 1%.
-        </p>
-        <Link
-          href={
-            "https://store.pesapal.com/shop/yb8tkz-tcedigitalinvestmentsltd?productCode=21921f16-1f79-433b-9079-8e2114790e9a"
-          }
-        >
-          <button className="bg-green-900 hover:bg-green-800 text-white px-10 py-2 rounded-full text-lg transition">
-            Join Academy
-          </button>
-        </Link>
-      </section>
-
-      {/* <div className="flex max-w-4xl mx-auto justify-center bg-green-100 ">
-        <div className=" ">
-          <Image
-            src="/images/better.jpg"
-            alt="Course Preview 1"
-            width={400}
-            height={250}
-          />
-        </div>
-        <div className="w-[50%] flex flex-col justify-start items-center bg-yellow-400 p-4">
-          <div className="bg-blue-200">
-            <p className="text-lg text-gray-700 mb-6 text-left">
-              You&apos;re going to learn how to
-              <span className="bg-yellow-200">think like an investor</span>,
-              analyze deals, and even structure your own micro fund. But more
-              than that, you&apos;ll walk away knowing how to turn knowledge
-              into capital and capital into legacy.
-            </p>
-            <p className="text-md text-gray-600 mb-6 text-left">
-              This is the program that&apos;s going to shift how you build
-              wealth — not by trading your time for money, but by owning equity
-              and investing smart, like the top 1%.
-            </p>
-          </div>
-        </div>
-      </div> */}
+      <HeroText />
 
       <MarqueeSection />
 
-      <section className="flex justify-center items-center max-w-6xl mx-auto">
-        <Image
-          src="/images/better.jpg"
-          alt="Course Preview 1"
-          width={700}
-          height={250}
-          className="rounded-t-[47%]"
-        />
-      </section>
+      <Academyimage />
 
       {/* What&apos;s Included */}
-
       <Included />
 
       {/* Who It&apos;s For */}
-      {/* <section className="max-w-4xl mx-auto text-center px-6 bg-yellow-200 p-8 flex flex-col items-center justify-center">
-        <div className="max-w-xl">
-          <h2 className="md:text-6xl text-3xl font-bold mb-4">
-            Who It&apos;s For
-          </h2>
-          <p className="text-gray-700 mb-4 text-xl">
-            What if you could build wealth, fund innovation, and structure your
-            own fund — while staying rooted in Biblical principles?
-          </p>
-        </div>
-        <ul className="list-disc list-inside text-gray-700 text-left max-w-xl mx-auto list-none space-y-6">
-          <li className="">
-            <div className="flex items-center w-full h-19 bg-white">
-              <div className="bg-green-800 p-6">
-                <FaCircleCheck size={30} className="text-white" />{" "}
-              </div>
-              <div className="p-7 w-full">
-                <p className="md:text-xl text-sm">Aspiring Kingdom investors</p>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div className="flex items-center w-full h-19 bg-white">
-              <div className="bg-green-800 p-6">
-                <FaCircleCheck size={30} className="text-white" />{" "}
-              </div>
-              <div className="p-7 w-full">
-                <p className="md:text-xl text-sm">
-                  Entrepreneurs ready to become funders
-                </p>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div className="flex items-center w-full h-19 bg-white">
-              <div className="bg-green-800 p-6">
-                <FaCircleCheck size={30} className="text-white" />{" "}
-              </div>
-              <div className="p-7 w-full">
-                <p className="md:text-xl text-sm">
-                  Faith-driven leaders ready to multiply influence
-                </p>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div className="flex items-center w-full h-19 bg-white">
-              <div className="bg-green-800 p-6">
-                <FaCircleCheck size={30} className="text-white" />{" "}
-              </div>
-              <div className="p-7 w-full">
-                <p className="md:text-xl text-sm">
-                  Anyone seeking to grow wealth without losing spiritual
-                  integrity
-                </p>
-              </div>
-            </div>
-          </li>
-        </ul>
-      </section> */}
-
       <Whose />
 
       {/* Modules */}
-      <section className="max-w-4xl mx-auto px-6">
+      {/* <section className="max-w-4xl mx-auto px-6">
         <h2 className="text-2xl font-semibold mb-6 text-center">
           Course Modules
         </h2>
@@ -238,43 +108,16 @@ export default function CoursePage() {
             </ul>
           </div>
         </div>
-      </section>
+      </section> */}
+      <CourseModules />
 
       {/* Bonus Content */}
-      <section className="max-w-4xl mx-auto px-6">
-        <h2 className="text-2xl font-semibold mb-4 text-center">
-          🎁 Bonus Content
-        </h2>
-        <ul className="list-disc list-inside text-gray-700 space-y-1">
-          <li>Devotional Guide for Investors</li>
-          <li>Investment Thesis & Fund Template</li>
-          <li>Legacy Workbook</li>
-          <li>Global Market Playbook</li>
-          <li>Live Coaching & Weekly Q&A</li>
-          <li>Private Community Access</li>
-        </ul>
-      </section>
+      <BonusContent />
 
-      <section className="max-w-4xl mx-auto px-6">
-        <h2 className="text-2xl font-semibold mb-4 text-center">
-          “You&apos;ve heard that the wealthy invest differently — but no one
-          ever taught you how.
-        </h2>
-
-        <p className="md:text-xl text-sm">
-          You&apos;re working hard, but your money isn&apos;t multiplying the
-          way it should…” Digital marketing and AI has transformed so many
-          people&apos; lives (Young and Old) but making money doesn&apos;t mean
-          keeping it or multiplying it for generations to come, if you
-          don&apos;t get the necessary wisdom/knowledge to multiply it through
-          investments!!!! It&apos;s just a matter of time before you go back to
-          hustle mode. Proverbs 1:5…..A wise man will hear and increase
-          learning,And a man of understanding will attain wise counsel..
-        </p>
-      </section>
+      <InvestmentWisdom />
 
       {/* Pricing Section */}
-      <section className="max-w-2xl mx-auto text-center border-t border-gray-300 pt-10 px-6">
+      {/* <section className="max-w-2xl mx-auto text-center border-t border-gray-300 pt-10 px-6">
         <h2 className="text-3xl font-bold mb-4">$342</h2>
         <p
           className={`${meow.className}  text-4xl md:text-4xl font-light mb-5`}
@@ -291,7 +134,9 @@ export default function CoursePage() {
             Join Academy
           </button>
         </Link>
-      </section>
+      </section> */}
+
+      <PricingSection />
     </div>
   );
 }
