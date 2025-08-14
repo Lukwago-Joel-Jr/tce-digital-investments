@@ -3,6 +3,7 @@ import { FaCircleCheck } from "react-icons/fa6";
 import React from "react";
 import Image from "next/image";
 import MarqueeSection from "@/components/TextCarousel";
+import Link from "next/link";
 
 const pacifico = Pacifico({
   weight: "400",
@@ -75,9 +76,15 @@ export default function CoursePage() {
           not by trading your time for money, but by owning equity and investing
           smart, like the top 1%.
         </p>
-        <button className="bg-green-900 hover:bg-green-800 text-white px-8 py-4 rounded-full text-lg transition">
-          Join Now
-        </button>
+        <Link
+          href={
+            "https://store.pesapal.com/shop/yb8tkz-tcedigitalinvestmentsltd?productCode=21921f16-1f79-433b-9079-8e2114790e9a"
+          }
+        >
+          <button className="bg-green-900 hover:bg-green-800 text-white px-10 py-4 rounded-full text-lg transition">
+            Join Now
+          </button>
+        </Link>
       </section>
 
       {/* <div className="flex max-w-4xl mx-auto justify-center bg-green-100 ">
@@ -298,9 +305,15 @@ export default function CoursePage() {
           One-time payment for full course access + community and coaching
         </p>
 
-        <button className="bg-green-900 hover:bg-green-800 text-white px-10 py-4 rounded-full text-lg transition">
-          Join Now
-        </button>
+        <Link
+          href={
+            "https://store.pesapal.com/shop/yb8tkz-tcedigitalinvestmentsltd?productCode=21921f16-1f79-433b-9079-8e2114790e9a"
+          }
+        >
+          <button className="bg-green-900 hover:bg-green-800 text-white px-10 py-4 rounded-full text-lg transition">
+            Join Now
+          </button>
+        </Link>
       </section>
     </div>
   );
