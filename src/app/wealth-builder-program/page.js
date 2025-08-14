@@ -309,12 +309,12 @@ export default function CoursePage() {
         <p className="md:text-xl text-sm">
           You&apos;re working hard, but your money isn&apos;t multiplying the
           way it should…” Digital marketing and AI has transformed so many
-          people&apos; lives (Young and Old) but making money doesn't mean
-          keeping it or multiplying it for generations to come, if you don't get
-          the necessary wisdom/knowledge to multiply it through investments!!!!
-          It's just a matter of time before you go back to hustle mode. Proverbs
-          1:5…..A wise man will hear and increase learning,And a man of
-          understanding will attain wise counsel..
+          people&apos; lives (Young and Old) but making money doesn&apos;t mean
+          keeping it or multiplying it for generations to come, if you
+          don&apos;t get the necessary wisdom/knowledge to multiply it through
+          investments!!!! It&apos;s just a matter of time before you go back to
+          hustle mode. Proverbs 1:5…..A wise man will hear and increase
+          learning,And a man of understanding will attain wise counsel..
         </p>
       </section>
 
