@@ -232,7 +232,7 @@ const AboutSection = () => {
           </div>
         </div>
 
-        <button className="bg-green-900 hover:bg-green-800 text-white px-10 py-4 rounded-full text-lg transition">
+        <button className="bg-green-900 hover:bg-green-800 text-white px-10 py-2 rounded-full text-lg transition">
           Join Academy
         </button>
       </motion.div>

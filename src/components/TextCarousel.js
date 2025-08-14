@@ -31,7 +31,7 @@ export default function MarqueeSection() {
           }
 
           .marquee {
-            animation: scroll-left 30s linear infinite;
+            animation: scroll-left 10s linear infinite;
             white-space: nowrap;
           }
 

@@ -5,6 +5,7 @@ import HeroSection from "@/components/Hero";
 import StatsHighlights from "@/components/Stats";
 import Testimonials from "@/components/Testimonials";
 import VideoSection from "@/components/Video";
+
 import React from "react";
 
 function Home() {

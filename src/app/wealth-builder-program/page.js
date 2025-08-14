@@ -81,7 +81,7 @@ export default function CoursePage() {
             "https://store.pesapal.com/shop/yb8tkz-tcedigitalinvestmentsltd?productCode=21921f16-1f79-433b-9079-8e2114790e9a"
           }
         >
-          <button className="bg-green-900 hover:bg-green-800 text-white px-10 py-4 rounded-full text-lg transition">
+          <button className="bg-green-900 hover:bg-green-800 text-white px-10 py-2 rounded-full text-lg transition">
             Join Academy
           </button>
         </Link>
@@ -113,7 +113,9 @@ export default function CoursePage() {
           </div>
         </div>
       </div> */}
+
       <MarqueeSection />
+
       <section className="flex justify-center items-center max-w-6xl mx-auto">
         <Image
           src="/images/better.jpg"
@@ -298,10 +300,30 @@ export default function CoursePage() {
         </ul>
       </section>
 
+      <section className="max-w-4xl mx-auto px-6">
+        <h2 className="text-2xl font-semibold mb-4 text-center">
+          “You&apos;ve heard that the wealthy invest differently — but no one
+          ever taught you how.
+        </h2>
+
+        <p className="md:text-xl text-sm">
+          You&apos;re working hard, but your money isn&apos;t multiplying the
+          way it should…” Digital marketing and AI has transformed so many
+          people&apos; lives (Young and Old) but making money doesn't mean
+          keeping it or multiplying it for generations to come, if you don't get
+          the necessary wisdom/knowledge to multiply it through investments!!!!
+          It's just a matter of time before you go back to hustle mode. Proverbs
+          1:5…..A wise man will hear and increase learning,And a man of
+          understanding will attain wise counsel..
+        </p>
+      </section>
+
       {/* Pricing Section */}
       <section className="max-w-2xl mx-auto text-center border-t border-gray-300 pt-10 px-6">
         <h2 className="text-3xl font-bold mb-4">$342</h2>
-        <p className={`${meow.className}  text-4xl md:text-4xl font-light `}>
+        <p
+          className={`${meow.className}  text-4xl md:text-4xl font-light mb-5`}
+        >
           One-time payment for full course access + community and coaching
         </p>
 
@@ -310,7 +332,7 @@ export default function CoursePage() {
             "https://store.pesapal.com/shop/yb8tkz-tcedigitalinvestmentsltd?productCode=21921f16-1f79-433b-9079-8e2114790e9a"
           }
         >
-          <button className="bg-green-900 hover:bg-green-800 text-white px-10 py-4 rounded-full text-lg transition">
+          <button className="bg-green-900 hover:bg-green-800 text-white px-10 py-2 rounded-full text-lg transition">
             Join Academy
           </button>
         </Link>
