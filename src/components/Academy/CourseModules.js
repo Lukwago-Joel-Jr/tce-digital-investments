@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { FiPlay, FiBookOpen, FiTarget, FiStar } from "react-icons/fi";
 import { FaStarHalfStroke } from "react-icons/fa6";
+import { MdStars } from "react-icons/md";
 
 export const CourseModules = () => {
   const { ref, inView } = useInView({
@@ -96,7 +97,7 @@ export const CourseModules = () => {
             <ul className="text-gray-700 space-y-3 ml-2">
               {mod.lessons.map((lesson, i) => (
                 <li key={i} className="flex items-start gap-3 text-lg">
-                  <FaStarHalfStroke className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                  <MdStars className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
                   <span>{lesson}</span>
                 </li>
               ))}
