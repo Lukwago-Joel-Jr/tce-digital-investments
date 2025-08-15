@@ -50,10 +50,7 @@ export const CourseModules = () => {
   ];
 
   return (
-    <section
-      ref={ref}
-      className="max-w-5xl mx-auto px-6 py-12 bg-white rounded-3xl shadow-lg"
-    >
+    <section ref={ref} className="max-w-5xl mx-auto px-6 py-12 ">
       <motion.h2
         variants={moduleVariants}
         initial="hidden"
@@ -73,7 +70,7 @@ export const CourseModules = () => {
           <motion.div
             key={idx}
             variants={moduleVariants}
-            className="bg-green-50 rounded-2xl p-6 shadow-md hover:shadow-lg transition-shadow duration-300"
+            className="bg-green-50  p-6 shadow-md hover:shadow-lg transition-shadow duration-300"
           >
             <h3 className="text-xl md:text-2xl font-semibold mb-3 text-green-800">
               {mod.title}

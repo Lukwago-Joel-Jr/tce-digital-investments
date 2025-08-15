@@ -32,7 +32,7 @@ export const BonusContent = () => {
   return (
     <section
       ref={ref}
-      className="max-w-4xl mx-auto px-6 py-12 bg-yellow-100 rounded-2xl shadow-lg"
+      className="max-w-4xl mx-auto px-6 py-12 bg-yellow-100  shadow-lg"
     >
       <motion.h2
         variants={itemVariants}
@@ -53,7 +53,7 @@ export const BonusContent = () => {
           <motion.li
             key={index}
             variants={itemVariants}
-            className="bg-green-800 text-white p-4 rounded-lg shadow-sm flex items-center space-x-3"
+            className="bg-green-800 text-white p-4  shadow-sm flex items-center space-x-3"
           >
             <span className="text-xl">✅</span>
             <p className="text-lg">{bonus}</p>
