@@ -109,7 +109,7 @@ const AboutSection = () => {
               &ldquo;You&apos;ve heard that the wealthy invest differently — but
               no one ever taught you how.
             </h2>
-            <p className="text-sm">
+            <p className="text-sm line-height-5">
               You&apos;re working hard, but your money isn&apos;t multiplying
               the way it should&hellip;&rdquo; Digital marketing and AI has
               transformed so many people&apos;s lives (Young and Old), but
@@ -120,13 +120,17 @@ const AboutSection = () => {
                 multiply it through investments!!!!
               </span>{" "}
               It&apos;s just a matter of time before you go back to hustle mode.
-              Proverbs 1:5&hellip;&hellip;A wise man will hear and increase
-              learning, And a man of understanding will attain wise
-              counsel&hellip;&hellip; &ldquo;That&apos;s why I created Wealth
-              Builders Academy — a step-by-step coaching program that teaches
-              you how to think, invest, and build wealth like a venture
-              capitalist or private equity pro while honoring God at the same
-              time.&rdquo;
+              <br />
+              <span className="bg-yellow-200 font-bold">
+                Proverbs 1:5&hellip;&hellip;A wise man will hear and increase
+                learning, And a man of understanding will attain wise
+                counsel&hellip;&hellip; &ldquo;{" "}
+              </span>
+              <br />
+              That&apos;s why I created Wealth Builders Academy — a step-by-step
+              coaching program that teaches you how to think, invest, and build
+              wealth like a venture capitalist or private equity pro while
+              honoring God at the same time.&rdquo;
             </p>
           </div>
         </div>

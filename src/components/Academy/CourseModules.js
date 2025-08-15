@@ -3,6 +3,8 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { FiPlay, FiBookOpen, FiTarget, FiStar } from "react-icons/fi";
+import { FaStarHalfStroke } from "react-icons/fa6";
 
 export const CourseModules = () => {
   const { ref, inView } = useInView({
@@ -67,18 +69,35 @@ export const CourseModules = () => {
         className="space-y-10"
       >
         {modules.map((mod, idx) => (
+          // <motion.div
+          //   key={idx}
+          //   variants={moduleVariants}
+          //   className="bg-green-50  p-6 shadow-md hover:shadow-lg transition-shadow duration-300"
+          // >
+          //   <h3 className="text-xl md:text-2xl font-semibold mb-3 text-green-800">
+          //     {mod.title}
+          //   </h3>
+          //   <ul className="list-disc list-inside text-gray-700 space-y-1 ml-4">
+          //     {mod.lessons.map((lesson, i) => (
+          //       <li key={i} className="text-lg">
+          //         {lesson}
+          //       </li>
+          //     ))}
+          //   </ul>
+          // </motion.div>
           <motion.div
             key={idx}
             variants={moduleVariants}
-            className="bg-green-50  p-6 shadow-md hover:shadow-lg transition-shadow duration-300"
+            className="bg-green-50 p-6 shadow-md hover:shadow-lg transition-shadow duration-300"
           >
             <h3 className="text-xl md:text-2xl font-semibold mb-3 text-green-800">
               {mod.title}
             </h3>
-            <ul className="list-disc list-inside text-gray-700 space-y-1 ml-4">
+            <ul className="text-gray-700 space-y-3 ml-2">
               {mod.lessons.map((lesson, i) => (
-                <li key={i} className="text-lg">
-                  {lesson}
+                <li key={i} className="flex items-start gap-3 text-lg">
+                  <FaStarHalfStroke className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                  <span>{lesson}</span>
                 </li>
               ))}
             </ul>
