@@ -40,12 +40,12 @@ export default function WaitlistPage() {
         className="bg-white rounded-2xl shadow-xl p-8 max-w-lg w-full text-center"
       >
         <h1 className="text-3xl font-extrabold text-green-900 mb-4">
-          Join the Waitlist 🚀.
+          Join the Waitlist 🚀
         </h1>
         <p className="text-gray-600 mb-6">
           Be the first to access{" "}
-          <span className="font-semibold">[Course Name]</span> and enjoy
-          exclusive early bird perks.
+          <span className="font-semibold">Wealth Coaching Program</span> and
+          enjoy exclusive early bird perks.
         </p>
 
         {!success ? (
