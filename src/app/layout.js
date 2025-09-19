@@ -3,7 +3,6 @@ import {
   Geist_Mono,
   Parisienne,
   Baskervville,
-  Inter,
   Host_Grotesk,
   Cormorant_Infant,
 } from "next/font/google";
