@@ -89,7 +89,7 @@ export default function RootLayout({ children }) {
         <Footer />
         <Script
           id="mcjs"
-          strategy="afterInteractive"
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: `!function(c,h,i,m,p){
               m=c.createElement(h),p=c.getElementsByTagName(h)[0],
