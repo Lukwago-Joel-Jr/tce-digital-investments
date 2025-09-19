@@ -10,6 +10,7 @@ import {
 import "./globals.css";
 import Navbar from "@/components/Nav";
 import Footer from "@/components/Footer";
+import Script from "next/script";
 
 const parisienne = Parisienne({
   variable: "--font-parisienne",
