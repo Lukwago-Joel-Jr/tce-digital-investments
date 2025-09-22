@@ -5,6 +5,37 @@ import { motion } from "framer-motion";
 
 export default function WaitlistForm() {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    setError("");
+    setLoading(true);
+
+    const formData = new FormData(e.currentTarget);
+    const firstName = formData.get("FNAME");
+    const email = formData.get("EMAIL");
+
+    try {
+      const res = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, firstName }),
+      });
+
+      if (!res.ok) {
+        const data = await res.json();
+        throw new Error(data.error || "Failed to subscribe");
+      }
+
+      setSubmitted(true);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  }
 
   return (
     <div className="flex justify-center items-center py-16 bg-gray-100 min-h-screen">
@@ -15,15 +46,7 @@ export default function WaitlistForm() {
         className="bg-white p-10 rounded-3xl shadow-xl w-full max-w-lg"
       >
         {!submitted ? (
-          <form
-            action="https://tcedigitalinvestments.us20.list-manage.com/subscribe/post?u=f5d80c08e45124cb703562330&amp;id=7edceae3ce&amp;f_id=00da79e0f0"
-            method="post"
-            id="mc-embedded-subscribe-form"
-            name="mc-embedded-subscribe-form"
-            target="_blank"
-            className="space-y-6"
-            onSubmit={() => setSubmitted(true)}
-          >
+          <form onSubmit={handleSubmit} className="space-y-6">
             <h2 className="text-3xl font-bold text-green-900">
               Join the Waitlist 🚀
             </h2>
@@ -35,40 +58,26 @@ export default function WaitlistForm() {
             <input
               type="text"
               name="FNAME"
-              id="mce-FNAME"
               placeholder="First Name"
-              defaultValue=""
               className="w-full border border-gray-300 rounded-xl px-4 py-3 focus:ring-2 focus:ring-green-900 focus:outline-none"
             />
 
             <input
               type="email"
               name="EMAIL"
-              id="mce-EMAIL"
               placeholder="Email Address"
-              defaultValue=""
               required
               className="w-full border border-gray-300 rounded-xl px-4 py-3 focus:ring-2 focus:ring-green-900 focus:outline-none"
             />
 
-            {/* Hidden anti-bot field */}
-            <div
-              style={{ position: "absolute", left: "-5000px" }}
-              aria-hidden="true"
-            >
-              <input
-                type="text"
-                name="b_f5d80c08e45124cb703562330_7edceae3ce"
-                tabIndex="-1"
-                defaultValue=""
-              />
-            </div>
+            {error && <p className="text-red-600 text-sm">{error}</p>}
 
             <button
               type="submit"
-              className="w-full bg-green-900 text-white py-3 rounded-xl font-semibold hover:bg-green-800 transition"
+              disabled={loading}
+              className="w-full bg-green-900 text-white py-3 rounded-xl font-semibold hover:bg-green-800 transition disabled:opacity-50"
             >
-              Subscribe
+              {loading ? "Submitting..." : "Subscribe"}
             </button>
           </form>
         ) : (
