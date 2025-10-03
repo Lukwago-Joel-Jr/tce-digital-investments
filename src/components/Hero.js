@@ -56,7 +56,7 @@ export default function HeroSection() {
                 </span>
               </motion.span>
               <motion.span variants={lineVariants} className="block text-3xl">
-                Just Like The Top 1%
+                Through Investing Just Like The Top 1%
               </motion.span>
             </motion.h1>
 
