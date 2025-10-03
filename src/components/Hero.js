@@ -62,12 +62,12 @@ export default function HeroSection() {
               </motion.span>
             </motion.h1>
 
-            <motion.p
+            {/* <motion.p
               variants={lineVariants}
               className={`${cormorat.className} italic text-4xl md:text-3xl`}
             >
               <i>Join thousands of others taking control of their future.</i>
-            </motion.p>
+            </motion.p> */}
           </motion.div>
 
           {/* Right image */}
