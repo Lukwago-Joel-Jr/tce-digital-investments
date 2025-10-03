@@ -50,7 +50,7 @@ export default function HeroSection() {
                 Learn the Skills to Build
               </motion.span>
 
-              {/* change digital to Generational */}
+              {/* change digital to Generational ddkd */}
               <motion.span variants={lineVariants} className="block">
                 Generational{" "}
                 <span className="text-green-900 text-8xl">
