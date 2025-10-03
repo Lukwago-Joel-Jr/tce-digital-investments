@@ -49,6 +49,8 @@ export default function HeroSection() {
               <motion.span variants={lineVariants} className="block text-6xl">
                 Learn the Skills to Build
               </motion.span>
+
+              {/* change digital to Generational */}
               <motion.span variants={lineVariants} className="block">
                 Generational{" "}
                 <span className="text-green-900 text-8xl">
