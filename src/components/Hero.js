@@ -107,7 +107,7 @@ export default function HeroSection() {
                 Learn the Skills to
               </motion.span>
               <motion.span variants={lineVariants} className="block text-6xl">
-                Build
+                Build Generational
               </motion.span>
               <motion.span
                 variants={lineVariants}
@@ -116,16 +116,16 @@ export default function HeroSection() {
                 Wealth & Freedom
               </motion.span>
               <motion.span variants={lineVariants} className="block">
-                Just Like The Top 1%
+                Throught Investing, Just Like The Top 1%
               </motion.span>
             </motion.h1>
 
-            <motion.p
+            {/* <motion.p
               variants={lineVariants}
               className={`${cormorat.className} italic text-2xl`}
             >
               <i>Join thousands of others taking control of their future.</i>
-            </motion.p>
+            </motion.p> */}
           </motion.div>
         </div>
       </div>
