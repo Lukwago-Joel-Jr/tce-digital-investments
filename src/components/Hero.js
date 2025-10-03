@@ -116,7 +116,7 @@ export default function HeroSection() {
                 Wealth & Freedom
               </motion.span>
               <motion.span variants={lineVariants} className="block">
-                Throught Investing, Just Like The Top 1%
+                Through Investing, Just Like The Top 1%
               </motion.span>
             </motion.h1>
 
