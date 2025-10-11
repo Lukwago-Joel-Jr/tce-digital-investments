@@ -120,13 +120,6 @@ export default function HeroSection() {
                 Through Investing, Just Like The Top 1%
               </motion.span>
             </motion.h1>
-
-            {/* <motion.p
-              variants={lineVariants}
-              className={`${cormorat.className} italic text-2xl`}
-            >
-              <i>Join thousands of others taking control of their future.</i>
-            </motion.p> */}
           </motion.div>
         </div>
       </div>
