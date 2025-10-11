@@ -47,7 +47,7 @@ export default function HeroSection() {
           >
             <motion.h1 className="sm:text-8xl font-extrabold text-gray-900 leading-tighter">
               <motion.span variants={lineVariants} className="block text-6xl">
-                Learn the Skills to Build
+                Build
               </motion.span>
 
               {/* change digital to Generational ddkd */}
@@ -103,9 +103,10 @@ export default function HeroSection() {
             animate={inView ? "show" : "hidden"}
           >
             <motion.h1 className="text-4xl font-extrabold text-black leading-tight">
-              <motion.span variants={lineVariants} className="block">
-                Learn the Skills to
-              </motion.span>
+              <motion.span
+                variants={lineVariants}
+                className="block"
+              ></motion.span>
               <motion.span variants={lineVariants} className="block text-6xl">
                 Build Generational
               </motion.span>
