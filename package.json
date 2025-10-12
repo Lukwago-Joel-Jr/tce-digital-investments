@@ -12,6 +12,7 @@
     "@lottiefiles/react-lottie-player": "^3.6.0",
     "@mailchimp/mailchimp_marketing": "^3.0.80",
     "axios": "^1.11.0",
+    "firebase": "^12.4.0",
     "framer-motion": "^12.23.0",
     "lottie-react": "^2.4.1",
     "next": "15.3.5",
