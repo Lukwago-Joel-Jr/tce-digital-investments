@@ -158,8 +158,11 @@
 // }
 
 import { NextResponse } from "next/server";
+// import { db } from "@/lib/firebase";
+// import { doc, updateDoc, getDoc } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import { doc, updateDoc, getDoc } from "firebase/firestore";
+
 import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
