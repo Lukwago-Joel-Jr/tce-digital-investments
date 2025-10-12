@@ -18,7 +18,7 @@ export async function POST(req) {
     createdAt: new Date().toISOString(),
   });
 
-  // 🔹 Step 3: Return redirect URL to frontend
+  // Step 3: Return redirect URL to frontend
   return NextResponse.json({
     redirect_url: "https://pesapal.com/checkout/" + order_reference,
   });
