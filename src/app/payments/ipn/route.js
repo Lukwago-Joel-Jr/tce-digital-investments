@@ -156,13 +156,9 @@
 //     return NextResponse.json({ error: error.message }, { status: 500 });
 //   }
 // }
-
 import { NextResponse } from "next/server";
-// import { db } from "@/lib/firebase";
-// import { doc, updateDoc, getDoc } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import { doc, updateDoc, getDoc } from "firebase/firestore";
-
 import { Resend } from "resend";
 
 const RESEND_API_KEY = "re_19DUmfB7_AUuKTtcUksxxmvk9wgFQEjYX";
@@ -173,7 +169,7 @@ async function sendPaymentConfirmation(email, name, amount) {
     from: "TCEDigital <no-reply@tcedigitalinvestments.com>",
     to: email,
     subject: "🎉 Payment Successful – Thank You!",
-    html: `<p>Hi ${name},</p><p>Your payment of UGX ${amount} was received successfully.</p>`,
+    html: `<p>Hi ${name || "Customer"},</p><p>Your payment of UGX ${amount} was received successfully.</p>`,
   });
 }
 
@@ -182,10 +178,22 @@ export async function POST(req) {
     const body = await req.json();
     console.log("✅ PESAPAL IPN:", body);
 
-    const { pesapal_merchant_reference, pesapal_transaction_tracking_id } =
-      body;
+    const {
+      pesapal_merchant_reference,
+      pesapal_transaction_tracking_id,
+      payment_status_description,
+    } = body;
+
     if (!pesapal_merchant_reference) {
       return NextResponse.json({ error: "Missing reference" }, { status: 400 });
+    }
+
+    if (payment_status_description?.toUpperCase() !== "COMPLETED") {
+      console.log("ℹ️ Payment not completed yet:", payment_status_description);
+      return NextResponse.json(
+        { message: "Payment not completed" },
+        { status: 200 },
+      );
     }
 
     const ref = doc(db, "payments", pesapal_merchant_reference);
@@ -201,8 +209,15 @@ export async function POST(req) {
     // Update status in Firebase
     await updateDoc(ref, { status: "COMPLETED" });
 
-    // Send confirmation email
-    await sendPaymentConfirmation(data.email, data.name, data.amount);
+    // Send confirmation email safely
+    if (data.email) {
+      try {
+        await sendPaymentConfirmation(data.email, data.name, data.amount);
+        console.log("📧 Email sent to", data.email);
+      } catch (emailErr) {
+        console.error("❌ Failed to send email:", emailErr);
+      }
+    }
 
     return NextResponse.json({ message: "IPN processed successfully" });
   } catch (error) {
