@@ -3,25 +3,30 @@
 // import { doc, setDoc } from "firebase/firestore";
 
 // export async function POST(req) {
-//   const { email, name, amount } = await req.json();
+//   try {
+//     const { email, name, amount } = await req.json();
 
-//   // 🔹 Step 1: Call Pesapal API to create order
-//   // (You’d normally use your consumer key/secret here)
-//   const order_reference = `ORDER-${Date.now()}`;
+//     // Generate order reference
+//     const order_reference = `ORDER-${Date.now()}`;
 
-//   // 🔹 Step 2: Save user data to Firestore
-//   await setDoc(doc(db, "payments", order_reference), {
-//     email,
-//     name,
-//     amount,
-//     status: "PENDING",
-//     createdAt: new Date().toISOString(),
-//   });
+//     // Save to Firebase
+//     await setDoc(doc(db, "payments", order_reference), {
+//       email,
+//       name,
+//       amount,
+//       status: "PENDING",
+//       createdAt: new Date().toISOString(),
+//     });
 
-//   // Step 3: Return redirect URL to frontend
-//   return NextResponse.json({
-//     redirect_url: "https://pesapal.com/checkout/" + order_reference,
-//   });
+//     // Return redirect URL (replace with Pesapal real checkout later)
+//     return NextResponse.json({
+//       redirect_url: `https://pesapal.com/checkout/${order_reference}`,
+//       order_reference,
+//     });
+//   } catch (err) {
+//     console.error("❌ Error in initiate-payment:", err);
+//     return NextResponse.json({ error: err.message }, { status: 500 });
+//   }
 // }
 
 import { NextResponse } from "next/server";
@@ -31,7 +36,6 @@ import { doc, setDoc } from "firebase/firestore";
 export async function POST(req) {
   try {
     const { email, name, amount } = await req.json();
-
     const order_reference = `ORDER-${Date.now()}`;
 
     await setDoc(doc(db, "payments", order_reference), {
@@ -42,13 +46,9 @@ export async function POST(req) {
       createdAt: new Date().toISOString(),
     });
 
-    // Later, this URL will come from Pesapal's real checkout response
-    return NextResponse.json({
-      redirect_url: `https://pesapal.com/checkout/${order_reference}`,
-      order_reference,
-    });
+    return NextResponse.json({ message: "✅ Data saved!", order_reference });
   } catch (err) {
-    console.error("❌ Error in initiate-payment:", err);
+    console.error("❌ Error:", err);
     return NextResponse.json({ error: err.message }, { status: 500 });
   }
 }
