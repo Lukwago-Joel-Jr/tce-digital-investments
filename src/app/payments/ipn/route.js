@@ -165,7 +165,8 @@ import { doc, updateDoc, getDoc } from "firebase/firestore";
 
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const RESEND_API_KEY = "re_19DUmfB7_AUuKTtcUksxxmvk9wgFQEjYX";
+const resend = new Resend(RESEND_API_KEY);
 
 async function sendPaymentConfirmation(email, name, amount) {
   await resend.emails.send({
