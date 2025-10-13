@@ -14,7 +14,7 @@ export async function POST(req) {
   }
 
   try {
-    // 1. Add to Mailchimp list
+    // 1. Add to Mailchimp list works well
     const mcRes = await fetch(
       `https://${DATACENTER}.api.mailchimp.com/3.0/lists/${AUDIENCE_ID}/members`,
       {
