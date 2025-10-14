@@ -3,7 +3,7 @@ export const ebooks = [
     id: "KINGDOM-LENDING",
     title: "KINGDOM LENDING",
     linktobook:
-      "https://store.pesapal.com/shop/yb8tkz-tcedigitalinvestmentsltd?productCode=40fcadda-a9c1-4c17-bd61-344d74c51fc4",
+      "https://store.pesapal.com/shop/yb8tkz-tcedigitalinvestmentsltd?productCode=9f36e2eb-00b5-49aa-8401-40cf52fc0215",
     shortDescription:
       "Build Wealth God’s Way Through Lending. Discover How I Grew My Lending Business from 2M to 200M in 3 Years—By Partnering with God.",
     description:
