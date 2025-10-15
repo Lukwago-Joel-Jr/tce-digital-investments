@@ -3,15 +3,22 @@ import { db } from "@/lib/firebase";
 import { doc, updateDoc, getDoc } from "firebase/firestore";
 import { Resend } from "resend";
 
-const RESEND_API_KEY = "re_19DUmfB7_AUuKTtcUksxxmvk9wgFQEjYX";
+const RESEND_API_KEY = process.env.RESEND_API_KEY || "";
 const resend = new Resend(RESEND_API_KEY);
 
 async function sendPaymentConfirmation(email, name, amount) {
+  // amount is stored in USD in our payment records
   await resend.emails.send({
     from: "TCEDigital <no-reply@tcedigitalinvestments.com>",
     to: email,
-    subject: "🎉 Payment Successful – Thank You!",
-    html: `<p>Hi ${name || "Customer"},</p><p>Your payment of UGX ${amount} was received successfully.</p>`,
+    subject: "🎉 Payment Received — Thank You!",
+    html: `
+      <p>Hi ${name || "Customer"},</p>
+      <p>Thank you for your purchase. We have received your payment of <strong>$${(amount || 0).toFixed(2)}</strong>.</p>
+      <p>Your ebook will be delivered to this email shortly.</p>
+      <br/>
+      <p>Warm regards,<br/>TCEDigital Investments</p>
+    `,
   });
 }
 

@@ -137,8 +137,8 @@ export default function EbookBuyButton({ book }) {
       return;
     }
 
-    // Handle different price formats (e.g., "UGX 50,000", "$29.99", "50000")
-    let numericPrice;
+  // Handle different price formats (e.g., "$29.99", "9.99")
+  let numericPrice;
     if (typeof book.price === "string") {
       // Remove currency symbols, spaces, and commas, then convert to number
       numericPrice = parseFloat(book.price.replace(/[^\d.]/g, ""));

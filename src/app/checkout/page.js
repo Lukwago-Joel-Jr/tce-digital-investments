@@ -25,7 +25,7 @@ function CheckoutForm() {
       setEbook({
         id: parseInt(ebookId),
         title: decodeURIComponent(title),
-        price: parseInt(price),
+        price: parseFloat(price),
       });
     } else {
       router.push("/cart");
@@ -145,9 +145,7 @@ function CheckoutForm() {
               <div className="border-t pt-3">
                 <div className="flex justify-between items-center">
                   <span className="text-gray-600">Subtotal</span>
-                  <span className="font-medium">
-                    UGX {ebook.price.toLocaleString()}
-                  </span>
+                  <span className="font-medium">${ebook.price.toFixed(2)}</span>
                 </div>
               </div>
 
@@ -157,7 +155,7 @@ function CheckoutForm() {
                     Total
                   </span>
                   <span className="text-lg font-bold text-green-600">
-                    UGX {ebook.price.toLocaleString()}
+                    ${ebook.price.toFixed(2)}
                   </span>
                 </div>
               </div>
@@ -263,9 +261,7 @@ function CheckoutForm() {
                     : "bg-green-600 hover:bg-green-700 text-white"
                 }`}
               >
-                {loading
-                  ? "Processing..."
-                  : `Pay UGX ${ebook.price.toLocaleString()}`}
+                {loading ? "Processing..." : `Pay $${ebook.price.toFixed(2)}`}
               </button>
 
               <button

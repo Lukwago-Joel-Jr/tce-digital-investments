@@ -2,32 +2,33 @@
 "use client";
 
 export default function CartPage() {
+  // Prices are in USD
   const ebooks = [
     {
       id: 1,
       title: "7 Streams of Wealth",
-      price: 10000,
+      price: 9.99,
       description:
         "Learn how to build multiple income streams and achieve lasting financial freedom.",
     },
     {
       id: 2,
       title: "Mastering Online Income",
-      price: 15000,
+      price: 14.99,
       description:
         "Discover proven ways to make money online and grow a digital business fast.",
     },
     {
       id: 3,
       title: "Financial Freedom Blueprint",
-      price: 12000,
+      price: 12.0,
       description:
         "Step-by-step guide to escaping the rat race and building passive income sources.",
     },
     {
       id: 4,
       title: "Entrepreneur's Mindset",
-      price: 8000,
+      price: 7.5,
       description:
         "Transform your thinking and habits to become a successful wealth creator.",
     },
@@ -59,7 +60,7 @@ export default function CartPage() {
             </h2>
             <p className="text-gray-600 text-sm mb-3">{ebook.description}</p>
             <p className="text-green-700 font-semibold text-lg mb-4">
-              UGX {ebook.price.toLocaleString()}
+              ${ebook.price.toFixed(2)}
             </p>
             <button
               onClick={() => handleBuy(ebook)}
@@ -71,12 +72,12 @@ export default function CartPage() {
         ))}
       </div>
 
-      <div className="max-w-2xl mx-auto mt-10 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-        <p className="text-sm text-blue-800">
-          <strong>📝 Testing Mode:</strong> This is using Pesapal sandbox for
-          testing. Use test credentials from Pesapal to complete payments.
-        </p>
-      </div>
+        <div className="max-w-2xl mx-auto mt-10 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+          <p className="text-sm text-blue-800">
+            <strong>📝 Testing Mode:</strong> This is using Pesapal sandbox for
+            testing. Use test credentials from Pesapal to complete payments.
+          </p>
+        </div>
     </main>
   );
 }

@@ -1,9 +1,12 @@
 // src/app/cart/buy/route.js
 import { NextResponse } from "next/server";
+import { db } from "@/lib/firebase";
+import { doc, setDoc } from "firebase/firestore";
 
 const PESAPAL_CONSUMER_KEY = process.env.PESAPAL_CONSUMER_KEY;
 const PESAPAL_CONSUMER_SECRET = process.env.PESAPAL_CONSUMER_SECRET;
 const PESAPAL_IPN_ID = process.env.PESAPAL_IPN_ID;
+// Enforce USD-only. Remove UGX conversion to avoid accidental UGX inputs.
 
 const TOKEN_URL = "https://cybqa.pesapal.com/pesapalv3/api/Auth/RequestToken";
 const ORDER_URL =
@@ -12,8 +15,7 @@ const ORDER_URL =
 export async function POST(req) {
   try {
     console.log("\n=== 🚀 PAYMENT REQUEST STARTED ===");
-
-    // Check if IPN ID is configured
+    // Check if IPN ID and Pesapal credentials are configured
     if (!PESAPAL_IPN_ID) {
       console.error("❌ PESAPAL_IPN_ID not configured!");
       return NextResponse.json(
@@ -26,31 +28,111 @@ export async function POST(req) {
       );
     }
 
+    if (!PESAPAL_CONSUMER_KEY || !PESAPAL_CONSUMER_SECRET) {
+      console.error("❌ Pesapal credentials missing!");
+      return NextResponse.json(
+        { error: "Pesapal credentials not configured" },
+        { status: 500 },
+      );
+    }
+
     const body = await req.json();
     console.log("📦 Request Body:", body);
 
-    const { ebookId, customerName, customerEmail, phoneNumber, amount } = body;
+    // Accept cartItems from client. Fallback to older fields for compatibility.
+    const {
+      cartItems,
+      ebookId,
+      customerName,
+      customerEmail,
+      phoneNumber,
+      amount,
+    } = body;
 
-    // Validate
-    if (
-      !ebookId ||
-      !customerName ||
-      !customerEmail ||
-      !phoneNumber ||
-      !amount
-    ) {
-      console.log("❌ Missing fields");
+    // Determine customer name parts
+    if (!customerName || !customerEmail || !phoneNumber) {
+      console.log("❌ Missing customer fields");
       return NextResponse.json(
-        {
-          error: "Missing required fields",
-        },
+        { error: "Missing customer fields" },
         { status: 400 },
       );
     }
 
-    // Split name
     const [firstName, ...lastNameParts] = customerName.split(" ");
     const lastName = lastNameParts.join(" ") || firstName;
+
+    // Helper: parse item price and ensure it's USD
+    function parsePriceToUSD(raw) {
+      if (raw == null) return 0;
+
+      // If already a number, assume it's USD
+      if (typeof raw === "number") {
+        return raw;
+      }
+
+      const s = String(raw).trim();
+
+      // Reject UGX inputs explicitly
+      if (/UGX|UG\b/i.test(s)) {
+        throw new Error(
+          "Prices must be provided in USD. UGX values are not accepted.",
+        );
+      }
+
+      // If contains $ treat as USD
+      if (s.includes("$")) {
+        const num = parseFloat(s.replace(/[^0-9.\-]/g, ""));
+        if (isNaN(num)) throw new Error("Invalid USD price format");
+        return num;
+      }
+
+      // Plain numeric string: assume USD
+      const num = parseFloat(s.replace(/,/g, ""));
+      if (!isNaN(num)) return num;
+
+      throw new Error(
+        "Invalid price format — must be USD numeric or start with $.",
+      );
+    }
+
+    // Compute total in USD from cartItems if provided, otherwise use amount
+    let totalUSD = 0;
+    if (Array.isArray(cartItems) && cartItems.length) {
+      try {
+        totalUSD = cartItems.reduce((sum, it) => {
+          const rawPrice = it.price ?? it.unitPrice ?? 0;
+          const qty = parseInt(it.quantity || it.qty || 1, 10) || 1;
+          const priceUSD = parsePriceToUSD(rawPrice);
+          return sum + priceUSD * qty;
+        }, 0);
+      } catch (err) {
+        console.error("❌ Price parse error:", err.message);
+        return NextResponse.json({ error: err.message }, { status: 400 });
+      }
+    } else if (amount) {
+      // amount must be USD numeric or $ formatted string
+      try {
+        totalUSD = parsePriceToUSD(amount);
+      } catch (err) {
+        console.error("❌ Amount parse error:", err.message);
+        return NextResponse.json({ error: err.message }, { status: 400 });
+      }
+    } else if (ebookId) {
+      // keep previous behaviour: if only ebookId is supplied but no amount, reject
+      console.log("❌ Missing amount and cart items");
+      return NextResponse.json(
+        { error: "Missing cart items or amount" },
+        { status: 400 },
+      );
+    }
+
+    // Round to 2 decimals for USD
+    totalUSD = Math.round((totalUSD + Number.EPSILON) * 100) / 100;
+
+    if (totalUSD <= 0) {
+      console.log("❌ Invalid total amount", totalUSD);
+      return NextResponse.json({ error: "Invalid amount" }, { status: 400 });
+    }
 
     console.log("👤 Customer:", {
       firstName,
@@ -58,6 +140,41 @@ export async function POST(req) {
       customerEmail,
       phoneNumber,
     });
+
+    // Build order ID and callback URL
+    const orderId = `ORD-${Date.now()}`;
+    const host = req.headers.get("host") || "localhost:3000";
+    const protocol = host.includes("localhost") ? "http" : "https";
+    const callbackUrl = `${protocol}://${host}/api/payment/callback`;
+
+    // Persist order to Firestore BEFORE redirecting to Pesapal
+    const paymentRecord = {
+      id: orderId,
+      items: Array.isArray(cartItems)
+        ? cartItems
+        : ebookId
+          ? [{ id: ebookId }]
+          : [],
+      name: customerName,
+      firstName,
+      lastName,
+      email: customerEmail,
+      phone: phoneNumber,
+      amount: totalUSD,
+      currency: "USD",
+      status: "PENDING",
+      createdAt: new Date().toISOString(),
+      callbackUrl,
+      source: "cart",
+    };
+
+    try {
+      await setDoc(doc(db, "payments", orderId), paymentRecord);
+      console.log("💾 Saved pending payment to Firestore:", orderId);
+    } catch (saveErr) {
+      console.error("❌ Failed to save order to Firestore:", saveErr);
+      // Continue - still try to create the Pesapal order, but warn client
+    }
 
     // STEP 1: Get Token
     console.log("\n🔐 Step 1: Requesting Token...");
@@ -101,13 +218,8 @@ export async function POST(req) {
 
     console.log("✅ Token received");
 
-    // STEP 2: Submit Order
+    // STEP 2: Submit Order to Pesapal
     console.log("\n📝 Step 2: Submitting Order...");
-
-    const orderId = `ORD-${ebookId}-${Date.now()}`;
-    const host = req.headers.get("host") || "localhost:3000";
-    const protocol = host.includes("localhost") ? "http" : "https";
-    const callbackUrl = `${protocol}://${host}/api/payment/callback`;
 
     console.log("Order ID:", orderId);
     console.log("Callback URL:", callbackUrl);
@@ -115,9 +227,9 @@ export async function POST(req) {
 
     const orderBody = {
       id: orderId,
-      currency: "UGX",
-      amount: parseFloat(amount),
-      description: `Ebook Purchase - ${ebookId}`,
+      currency: "USD",
+      amount: parseFloat(totalUSD),
+      description: `Cart Purchase - ${orderId}`,
       callback_url: callbackUrl,
       notification_id: PESAPAL_IPN_ID, // CRITICAL: This must be the IPN ID from registration
       branch: "Main",
