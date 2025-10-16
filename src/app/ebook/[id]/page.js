@@ -1,8 +1,9 @@
 import Image from "next/image";
-import { ebooks } from "@/components/Data/ebooks";
-import Link from "next/link";
-// import EbookBuyButton from "@/components/BuyButton";
-import EbookBuyPopup from "@/components/EbookPop";
+import { products } from "@/components/Data/ebooks";
+import BuyNowButton from "@/components/BuyNowButton";
+
+// Filter for ebooks only
+const ebooks = products.filter((product) => product.type === "ebook");
 
 export async function generateMetadata({ params }) {
   const { id } = params;
@@ -69,12 +70,24 @@ export default function EbookDetails({ params }) {
 
   if (!book) {
     return (
-      <p className="p-10 text-center text-red-600">
-        Book not found or loading...
-      </p>
+      <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+        <div className="bg-white p-8 rounded-lg shadow-md">
+          <h1 className="text-2xl font-bold text-red-600 mb-4">
+            Ebook Not Found
+          </h1>
+          <p className="text-gray-600 mb-4">
+            Sorry, we couldn't find the ebook you're looking for.
+          </p>
+          <a
+            href="/"
+            className="text-green-900 hover:text-green-800 font-semibold"
+          >
+            ← Return to Homepage
+          </a>
+        </div>
+      </div>
     );
   }
-
   return (
     <div className="bg-gray-100 min-h-screen flex justify-center items-center p-2 md:p-12">
       <div className="mt-30 md:mt-50">
@@ -112,21 +125,12 @@ export default function EbookDetails({ params }) {
                 </li>
               </ul>
 
-              <p className="text-xl font-semibold mb-6">{book.price}</p>
+              <p className="text-xl font-semibold mb-6">$ {book.price} USD</p>
             </div>
-            {/* <Link href="/wealth-builder-program"> */}
+
             <div>
-              {/* <EbookBuyButton book={book} /> */}
-
-              {/* <Link href={book.linktobook}>
-                <button className="bg-green-900 text-white px-6 py-2 rounded-full text-lg hover:bg-green-800 transition">
-                  Buy Now
-                </button>
-              </Link> */}
-
-              <EbookBuyPopup link={book.linktobook} />
+              <BuyNowButton book={book} />
             </div>
-            {/* </Link> */}
           </div>
         </div>
 

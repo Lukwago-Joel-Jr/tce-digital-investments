@@ -2,7 +2,6 @@
 "use client";
 
 export default function CartPage() {
-  // Prices are in USD
   const ebooks = [
     {
       id: 1,
@@ -72,12 +71,12 @@ export default function CartPage() {
         ))}
       </div>
 
-        <div className="max-w-2xl mx-auto mt-10 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-          <p className="text-sm text-blue-800">
-            <strong>📝 Testing Mode:</strong> This is using Pesapal sandbox for
-            testing. Use test credentials from Pesapal to complete payments.
-          </p>
-        </div>
+      <div className="max-w-2xl mx-auto mt-10 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+        <p className="text-sm text-blue-800">
+          <strong>📝 Testing Mode:</strong> This is using Pesapal sandbox for
+          testing. Use test credentials from Pesapal to complete payments.
+        </p>
+      </div>
     </main>
   );
 }

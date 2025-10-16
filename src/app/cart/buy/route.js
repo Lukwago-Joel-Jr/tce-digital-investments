@@ -146,9 +146,8 @@ export async function POST(req) {
 
     // Build order ID and callback URL
     const orderId = `ORD-${Date.now()}`;
-    const host = req.headers.get("host") || "localhost:3000";
-    const protocol = host.includes("localhost") ? "http" : "https";
-    const callbackUrl = `${protocol}://${host}/api/payment/callback`;
+    const callbackUrl =
+      "https://www.tcedigitalinvestments.com/api/payment/callback";
 
     // Persist order to Firestore BEFORE redirecting to Pesapal
     const paymentRecord = {
