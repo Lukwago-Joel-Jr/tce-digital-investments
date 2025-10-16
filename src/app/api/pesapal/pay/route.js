@@ -49,7 +49,7 @@ export async function POST(req) {
       currency: "USD",
       amount: Number(amount),
       description: `Ebook Purchase - ${ebookId || orderId}`,
-      callback_url: `https://example.com/api/payment/callback`,
+      callback_url: `https://www.tcedigitalinvestments.com/api/payment/callback`,
       notification_id: PESAPAL_IPN_ID,
       branch: "Main",
       billing_address: {

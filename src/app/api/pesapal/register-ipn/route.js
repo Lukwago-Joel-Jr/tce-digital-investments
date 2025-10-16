@@ -44,9 +44,7 @@ export async function GET(req) {
     console.log("✅ Token received");
 
     // Step 2: Register IPN URL
-    const host = req.headers.get("host") || "localhost:3000";
-    const protocol = host.includes("localhost") ? "http" : "https";
-    const ipnUrl = `${protocol}://${host}/api/payment/ipn`;
+    const ipnUrl = "https://www.tcedigitalinvestments.com/api/payment/ipn";
 
     console.log("📝 Registering IPN URL:", ipnUrl);
 
