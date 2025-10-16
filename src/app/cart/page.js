@@ -7,7 +7,7 @@ export default function CartPage() {
     {
       id: 1,
       title: "7 Streams of Wealth",
-      price: 0.14,
+      price: 0.16,
       description:
         "Learn how to build multiple income streams and achieve lasting financial freedom.",
     },
