@@ -6,7 +6,9 @@ import { doc, setDoc } from "firebase/firestore";
 // WARNING: Keys are hard-coded for quick testing. Remove before production.
 const PESAPAL_CONSUMER_KEY = "TDpigBOOhs+zAl8cwH2Fl82jJGyD8xev";
 const PESAPAL_CONSUMER_SECRET = "1KpqkfsMaihIcOlhnBo/gBZ5smw=";
-const PESAPAL_IPN_ID = "ddf4c285-9321-4906-b9b8-dbc7134ccc82";
+// const PESAPAL_IPN_ID = "ddf4c285-9321-4906-b9b8-dbc7134ccc82";
+const PESAPAL_IPN_ID = "bb8b7836-9c48-4ebf-8a7b-db342cbbf707";
+
 // Enforce USD-only. Remove UGX conversion to avoid accidental UGX inputs.
 
 const TOKEN_URL = "https://cybqa.pesapal.com/pesapalv3/api/Auth/RequestToken";
