@@ -26,14 +26,14 @@ async function sendPaymentConfirmation(email, name, amount, productId) {
     };
 
     if (product.type === "ebook") {
-      // Ebook delivery email
+      // Ebook delivery email - TEMPORARY: No attachment for testing
       emailData = {
         ...emailData,
-        subject: `🎉 Your ${product.title} Ebook Is Here!`,
+        subject: `🎉 Your ${product.title} Ebook Order Confirmation`,
         html: `
           <p>Hi ${name || "Customer"},</p>
           <p>Thank you for purchasing <strong>${product.title}</strong>. We have received your payment of <strong>$${(amount || 0).toFixed(2)}</strong>.</p>
-          <p>Your ebook is attached to this email. You can download and start reading right away!</p>
+          <p>[TEST EMAIL - PDF will be attached in production]</p>
           <br/>
           <p>Inside this ebook, you'll discover:</p>
           <ul>
@@ -48,12 +48,7 @@ async function sendPaymentConfirmation(email, name, amount, productId) {
           <br/>
           <p>Warm regards,<br/>TCEDigital Investments 2025</p>
         `,
-        attachments: [
-          {
-            filename: `${product.title}.pdf`,
-            path: `${process.cwd()}/public/ebooks/${product.pdfFile}`,
-          },
-        ],
+        // Temporarily removed attachment for testing
       };
     } else if (product.type === "course") {
       // Academy enrollment email
