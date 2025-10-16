@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { products } from "@/components/Data/ebooks";
 import BuyNowButton from "@/components/BuyNowButton";
 
@@ -76,14 +77,14 @@ export default function EbookDetails({ params }) {
             Ebook Not Found
           </h1>
           <p className="text-gray-600 mb-4">
-            Sorry, we couldn't find the ebook you're looking for.
+            Sorry, we could not find the ebook you are looking for.
           </p>
-          <a
+          <Link
             href="/"
             className="text-green-900 hover:text-green-800 font-semibold"
           >
             ← Return to Homepage
-          </a>
+          </Link>
         </div>
       </div>
     );
