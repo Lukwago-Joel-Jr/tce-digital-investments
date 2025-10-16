@@ -4,7 +4,9 @@ import { NextResponse } from "next/server";
 const PESAPAL_CONSUMER_KEY = "TDpigBOOhs+zAl8cwH2Fl82jJGyD8xev";
 const PESAPAL_CONSUMER_SECRET = "1KpqkfsMaihIcOlhnBo/gBZ5smw=";
 const PESAPAL_BASE_URL = "https://cybqa.pesapal.com/pesapalv3";
-const PESAPAL_IPN_ID = "ddf4c285-9321-4906-b9b8-dbc7134ccc82";
+// const PESAPAL_IPN_ID = "ddf4c285-9321-4906-b9b8-dbc7134ccc82";
+
+const PESAPAL_IPN_ID = "bb8b7836-9c48-4ebf-8a7b-db342cbbf707";
 
 export async function POST(req) {
   try {
