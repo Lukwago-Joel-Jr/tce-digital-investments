@@ -4,12 +4,15 @@ import { db } from "@/lib/firebase";
 import { doc, updateDoc, getDoc } from "firebase/firestore";
 import { Resend } from "resend";
 
-// WARNING: Hard-coded Resend API key for testing. Remove before production.
-const RESEND_API_KEY = "re_19DUmfB7_AUuKTtcUksxxmvk9wgFQEjYX";
-const resend = new Resend(RESEND_API_KEY);
+// We create Resend instance only when needed to avoid build-time errors
+function createResend() {
+  // Hard-coded key for testing as requested
+  const key = "re_19DUmfB7_AUuKTtcUksxxmvk9wgFQEjYX";
+  return new Resend(key);
+}
 
 async function sendPaymentConfirmation(email, name, amount) {
-  await resend.emails.send({
+  await createResend().emails.send({
     from: "TCEDigital <no-reply@tcedigitalinvestments.com>",
     to: email,
     subject: "🎉 Payment Received — Thank You!",
