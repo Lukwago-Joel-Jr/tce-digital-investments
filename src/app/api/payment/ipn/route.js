@@ -1,3 +1,4 @@
+// src/app/api/payment/ipn/route.js
 import { NextResponse } from "next/server";
 import { db } from "@/lib/firebase";
 import { doc, updateDoc, getDoc } from "firebase/firestore";
@@ -11,94 +12,21 @@ function createResend() {
 
 async function sendPaymentConfirmation(email, name, amount) {
   try {
-    // Get the product details
-    const { products } = await import("@/components/Data/ebooks");
-    const product = products.find((p) => p.id === productId);
-
-    if (!product) {
-      throw new Error(`Product ${productId} not found`);
-    }
-
-    let emailData = {
+    await createResend().emails.send({
       from: "TCEDigital <no-reply@tcedigitalinvestments.com>",
       to: email,
-      attachments: [],
-    };
-
-    if (product.type === "ebook") {
-      // Ebook delivery email
-      const pdfPath = `${process.cwd()}/public/ebooks/${product.pdfFile}`;
-      console.log("📚 Attempting to attach PDF from:", pdfPath);
-
-      emailData = {
-        ...emailData,
-        subject: `🎉 Your ${product.title} Ebook Is Here!`,
-        html: `
-          <p>Hi ${name || "Customer"},</p>
-          <p>Thank you for purchasing <strong>${product.title}</strong>. We have received your payment of <strong>$${(amount || 0).toFixed(2)}</strong>.</p>
-          <p>Your ebook is attached to this email. You can download and start reading right away!</p>
-          <br/>
-          <p>Inside this ebook, you'll discover:</p>
-          <ul>
-            ${product.description
-              .split(".")
-              .filter((line) => line.trim())
-              .map((line) => `<li>${line.trim()}.</li>`)
-              .join("\n")}
-          </ul>
-          <br/>
-          <p>We hope you find great value in this resource!</p>
-          <br/>
-          <p>Warm regards,<br/>TCEDigital Investments 2025</p>
-        `,
-        attachments: [
-          {
-            filename: `${product.title}.pdf`,
-            path: pdfPath,
-          },
-        ],
-      };
-    } else if (product.type === "course") {
-      // Academy enrollment email
-      emailData = {
-        ...emailData,
-        subject: `🎓 Welcome to ${product.title}!`,
-        html: `
-          <p>Hi ${name || "Customer"},</p>
-          <p>Congratulations on joining <strong>${product.title}</strong>! Your payment of <strong>$${(amount || 0).toFixed(2)}</strong> has been received.</p>
-          <br/>
-          <p>🔑 <strong>Your Next Steps:</strong></p>
-          <ol>
-            <li>Click here to access your academy: <a href="${product.enrollmentLink}">${product.enrollmentLink}</a></li>
-            <li>Complete your profile setup</li>
-            <li>Join our private community</li>
-            <li>Mark your calendar for our next live session</li>
-          </ol>
-          <br/>
-          <p>You now have access to:</p>
-          <ul>
-            ${product.features?.map((feature) => `<li>${feature}</li>`).join("\n") || ""}
-          </ul>
-          <br/>
-          <p>We're excited to have you on board!</p>
-          <br/>
-          <p>To your success,<br/>TCEDigital Investments 2025</p>
-        `,
-      };
-    }
-
-    await createResend().emails.send(emailData);
-    console.log(
-      `✅ ${product.type.toUpperCase()} delivery email sent successfully to`,
-      email,
-    );
+      subject: "🎉 Payment Received — Thank You!",
+      html: `
+        <p>Hi ${name || "Customer"},</p>
+        <p>Thank you for your purchase. We have received your payment of <strong>$${(amount || 0).toFixed(2)}</strong>.</p>
+        <p>Your ebook will be delivered to this email shortly.</p>
+        <br/>
+        <p>Warm regards,<br/>TCEDigital Investments 2025</p>
+      `,
+    });
+    console.log("✅ Email sent successfully to", email);
   } catch (error) {
     console.error("❌ Email send failed:", error);
-    console.error("Error details:", {
-      stack: error.stack,
-      code: error.code,
-      response: error.response,
-    });
     throw error;
   }
 }
@@ -107,7 +35,7 @@ async function sendPaymentConfirmation(email, name, amount) {
 export async function GET(req) {
   try {
     const searchParams = req.nextUrl.searchParams;
-
+    
     // Pesapal sends these exact field names in GET request
     const OrderTrackingId = searchParams.get("OrderTrackingId");
     const OrderMerchantReference = searchParams.get("OrderMerchantReference");
@@ -117,14 +45,14 @@ export async function GET(req) {
       OrderTrackingId,
       OrderMerchantReference,
       OrderNotificationType,
-      allParams: Object.fromEntries(searchParams),
+      allParams: Object.fromEntries(searchParams)
     });
 
     if (!OrderMerchantReference) {
       console.error("❌ Missing OrderMerchantReference");
       return NextResponse.json(
         { error: "Missing merchant reference" },
-        { status: 400 },
+        { status: 400 }
       );
     }
 
@@ -136,7 +64,7 @@ export async function GET(req) {
       console.error("❌ Payment record not found:", OrderMerchantReference);
       return NextResponse.json(
         { error: "Payment record not found" },
-        { status: 404 },
+        { status: 404 }
       );
     }
 
@@ -144,14 +72,14 @@ export async function GET(req) {
     console.log("📦 Payment record found:", {
       id: OrderMerchantReference,
       currentStatus: paymentData.status,
-      email: paymentData.email,
+      email: paymentData.email
     });
 
     // Check if already completed (avoid duplicate processing)
     if (paymentData.status === "COMPLETED") {
       console.log("ℹ️ Payment already marked as completed");
       return NextResponse.json({
-        message: "Payment already completed",
+        message: "Payment already completed"
       });
     }
 
@@ -159,42 +87,34 @@ export async function GET(req) {
     await updateDoc(paymentRef, {
       status: "COMPLETED",
       pesapalTrackingId: OrderTrackingId,
-      completedAt: new Date().toISOString(),
+      completedAt: new Date().toISOString()
     });
     console.log("✅ Payment status updated to COMPLETED");
 
-    // Send confirmation email with ebook
-    if (
-      paymentData.email &&
-      paymentData.items &&
-      paymentData.items.length > 0
-    ) {
+    // Send confirmation email
+    if (paymentData.email) {
       try {
-        // Get the first ebook from the order (assuming one ebook per order)
-        const ebookId = paymentData.items[0].id;
         await sendPaymentConfirmation(
           paymentData.email,
           paymentData.name || paymentData.firstName,
-          paymentData.amount,
+          paymentData.amount
         );
       } catch (emailError) {
-        console.error(
-          "⚠️ Email failed but payment marked complete:",
-          emailError,
-        );
+        console.error("⚠️ Email failed but payment marked complete:", emailError);
         // Don't fail the IPN if email fails
       }
     }
 
     return NextResponse.json({
       message: "IPN processed successfully",
-      orderId: OrderMerchantReference,
+      orderId: OrderMerchantReference
     });
+
   } catch (error) {
     console.error("❌ IPN Error:", error);
     return NextResponse.json(
       { error: "IPN processing failed", message: error.message },
-      { status: 500 },
+      { status: 500 }
     );
   }
 }
@@ -206,18 +126,20 @@ export async function POST(req) {
     console.log("\n💳 IPN Notification (POST):", body);
 
     // Extract fields - try both naming conventions
-    const OrderMerchantReference =
-      body.OrderMerchantReference ||
+    const OrderMerchantReference = 
+      body.OrderMerchantReference || 
       body.order_merchant_reference ||
       body.merchant_reference;
 
-    const OrderTrackingId =
-      body.OrderTrackingId || body.order_tracking_id || body.tracking_id;
+    const OrderTrackingId = 
+      body.OrderTrackingId || 
+      body.order_tracking_id ||
+      body.tracking_id;
 
     if (!OrderMerchantReference) {
       return NextResponse.json(
         { error: "Missing merchant reference" },
-        { status: 400 },
+        { status: 400 }
       );
     }
 
@@ -227,7 +149,10 @@ export async function POST(req) {
 
     if (!snapshot.exists()) {
       console.error("❌ Payment not found:", OrderMerchantReference);
-      return NextResponse.json({ error: "Payment not found" }, { status: 404 });
+      return NextResponse.json(
+        { error: "Payment not found" },
+        { status: 404 }
+      );
     }
 
     const paymentData = snapshot.data();
@@ -240,33 +165,31 @@ export async function POST(req) {
     await updateDoc(paymentRef, {
       status: "COMPLETED",
       pesapalTrackingId: OrderTrackingId,
-      completedAt: new Date().toISOString(),
+      completedAt: new Date().toISOString()
     });
 
     // Send email
-    if (
-      paymentData.email &&
-      paymentData.items &&
-      paymentData.items.length > 0
-    ) {
+    if (paymentData.email) {
       try {
-        const productId = paymentData.items[0].id;
         await sendPaymentConfirmation(
           paymentData.email,
-          paymentData.name || paymentData.firstName,
-          paymentData.amount,
-          productId,
+          paymentData.name,
+          paymentData.amount
         );
       } catch (emailError) {
-        console.error("⚠️ Email failed:", emailError, emailError.stack);
+        console.error("⚠️ Email failed:", emailError);
       }
     }
 
     return NextResponse.json({
-      message: "IPN processed successfully",
+      message: "IPN processed successfully"
     });
+
   } catch (error) {
     console.error("❌ POST IPN Error:", error);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json(
+      { error: error.message },
+      { status: 500 }
+    );
   }
 }
