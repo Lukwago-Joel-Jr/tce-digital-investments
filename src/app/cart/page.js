@@ -7,7 +7,7 @@ export default function CartPage() {
     {
       id: 1,
       title: "7 Streams of Wealth",
-      price: 9.99,
+      price: 0.14,
       description:
         "Learn how to build multiple income streams and achieve lasting financial freedom.",
     },
@@ -72,12 +72,12 @@ export default function CartPage() {
         ))}
       </div>
 
-        <div className="max-w-2xl mx-auto mt-10 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-          <p className="text-sm text-blue-800">
-            <strong>📝 Testing Mode:</strong> This is using Pesapal sandbox for
-            testing. Use test credentials from Pesapal to complete payments.
-          </p>
-        </div>
+      <div className="max-w-2xl mx-auto mt-10 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+        <p className="text-sm text-blue-800">
+          <strong>📝 Testing Mode:</strong> This is using Pesapal sandbox for
+          testing. Use test credentials from Pesapal to complete payments.
+        </p>
+      </div>
     </main>
   );
 }
