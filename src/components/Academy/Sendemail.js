@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
+// WARNING: Hard-coded Resend API key for testing. Remove before production.
 const resend = new Resend("re_19DUmfB7_AUuKTtcUksxxmvk9wgFQEjYX");
 
 export async function POST(req) {

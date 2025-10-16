@@ -1,6 +1,7 @@
 // src/app/payment/success/page.js
 "use client";
 import { useSearchParams } from "next/navigation";
+import Link from "next/link";
 import { Suspense } from "react";
 
 function SuccessContent() {
@@ -65,18 +66,18 @@ function SuccessContent() {
 
         {/* Actions */}
         <div className="space-y-3">
-          <a
+          <Link
             href="/cart"
             className="block w-full bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-4 rounded-lg transition"
           >
             Browse More eBooks
-          </a>
-          <a
+          </Link>
+          <Link
             href="/"
             className="block w-full bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-3 px-4 rounded-lg transition"
           >
             Go to Home
-          </a>
+          </Link>
         </div>
       </div>
     </main>

@@ -1,8 +1,9 @@
 // src/app/api/pesapal/register-ipn/route.js
 import { NextResponse } from "next/server";
 
-const PESAPAL_CONSUMER_KEY = process.env.PESAPAL_CONSUMER_KEY;
-const PESAPAL_CONSUMER_SECRET = process.env.PESAPAL_CONSUMER_SECRET;
+// WARNING: Hard-coded for testing. Remove before production.
+const PESAPAL_CONSUMER_KEY = "TDpigBOOhs+zAl8cwH2Fl82jJGyD8xev";
+const PESAPAL_CONSUMER_SECRET = "1KpqkfsMaihIcOlhnBo/gBZ5smw=";
 
 const TOKEN_URL = "https://cybqa.pesapal.com/pesapalv3/api/Auth/RequestToken";
 const IPN_REGISTER_URL =

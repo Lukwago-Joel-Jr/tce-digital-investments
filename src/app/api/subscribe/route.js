@@ -4,6 +4,7 @@ import { Resend } from "resend";
 const API_KEY = "25cae9632cc9300def3d1d6e18a381d9-us20"; // Mailchimp API Key
 const AUDIENCE_ID = "7edceae3ce"; // Mailchimp Audience ID
 const DATACENTER = "us20"; // From API key suffix
+// WARNING: Hard-coded Resend API key for testing. Remove before production.
 const resend = new Resend("re_19DUmfB7_AUuKTtcUksxxmvk9wgFQEjYX"); // Resend API key
 
 export async function POST(req) {

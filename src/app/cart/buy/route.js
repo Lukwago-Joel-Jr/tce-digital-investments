@@ -3,9 +3,10 @@ import { NextResponse } from "next/server";
 import { db } from "@/lib/firebase";
 import { doc, setDoc } from "firebase/firestore";
 
-const PESAPAL_CONSUMER_KEY = process.env.PESAPAL_CONSUMER_KEY;
-const PESAPAL_CONSUMER_SECRET = process.env.PESAPAL_CONSUMER_SECRET;
-const PESAPAL_IPN_ID = process.env.PESAPAL_IPN_ID;
+// WARNING: Keys are hard-coded for quick testing. Remove before production.
+const PESAPAL_CONSUMER_KEY = "TDpigBOOhs+zAl8cwH2Fl82jJGyD8xev";
+const PESAPAL_CONSUMER_SECRET = "1KpqkfsMaihIcOlhnBo/gBZ5smw=";
+const PESAPAL_IPN_ID = "ddf4c285-9321-4906-b9b8-dbc7134ccc82";
 // Enforce USD-only. Remove UGX conversion to avoid accidental UGX inputs.
 
 const TOKEN_URL = "https://cybqa.pesapal.com/pesapalv3/api/Auth/RequestToken";

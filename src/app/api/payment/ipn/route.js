@@ -4,7 +4,8 @@ import { db } from "@/lib/firebase";
 import { doc, updateDoc, getDoc } from "firebase/firestore";
 import { Resend } from "resend";
 
-const RESEND_API_KEY = process.env.RESEND_API_KEY || "";
+// WARNING: Hard-coded Resend API key for testing. Remove before production.
+const RESEND_API_KEY = "re_19DUmfB7_AUuKTtcUksxxmvk9wgFQEjYX";
 const resend = new Resend(RESEND_API_KEY);
 
 async function sendPaymentConfirmation(email, name, amount) {
