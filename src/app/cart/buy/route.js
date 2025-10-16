@@ -337,7 +337,7 @@ import { doc, setDoc } from "firebase/firestore";
 // ⚠️ PRODUCTION CREDENTIALS - REAL MONEY WILL BE CHARGED
 const PESAPAL_CONSUMER_KEY = "h4bqR749515z64EVjMmdQxN8H2GHtrJl";
 const PESAPAL_CONSUMER_SECRET = "xUN9sR0nstcDHdwQTM8r4dg6uT0=";
-const PESAPAL_IPN_ID = "bb8b7836-9c48-4ebf-8a7b-db342cbbf707";
+const PESAPAL_IPN_ID = "9ab385d7-78b0-4d5b-b254-db3486747b07";
 
 // PRODUCTION URLs ONLY
 const TOKEN_URL = "https://pay.pesapal.com/v3/api/Auth/RequestToken";
