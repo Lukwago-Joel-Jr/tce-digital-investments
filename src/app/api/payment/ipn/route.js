@@ -18,7 +18,7 @@ async function sendPaymentConfirmation(email, name, amount) {
       <p>Thank you for your purchase. We have received your payment of <strong>$${(amount || 0).toFixed(2)}</strong>.</p>
       <p>Your ebook will be delivered to this email shortly.</p>
       <br/>
-      <p>Warm regards,<br/>TCEDigital Investments</p>
+      <p>Warm regards,<br/>TCEDigital Investments 2025</p>
     `,
   });
 }
