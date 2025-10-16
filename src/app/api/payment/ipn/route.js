@@ -9,7 +9,7 @@ function createResend() {
   return new Resend(key);
 }
 
-async function sendPaymentConfirmation(email, name, amount, productId) {
+async function sendPaymentConfirmation(email, name, amount) {
   try {
     // Get the product details
     const { products } = await import("@/components/Data/ebooks");
@@ -26,14 +26,17 @@ async function sendPaymentConfirmation(email, name, amount, productId) {
     };
 
     if (product.type === "ebook") {
-      // Ebook delivery email - TEMPORARY: No attachment for testing
+      // Ebook delivery email
+      const pdfPath = `${process.cwd()}/public/ebooks/${product.pdfFile}`;
+      console.log("📚 Attempting to attach PDF from:", pdfPath);
+
       emailData = {
         ...emailData,
-        subject: `🎉 Your ${product.title} Ebook Order Confirmation`,
+        subject: `🎉 Your ${product.title} Ebook Is Here!`,
         html: `
           <p>Hi ${name || "Customer"},</p>
           <p>Thank you for purchasing <strong>${product.title}</strong>. We have received your payment of <strong>$${(amount || 0).toFixed(2)}</strong>.</p>
-          <p>[TEST EMAIL - PDF will be attached in production]</p>
+          <p>Your ebook is attached to this email. You can download and start reading right away!</p>
           <br/>
           <p>Inside this ebook, you'll discover:</p>
           <ul>
@@ -48,7 +51,12 @@ async function sendPaymentConfirmation(email, name, amount, productId) {
           <br/>
           <p>Warm regards,<br/>TCEDigital Investments 2025</p>
         `,
-        // Temporarily removed attachment for testing
+        attachments: [
+          {
+            filename: `${product.title}.pdf`,
+            path: pdfPath,
+          },
+        ],
       };
     } else if (product.type === "course") {
       // Academy enrollment email
@@ -86,6 +94,11 @@ async function sendPaymentConfirmation(email, name, amount, productId) {
     );
   } catch (error) {
     console.error("❌ Email send failed:", error);
+    console.error("Error details:", {
+      stack: error.stack,
+      code: error.code,
+      response: error.response,
+    });
     throw error;
   }
 }
@@ -163,7 +176,6 @@ export async function GET(req) {
           paymentData.email,
           paymentData.name || paymentData.firstName,
           paymentData.amount,
-          ebookId,
         );
       } catch (emailError) {
         console.error(
