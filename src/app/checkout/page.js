@@ -16,16 +16,34 @@ function CheckoutForm() {
   });
   const [errors, setErrors] = useState({});
 
+  // useEffect(() => {
+  //   const ebookId = searchParams.get("id");
+  //   const title = searchParams.get("title");
+  //   const price = searchParams.get("price");
+
+  //   if (ebookId && title && price) {
+  //     setEbook({
+  //       id: parseInt(ebookId),
+  //       title: decodeURIComponent(title),
+  //       price: parseFloat(price),
+  //     });
+  //   } else {
+  //     router.push("/cart");
+  //   }
+  // }, [searchParams, router]);
+
   useEffect(() => {
     const ebookId = searchParams.get("id");
     const title = searchParams.get("title");
     const price = searchParams.get("price");
+    const type = searchParams.get("type"); // ⬅️ ADD THIS LINE
 
     if (ebookId && title && price) {
       setEbook({
-        id: parseInt(ebookId),
+        id: ebookId, // ⬅️ CHANGED: Keep as string (works for both ebooks & courses)
         title: decodeURIComponent(title),
         price: parseFloat(price),
+        type: type || "ebook", // ⬅️ ADD THIS LINE
       });
     } else {
       router.push("/cart");
@@ -82,11 +100,25 @@ function CheckoutForm() {
     try {
       console.log("🛒 Processing checkout for:", ebook.title);
 
+      // const res = await fetch("/cart/buy", {
+      //   method: "POST",
+      //   headers: { "Content-Type": "application/json" },
+      //   body: JSON.stringify({
+      //     ebookId: ebook.id,
+      //     customerName: formData.customerName.trim(),
+      //     customerEmail: formData.customerEmail.trim(),
+      //     phoneNumber: formData.phoneNumber.trim(),
+      //     amount: ebook.price,
+      //   }),
+      // });
+
       const res = await fetch("/cart/buy", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ebookId: ebook.id,
+          productType: ebook.type, // ⬅️ ADD THIS LINE
+          productTitle: ebook.title, // ⬅️ ADD THIS LINE (helpful for emails later)
           customerName: formData.customerName.trim(),
           customerEmail: formData.customerEmail.trim(),
           phoneNumber: formData.phoneNumber.trim(),
@@ -123,7 +155,7 @@ function CheckoutForm() {
   }
 
   return (
-    <main className="min-h-screen bg-gray-50 py-10 px-6">
+    <main className="min-h-screen bg-gray-50 mt-30 py-10 px-6">
       <div className="max-w-2xl mx-auto">
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-gray-900 mb-2">Checkout</h1>
@@ -161,9 +193,17 @@ function CheckoutForm() {
               </div>
             </div>
 
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
+            {/* <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
               <p className="text-xs text-blue-800">
                 📧 Your ebook will be delivered to your email after payment.
+              </p>
+            </div> */}
+
+            <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
+              <p className="text-xs text-blue-800">
+                {ebook.type === "course"
+                  ? "🎓 Academy enrollment link will be sent to your email after payment."
+                  : "📧 Your ebook will be delivered to your email after payment."}
               </p>
             </div>
           </div>
@@ -261,7 +301,13 @@ function CheckoutForm() {
                     : "bg-green-600 hover:bg-green-700 text-white"
                 }`}
               >
-                {loading ? "Processing..." : `Pay $${ebook.price.toFixed(2)}`}
+                {/* {loading ? "Processing..." : `Pay $${ebook.price.toFixed(2)}`} */}
+
+                {loading
+                  ? "Processing..."
+                  : ebook.type === "course"
+                    ? `Enroll Now - $${ebook.price.toFixed(2)}`
+                    : `Pay $${ebook.price.toFixed(2)}`}
               </button>
 
               <button

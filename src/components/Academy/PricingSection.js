@@ -4,6 +4,8 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Link from "next/link";
+import { products } from "../Data/ebooks";
+import BuyNowButton from "../BuyNowButton";
 
 const pacifico = Pacifico({
   weight: "400",
@@ -14,6 +16,11 @@ const meowScript = Meow_Script({
   weight: "400",
   subsets: ["latin"],
 });
+
+// Get the Wealth Builder Academy course
+const course = products.find(
+  (product) => product.id === "WEALTH-BUILDER-ACADEMY",
+);
 
 export const PricingSection = ({ meow }) => {
   const { ref, inView } = useInView({
@@ -106,20 +113,7 @@ export const PricingSection = ({ meow }) => {
         </span>
       </motion.div>
 
-      <Link
-        href={
-          "https://store.pesapal.com/shop/yb8tkz-tcedigitalinvestmentsltd?productCode=21921f16-1f79-433b-9079-8e2114790e9a"
-        }
-      >
-        <motion.button
-          variants={buttonVariants}
-          whileHover="hover"
-          whileTap="tap"
-          className="bg-green-900 hover:bg-green-800 text-white px-10 py-2 rounded-full text-lg transition-colors duration-300"
-        >
-          Join Academy
-        </motion.button>
-      </Link>
+      <BuyNowButton book={course} />
     </motion.section>
   );
 };

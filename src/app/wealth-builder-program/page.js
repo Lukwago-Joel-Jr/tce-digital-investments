@@ -66,75 +66,12 @@ export default function CoursePage() {
       {/* Who It&apos;s For */}
       <Whose />
 
-      {/* Modules */}
-      {/* <section className="max-w-4xl mx-auto px-6">
-        <h2 className="text-2xl font-semibold mb-6 text-center">
-          Course Modules
-        </h2>
-
-        <div className="space-y-6">
-          <div>
-            <h3 className="text-xl font-bold">
-              🧱 FOUNDATION: Mindset & Alignment
-            </h3>
-            <ul className="list-disc list-inside text-gray-700">
-              <li>Spiritual Foundation for Wealth</li>
-              <li>Investor Identity & Faith-Fueled Confidence</li>
-              <li>Stewardship, Stability & Legacy</li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="text-xl font-bold">
-              🚀 ENGINE: Investing & Fund Building
-            </h3>
-            <ul className="list-disc list-inside text-gray-700">
-              <li>Venture Capital Ecosystem</li>
-              <li>Private Equity Fundamentals</li>
-              <li>Micro Fund Structuring</li>
-              <li>Portfolio Management & Exit Strategy</li>
-              <li>Getting Started as an Investor</li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="text-xl font-bold">
-              🌍 EXPANSION: Impact & Influence
-            </h3>
-            <ul className="list-disc list-inside text-gray-700">
-              <li>Branding for Kingdom Influence</li>
-              <li>Investing in Global Markets</li>
-              <li>Wealth Building & Legacy Planning</li>
-            </ul>
-          </div>
-        </div>
-      </section> */}
       <CourseModules />
 
       {/* Bonus Content */}
       <BonusContent />
 
       <InvestmentWisdom />
-
-      {/* Pricing Section */}
-      {/* <section className="max-w-2xl mx-auto text-center border-t border-gray-300 pt-10 px-6">
-        <h2 className="text-3xl font-bold mb-4">$342</h2>
-        <p
-          className={`${meow.className}  text-4xl md:text-4xl font-light mb-5`}
-        >
-          One-time payment for full course access + community and coaching
-        </p>
-
-        <Link
-          href={
-            "https://store.pesapal.com/shop/yb8tkz-tcedigitalinvestmentsltd?productCode=21921f16-1f79-433b-9079-8e2114790e9a"
-          }
-        >
-          <button className="bg-green-900 hover:bg-green-800 text-white px-10 py-2 rounded-full text-lg transition">
-            Join Academy
-          </button>
-        </Link>
-      </section> */}
 
       <PricingSection />
     </div>
