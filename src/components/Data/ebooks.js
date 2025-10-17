@@ -1,13 +1,37 @@
-export const ebooks = [
+export const products = [
+  {
+    id: "WEALTH-BUILDER-ACADEMY",
+    title: "Wealth Builder Academy",
+    type: "course",
+    deliveryMethod: "enrollment-link",
+    enrollmentLink: "https://www.tcedigitalinvestments.com/academy/enroll",
+    shortDescription:
+      "Join our comprehensive program to master wealth building strategies.",
+    description:
+      "Transform your financial future with our comprehensive Wealth Builder Academy. Get access to expert training, live sessions, and a supportive community.",
+    price: 997,
+    author: "Sandra N Sserumaga",
+    cover: "/images/ACADEMY.png",
+    metacover: "/images/academyog.png",
+    features: [
+      "Live Weekly Sessions",
+      "Private Community Access",
+      "Personal Mentorship",
+      "Lifetime Updates",
+    ],
+    category: "Education",
+  },
   {
     id: "KINGDOM-LENDING",
     title: "KINGDOM LENDING",
-    linktobook:
-      "https://store.pesapal.com/shop/yb8tkz-tcedigitalinvestmentsltd?productCode=9f36e2eb-00b5-49aa-8401-40cf52fc0215",
+    type: "ebook",
+    pdfFile: "KINGDOM-LENDING.pdf",
+    deliveryMethod: "email-attachment",
     shortDescription:
       "Build Wealth God’s Way Through Lending. Discover How I Grew My Lending Business from 2M to 200M in 3 Years—By Partnering with God.",
     description:
       "Build Wealth God’s Way Through Lending. Discover How I Grew My Lending Business from 2M to 200M in 3 Years—By Partnering with God. A powerful, biblical blueprint to help you start and grow a profitable, God-honoring lending business—without fear, confusion, or guesswork.",
+
     testimonials: [
       {
         name: "Winnie",
@@ -29,7 +53,7 @@ export const ebooks = [
       "This eBook is for you if: \n- You feel called to lend and build wealth in a Kingdom-aligned way. \n- You’ve lost money from lending casually or without structure. \n- You want passive income but don’t know where to start. \n- You’ve been praying for guidance to grow your finances with faith. \n- You’re ready to turn your giving heart into a sustainable business.",
     cover: "/images/KINGDOMLENDING.png",
     metacover: "/images/kingdomog.png",
-    price: "$84",
+    price: 84,
     author: "Sandra N Sserumaga",
     pages: 59,
     publisher: "Wealth Build Press",
@@ -82,8 +106,9 @@ export const ebooks = [
   {
     id: "DIGITAL-ENTREPRENEURSHIP",
     title: "DIGITAL ENTREPRENEURSHIP",
-    linktobook:
-      "https://store.pesapal.com/shop/yb8tkz-tcedigitalinvestmentsltd?productCode=d732703e-4e68-4ecb-b83b-9d8932106f90",
+    type: "ebook",
+    pdfFile: "KINGDOM-LENDING.pdf",
+    deliveryMethod: "email-attachment",
     shortDescription:
       "Turn Your Ideas Into Income — Learn How to Make Money Online with Digital Products!",
     description:
@@ -103,7 +128,7 @@ export const ebooks = [
       "This is perfect for: \n- Stay-at-home moms \n- Creatives & coaches \n- Side hustlers \n- Students & fresh graduates \n- Anyone tired of 9-5 and wants an online income.",
     cover: "/images/DIGITALENTREPRENUURSHIP1.png",
     metacover: "/images/digitalog.png",
-    price: "$27",
+    price: 27,
     author: "Sandra N Sserumaga",
     pages: 35,
     publisher: "Wealth Build Press",
