@@ -92,6 +92,7 @@ function CheckoutForm() {
           ebookId: ebook.id,
           productType: ebook.type,
           productTitle: ebook.title,
+          productLink: ebook.productLink,
           customerName: formData.customerName.trim(),
           customerEmail: formData.customerEmail.trim(),
           phoneNumber: formData.phoneNumber.trim(),

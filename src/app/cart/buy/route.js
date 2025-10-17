@@ -35,19 +35,12 @@ export async function POST(req) {
     const body = await req.json();
     console.log("📦 Request Body:", body);
 
-    // const {
-    //   cartItems,
-    //   ebookId,
-    //   customerName,
-    //   customerEmail,
-    //   phoneNumber,
-    //   amount,
-    // } = body;
     const {
       cartItems,
       ebookId,
       productType, // ⬅️ ADD THIS LINE
       productTitle, // ⬅️ ADD THIS LINE
+      productLink,
       customerName,
       customerEmail,
       phoneNumber,
@@ -131,16 +124,6 @@ export async function POST(req) {
       );
     }
 
-    // console.log("👤 Customer:", {
-    //   firstName,
-    //   lastName,
-    //   customerEmail,
-    //   phoneNumber,
-    // });
-    // console.log("💰 REAL PAYMENT AMOUNT: $" + totalUSD);
-
-    // Generate order ID
-
     console.log("👤 Customer:", {
       firstName,
       lastName,
@@ -155,26 +138,7 @@ export async function POST(req) {
     const protocol = host.includes("localhost") ? "http" : "https";
     const callbackUrl = `${protocol}://${host}/api/payment/callback`;
 
-    // Save payment record to Firestore
-    // const paymentRecord = {
-    //   id: orderId,
-    //   items: Array.isArray(cartItems)
-    //     ? cartItems
-    //     : ebookId
-    //       ? [{ id: ebookId }]
-    //       : [],
-    //   name: customerName,
-    //   firstName,
-    //   lastName,
-    //   email: customerEmail,
-    //   phone: phoneNumber,
-    //   amount: totalUSD,
-    //   currency: "USD",
-    //   status: "PENDING",
-    //   environment: "PRODUCTION",
-    //   createdAt: new Date().toISOString(),
-    //   callbackUrl,
-    // };
+    // Save initial payment record to Firestore
     const paymentRecord = {
       id: orderId,
       items: Array.isArray(cartItems)
@@ -185,11 +149,13 @@ export async function POST(req) {
                 id: ebookId,
                 type: productType || "ebook", // ⬅️ ADD THIS LINE
                 title: productTitle || "Product", // ⬅️ ADD THIS LINE
+                productLink: productLink || "", // ⬅️ ADD THIS
               },
             ]
           : [],
       productType: productType || "ebook", // ⬅️ ADD THIS LINE
       productTitle: productTitle || "Product", // ⬅️ ADD THIS LINE
+      productLink: productLink || "", // ⬅️ ADD THIS
       name: customerName,
       firstName,
       lastName,
