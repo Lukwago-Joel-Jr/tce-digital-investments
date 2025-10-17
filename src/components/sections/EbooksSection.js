@@ -4,7 +4,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { products } from "./Data/ebooks";
+import { products } from "../Data/ebooks";
 
 // Filter only ebook products
 const ebooks = products.filter((product) => product.type === "ebook");

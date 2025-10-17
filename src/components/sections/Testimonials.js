@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import { testimonials } from "./Data/testomonials";
+import { testimonials } from "../Data/testomonials";
 import { motion } from "framer-motion";
 
 function Testimonials() {

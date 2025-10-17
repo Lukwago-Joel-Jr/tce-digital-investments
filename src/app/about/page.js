@@ -1,12 +1,12 @@
-import AboutSection from '@/components/About'
-import React from 'react'
+import AboutSection from "@/components/sections/About";
+import React from "react";
 
 function About() {
   return (
     <div>
-        <AboutSection/>
+      <AboutSection />
     </div>
-  )
+  );
 }
 
-export default About
+export default About;

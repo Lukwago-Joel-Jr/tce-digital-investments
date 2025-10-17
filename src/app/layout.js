@@ -7,8 +7,8 @@ import {
   Cormorant_Infant,
 } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Nav";
-import Footer from "@/components/Footer";
+import Navbar from "@/components/navigation/Nav";
+import Footer from "@/components/navigation/Footer";
 import Script from "next/script";
 
 const parisienne = Parisienne({

@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Link from "next/link";
 import { products } from "../Data/ebooks";
-import BuyNowButton from "../BuyNowButton";
+import BuyNowButton from "../common/BuyNowButton";
 
 const pacifico = Pacifico({
   weight: "400",

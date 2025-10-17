@@ -5,7 +5,7 @@ import Link from "next/link";
 import { FaInstagram } from "react-icons/fa";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import Preheader from "./preheader";
+import Preheader from "../sections/preheader";
 
 export default function Navbar() {
   const [showLogo, setShowLogo] = useState(true);

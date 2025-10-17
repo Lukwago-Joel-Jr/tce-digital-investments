@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { products } from "@/components/Data/ebooks";
-import BuyNowButton from "@/components/BuyNowButton";
+import BuyNowButton from "@/components/common/BuyNowButton";
 
 // Filter for ebooks only
 const ebooks = products.filter((product) => product.type === "ebook");

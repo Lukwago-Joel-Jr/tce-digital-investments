@@ -310,22 +310,6 @@ export async function GET(req) {
             `📧 Sending ${productType} email to ${paymentData.email}`,
           );
 
-          // if (productType === "course") {
-          //   await sendCourseEmail(
-          //     paymentData.email,
-          //     paymentData.name || paymentData.firstName,
-          //     paymentData.amount,
-          //     OrderMerchantReference,
-          //   );
-          // } else {
-          //   await sendEbookEmail(
-          //     paymentData.email,
-          //     paymentData.name || paymentData.firstName,
-          //     paymentData.amount,
-          //     OrderMerchantReference,
-          //     productTitle,
-          //   );
-          // }
           if (productType === "course") {
             await sendCourseEmail(
               paymentData.email,
@@ -461,22 +445,6 @@ export async function POST(req) {
           const productType = paymentData.productType || "ebook";
           const productTitle = paymentData.productTitle || "Your Purchase";
 
-          // if (productType === "course") {
-          //   await sendCourseEmail(
-          //     paymentData.email,
-          //     paymentData.name,
-          //     paymentData.amount,
-          //     OrderMerchantReference,
-          //   );
-          // } else {
-          //   await sendEbookEmail(
-          //     paymentData.email,
-          //     paymentData.name,
-          //     paymentData.amount,
-          //     OrderMerchantReference,
-          //     productTitle,
-          //   );
-          // }
           if (productType === "course") {
             await sendCourseEmail(
               paymentData.email,

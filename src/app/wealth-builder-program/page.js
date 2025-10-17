@@ -1,5 +1,5 @@
 import React from "react";
-import MarqueeSection from "@/components/TextCarousel";
+import MarqueeSection from "@/components/sections/TextCarousel";
 import { Academyimage } from "@/components/Academy/Academyimage";
 import { Included } from "@/components/Academy/Included";
 import { Whose } from "@/components/Academy/Whose";

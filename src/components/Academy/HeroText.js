@@ -4,7 +4,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { products } from "../Data/ebooks";
-import BuyNowButton from "../BuyNowButton";
+import BuyNowButton from "../common/BuyNowButton";
 
 // Get the Wealth Builder Academy course
 const course = products.find(
