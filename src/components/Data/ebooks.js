@@ -347,7 +347,8 @@ export const products = [
     shortDescription:
       "Join our comprehensive program to master wealth building strategies.",
 
-    price: 342,
+    // price: 342,
+    price: 0.15,
     cover: "/images/ACADEMY.png",
     metacover: "/images/academyog.png",
   },
@@ -392,7 +393,8 @@ export const products = [
     cover: "/images/KINGDOMLENDING.png",
     metacover: "/images/kingdomog.png",
 
-    price: 84,
+    // price: 84,
+    price: 0.15,
     author: "Sandra N Sserumaga",
     pages: 59,
     publisher: "Wealth Build Press",
@@ -482,7 +484,8 @@ export const products = [
     cover: "/images/DIGITALENTREPRENUURSHIP1.png",
     metacover: "/images/digitalog.png",
 
-    price: 27,
+    // price: 27,
+    price: 0.15,
     author: "Sandra N Sserumaga",
     pages: 35,
     publisher: "Wealth Build Press",
