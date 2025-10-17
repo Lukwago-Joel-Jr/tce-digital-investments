@@ -18,62 +18,107 @@ function createResend() {
   return new Resend(key);
 }
 
-// Send EBOOK confirmation email with PDF attachment
-async function sendEbookEmail(email, name, amount, orderId, productTitle) {
+// Send eBook confirmation email (for both PDF attachments and links)
+async function sendEbookEmail(email, name, amount, orderId, productData) {
   try {
-    await createResend().emails.send({
+    const isKingdomLending = productData.id === "KINGDOM-LENDING";
+    const isDigitalEntrepreneurship =
+      productData.id === "DIGITAL-ENTREPRENEURSHIP";
+
+    // Customize email subject and content based on product
+    let emailSubject = isKingdomLending
+      ? "Your Kingdom Lending Guide is Here — Let's Build Biblical Wealth!"
+      : "Your Digital Entrepreneurship Guide is Here — Let's Turn Ideas Into Income!";
+
+    let emailContent = `
+      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+        <h2 style="color: #16a34a;">Your ${productData.title} is Ready!</h2>
+        
+        <p>Hi ${name || "there"},</p>
+        
+        <p>Congratulations — you just took a powerful step toward ${
+          isKingdomLending
+            ? "building Kingdom wealth and creating impact!"
+            : "financial freedom and online success!"
+        }</p>
+        
+        ${
+          isKingdomLending
+            ? `<p>Your copy of <strong>${productData.title}</strong> and all bonus worksheets are attached to this email as a PDF.</p>`
+            : `<p>Your copy of <strong>${productData.title}</strong> is ready! Click the button below to access your guide:</p>
+               <div style="text-align: center; margin: 30px 0;">
+                 <a href="${productData.ebookLink}" style="background-color: #16a34a; color: white; padding: 12px 25px; text-decoration: none; border-radius: 5px; font-weight: bold;">Access Your Guide</a>
+               </div>`
+        }
+        
+        <div style="background-color: #f3f4f6; padding: 15px; border-radius: 8px; margin: 20px 0;">
+          <p style="margin: 5px 0;"><strong>Order ID:</strong> ${orderId}</p>
+          <p style="margin: 5px 0;"><strong>Amount Paid:</strong> $${(amount || 0).toFixed(2)} USD</p>
+          <p style="margin: 5px 0;"><strong>Status:</strong> Completed ✅</p>
+        </div>
+
+        <p><strong>Here's what to do next:</strong></p>
+        <ul style="line-height: 1.8;">
+          ${
+            isKingdomLending
+              ? `<li>Download and save the PDF attachment</li>
+                 <li>Print the bonus worksheets for your lending business</li>
+                 <li>Start with the first module and implement as you go</li>`
+              : `<li>Click the access button above to view your guide</li>
+                 <li>Bookmark the link for easy access</li>
+                 <li>Start with Module 1 and take action immediately</li>`
+          }
+          <li>Follow us on Instagram for daily motivation and success stories</li>
+        </ul>
+
+        <p>${
+          isKingdomLending
+            ? "You now hold the blueprint to create Kingdom wealth through lending."
+            : "You now have the roadmap to create digital products and passive income."
+        }</p>
+        
+        <p>Remember — you don't need permission to start; you just need a plan and faith to act.<br/>
+        This guide gives you both.</p>
+
+        <p>I can't wait to see what you create and how your journey unfolds!</p>
+        
+        <p style="margin-top: 30px;">With excitement and belief in you,<br/>
+        <strong>Sandra Nanyonga</strong><br/>
+        #THE CITY ENTREPRENEUR<br/>
+        Kampala, Uganda<br/>
+        Mobile: +256773298586 / 0703983855</p>
+        
+        <p style="font-style: italic; color: #6b7280; margin-top: 20px;">
+          PSALMS 23:1-6<br/>
+          THE LORD IS MY SHEPHERD
+        </p>
+        
+        <hr style="margin-top: 30px; border: none; border-top: 1px solid #e5e7eb;">
+        <p style="font-size: 12px; color: #6b7280;">
+          If you have any questions, contact us at info@tcedigitalinvestments.com
+        </p>
+      </div>
+    `;
+
+    const emailConfig = {
       from: "TCEDigital <no-reply@tcedigitalinvestments.com>",
       to: email,
-      subject: `Your ${productTitle} eBook is Here — Let's Turn Ideas Into Income!`,
-      html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #16a34a;">Your eBook is Ready!</h2>
-          
-          <p>Hi ${name || "there"},</p>
-          
-          <p>Congratulations — you just took a powerful step toward financial freedom and online success!</p>
-          
-          <p>Your copy of <strong>${productTitle}</strong> is attached to this email as a PDF.</p>
-          
-          <div style="background-color: #f3f4f6; padding: 15px; border-radius: 8px; margin: 20px 0;">
-            <p style="margin: 5px 0;"><strong>Order ID:</strong> ${orderId}</p>
-            <p style="margin: 5px 0;"><strong>Amount Paid:</strong> $${(amount || 0).toFixed(2)} USD</p>
-            <p style="margin: 5px 0;"><strong>Status:</strong> Completed ✅</p>
-          </div>
+      subject: emailSubject,
+      html: emailContent,
+    };
 
-          <p><strong>Here's what to do next:</strong></p>
-          <ul style="line-height: 1.8;">
-            <li>Download the PDF attachment below</li>
-            <li>Read one section at a time — take action as you go</li>
-            <li>Follow us on Instagram for daily motivation and success stories</li>
-          </ul>
+    // Add PDF attachment for Kingdom Lending
+    if (isKingdomLending) {
+      emailConfig.attachments = [
+        {
+          filename: "KINGDOM-LENDING.pdf",
+          path: `${process.cwd()}/public/ebooks/KINGDOM-LENDING.pdf`,
+        },
+      ];
+    }
 
-          <p>You now hold the blueprint to create financial transformation.</p>
-          <p>Remember — you don't need permission to start; you just need a plan and faith to act.<br/>
-          This eBook gives you both.</p>
-
-          <p>I can't wait to see what you create and how your journey unfolds!</p>
-          
-          <p style="margin-top: 30px;">With excitement and belief in you,<br/>
-          <strong>Sandra Nanyonga</strong><br/>
-          #THE CITY ENTREPRENEUR<br/>
-          Kampala, Uganda<br/>
-          Mobile: +256773298586 / 0703983855</p>
-          
-          <p style="font-style: italic; color: #6b7280; margin-top: 20px;">
-            PSALMS 23:1-6<br/>
-            THE LORD IS MY SHEPHERD
-          </p>
-          
-          <hr style="margin-top: 30px; border: none; border-top: 1px solid #e5e7eb;">
-          <p style="font-size: 12px; color: #6b7280;">
-            If you have any questions, contact us at info@tcedigitalinvestments.com
-          </p>
-        </div>
-      `,
-      // TODO: Add PDF attachment in next phase
-    });
-    console.log("✅ eBook email sent to", email);
+    await createResend().emails.send(emailConfig);
+    console.log(`✅ eBook email sent to ${email} for ${productData.title}`);
   } catch (error) {
     console.error("❌ eBook email send failed:", error);
     throw error;
@@ -81,7 +126,7 @@ async function sendEbookEmail(email, name, amount, orderId, productTitle) {
 }
 
 // Send COURSE enrollment email with academy instructions
-async function sendCourseEmail(email, name, amount, orderId) {
+async function sendCourseEmail(email, name, amount, orderId, productData) {
   try {
     await createResend().emails.send({
       from: "TCEDigital <no-reply@tcedigitalinvestments.com>",
@@ -104,12 +149,18 @@ async function sendCourseEmail(email, name, amount, orderId) {
             <p style="margin: 5px 0;"><strong>Status:</strong> Completed ✅</p>
           </div>
 
-          <p style="font-size: 18px; font-weight: bold; color: #16a34a;">Before we officially activate your access to the Academy, please complete these quick steps:</p>
+          <p style="font-size: 18px; font-weight: bold; color: #16a34a;">🎉 Your Enrollment Link is Ready!</p>
+
+          <div style="text-align: center; margin: 30px 0;">
+            <a href="${productData.enrollmentLink}" style="background-color: #16a34a; color: white; padding: 12px 25px; text-decoration: none; border-radius: 5px; font-weight: bold;">Begin Your Journey</a>
+          </div>
 
           <div style="background-color: #dbeafe; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #16a34a;">
-            <p style="margin: 10px 0;"><strong>📧 Step 1:</strong> Send your payment receipt to <a href="mailto:info@tcedigitalinvestments.com" style="color: #16a34a;">info@tcedigitalinvestments.com</a></p>
-            <p style="margin: 10px 0;"><strong>✉️ Step 2:</strong> Include <strong>${email}</strong> in that message (this is where we'll send your login details)</p>
-            <p style="margin: 10px 0;"><strong>⏰ Step 3:</strong> Our team will set up your account and send your Welcome Pack within 24-48 hours</p>
+            <p style="margin: 10px 0;"><strong>📧 Important Next Steps:</strong></p>
+            <p style="margin: 10px 0;">1. Click the button above to start your enrollment</p>
+            <p style="margin: 10px 0;">2. Complete your student profile</p>
+            <p style="margin: 10px 0;">3. Join our private community for daily support</p>
+            <p style="margin: 10px 0;">4. Watch for your Welcome Pack email within 24-48 hours</p>
           </div>
 
           <p>As a Wealth Builder, you're not just learning about money — you're learning how to steward it God's way, multiply it through venture capital and private equity, and create generational impact.</p>
@@ -131,6 +182,7 @@ async function sendCourseEmail(email, name, amount, orderId) {
           
           <hr style="margin-top: 30px; border: none; border-top: 1px solid #e5e7eb;">
           <p style="font-size: 12px; color: #6b7280;">
+            Need help? Contact us at info@tcedigitalinvestments.com<br/>
             #WealthBuildersAcademy #FaithDrivenFinance #KingdomWealth
           </p>
         </div>
@@ -289,14 +341,19 @@ export async function GET(req) {
         paymentStatus: paymentStatus,
       });
 
+      // Import products data and find the purchased product
+      const { products } = await import("@/components/Data/ebooks.js");
+      const purchasedProduct = products.find(
+        (p) => p.id === paymentData.productId,
+      );
+
       // Send confirmation email based on product type
-      if (paymentData.email) {
+      if (paymentData.email && purchasedProduct) {
         try {
-          const productType = paymentData.productType || "ebook";
-          const productTitle = paymentData.productTitle || "Your Purchase";
+          const productType = purchasedProduct.type || "ebook";
 
           console.log(
-            `📧 Sending ${productType} email to ${paymentData.email}`,
+            `📧 Sending ${productType} email for ${purchasedProduct.title} to ${paymentData.email}`,
           );
 
           if (productType === "course") {
@@ -305,6 +362,7 @@ export async function GET(req) {
               paymentData.name || paymentData.firstName,
               paymentData.amount,
               OrderMerchantReference,
+              purchasedProduct,
             );
           } else {
             await sendEbookEmail(
@@ -312,7 +370,7 @@ export async function GET(req) {
               paymentData.name || paymentData.firstName,
               paymentData.amount,
               OrderMerchantReference,
-              productTitle,
+              purchasedProduct,
             );
           }
         } catch (emailError) {
@@ -427,17 +485,24 @@ export async function POST(req) {
       });
 
       // Send confirmation email based on product type
-      if (paymentData.email) {
+      if (paymentData.email && paymentData.productId) {
         try {
-          const productType = paymentData.productType || "ebook";
-          const productTitle = paymentData.productTitle || "Your Purchase";
+          const { products } = await import("@/components/Data/ebooks.js");
+          const purchasedProduct = products.find(
+            (p) => p.id === paymentData.productId,
+          );
 
-          if (productType === "course") {
+          if (!purchasedProduct) {
+            throw new Error(`Product not found: ${paymentData.productId}`);
+          }
+
+          if (purchasedProduct.type === "course") {
             await sendCourseEmail(
               paymentData.email,
               paymentData.name,
               paymentData.amount,
               OrderMerchantReference,
+              purchasedProduct,
             );
           } else {
             await sendEbookEmail(
@@ -445,7 +510,7 @@ export async function POST(req) {
               paymentData.name,
               paymentData.amount,
               OrderMerchantReference,
-              productTitle,
+              purchasedProduct,
             );
           }
         } catch (emailError) {

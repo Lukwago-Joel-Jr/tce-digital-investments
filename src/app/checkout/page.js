@@ -2,6 +2,8 @@
 "use client";
 import { useState, useEffect, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
+import { FiActivity } from "react-icons/fi";
+import { FaSpinner } from "react-icons/fa";
 
 function CheckoutForm() {
   const searchParams = useSearchParams();
@@ -149,7 +151,9 @@ function CheckoutForm() {
   if (!ebook) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-gray-600">Loading...</div>
+        <div className="text-gray-600">
+          <FaSpinner size={40} />
+        </div>
       </div>
     );
   }
