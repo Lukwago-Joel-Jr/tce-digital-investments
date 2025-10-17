@@ -127,6 +127,7 @@ export default function EbookDetails({ params }) {
               </ul>
 
               <p className="text-xl font-semibold mb-6">$ {book.price} USD</p>
+              {/* <p>{book.productLink}</p> here the link works well */}
             </div>
 
             <div>

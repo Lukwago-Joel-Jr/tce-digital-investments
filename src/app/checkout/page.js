@@ -21,6 +21,7 @@ function CheckoutForm() {
     const ebookId = searchParams.get("id");
     const title = searchParams.get("title");
     const price = searchParams.get("price");
+    const productLink = searchParams.get("productLink"); // ⬅️ ADD THIS LINE
     const type = searchParams.get("type"); // ⬅️ ADD THIS LINE
 
     if (ebookId && title && price) {
@@ -29,6 +30,7 @@ function CheckoutForm() {
         title: decodeURIComponent(title),
         price: parseFloat(price),
         type: type || "ebook", // ⬅️ ADD THIS LINE
+        productLink: productLink || "", // ⬅️ ADD THIS LINE
       });
     } else {
       router.push("/cart");
