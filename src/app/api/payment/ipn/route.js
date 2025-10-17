@@ -1,547 +1,432 @@
 import { NextResponse } from "next/server";
 import { db } from "@/lib/firebase";
-import { doc, updateDoc, getDoc } from "firebase/firestore";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { Resend } from "resend";
-import { products } from "@/components/Data/ebooks";
 
-// PRODUCTION CREDENTIALS
+/**
+ * Server-safe Pesapal IPN route that:
+ * - accepts GET and POST notifications,
+ * - verifies transaction status with Pesapal,
+ * - updates Firestore payment record,
+ * - sends a product-specific email via Resend (always attempts to send),
+ * - attaches PDF from a public URL (base64) when available; falls back to link.
+ *
+ * NOTE: Keys are in-file as requested (no .env). Change them when needed.
+ */
+
+// --------------------------- CONFIG ---------------------------------
 const PESAPAL_CONSUMER_KEY = "h4bqR749515z64EVjMmdQxN8H2GHtrJl";
 const PESAPAL_CONSUMER_SECRET = "xUN9sR0nstcDHdwQTM8r4dg6uT0=";
 
-// PRODUCTION URLs
-const TOKEN_URL = "https://pay.pesapal.com/v3/api/Auth/RequestToken";
-const STATUS_URL =
+const PESAPAL_TOKEN_URL = "https://pay.pesapal.com/v3/api/Auth/RequestToken";
+const PESAPAL_STATUS_URL =
   "https://pay.pesapal.com/v3/api/Transactions/GetTransactionStatus";
 
-// Create Resend instance
+const RESEND_API_KEY = "re_19DUmfB7_AUuKTtcUksxxmvk9wgFQEjYX";
+
+// Site base used for public file links if you store PDFs in /public/ebooks
+const SITE_BASE_URL = "https://www.tcedigitalinvestments.com"; // change if needed
+
+// --------------------------- PRODUCTS (server-safe copy) -------------
+// Instead of importing from /components, we include a server-safe mapping.
+// Keep product.id, product.title, product.type ("ebook" | "course"), and ebookLink or enrollmentLink.
+const products = [
+  {
+    id: "KINGDOM-LENDING",
+    title: "Kingdom Lending Guide",
+    type: "ebook",
+    // public URL to the PDF hosted (recommended). Make sure this is reachable.
+    ebookLink: `${SITE_BASE_URL}/ebooks/KINGDOM-LENDING.pdf`,
+  },
+  {
+    id: "DIGITAL-ENTREPRENEURSHIP",
+    title: "Digital Entrepreneurship Guide",
+    type: "ebook",
+    // for digital entrepreneurship we prefer a link rather than an attachment
+    ebookLink:
+      "https://www.canva.com/design/DAGL1v3dPa8/71PPGveN4HWg_RKPj4E7OA/view",
+  },
+  {
+    id: "WEALTH-ACADEMY",
+    title: "Wealth Builder's Academy",
+    type: "course",
+    enrollmentLink: "https://academy.tcedigitalinvestments.com/enroll/ABC123",
+  },
+];
+
+// --------------------------- HELPERS --------------------------------
 function createResend() {
-  const key = "re_19DUmfB7_AUuKTtcUksxxmvk9wgFQEjYX";
-  return new Resend(key);
+  return new Resend(RESEND_API_KEY);
 }
 
-// Send EBOOK confirmation email with PDF attachment or link
-async function sendEbookEmail(email, name, amount, orderId, productTitle) {
-  try {
-    // Find the product based on its title
-    const product = products.find((p) => p.title === productTitle);
-    if (!product) {
-      throw new Error(`Product not found with title: ${productTitle}`);
-    }
-
-    const isKingdomLending = product.id === "KINGDOM-LENDING";
-    const isDigitalEntrepreneurship = product.id === "DIGITAL-ENTREPRENEURSHIP";
-
-    let emailConfig = {
-      from: "TCEDigital <no-reply@tcedigitalinvestments.com>",
-      to: email,
-      subject: isKingdomLending
-        ? "Your Kingdom Lending Guide is Here — Let's Build Biblical Wealth!"
-        : "Your Digital Entrepreneurship Guide is Here — Let's Turn Ideas Into Income!",
-      html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #16a34a;">Your ${productTitle} is Ready!</h2>
-          
-          <p>Hi ${name || "there"},</p>
-          
-          <p>Congratulations — you just took a powerful step toward ${
-            isKingdomLending
-              ? "building Kingdom wealth and creating impact!"
-              : "financial freedom and online success!"
-          }</p>
-          
-          ${
-            isKingdomLending
-              ? `<p>Your copy of <strong>${productTitle}</strong> and all bonus worksheets are attached to this email as a PDF.</p>`
-              : `<p>Your copy of <strong>${productTitle}</strong> is ready! Click the button below to access your guide:</p>
-                 <div style="text-align: center; margin: 30px 0;">
-                   <a href="${product.ebookLink}" style="background-color: #16a34a; color: white; padding: 12px 25px; text-decoration: none; border-radius: 5px; font-weight: bold;">Access Your Guide</a>
-                 </div>`
-          }
-          
-          <div style="background-color: #f3f4f6; padding: 15px; border-radius: 8px; margin: 20px 0;">
-            <p style="margin: 5px 0;"><strong>Order ID:</strong> ${orderId}</p>
-            <p style="margin: 5px 0;"><strong>Amount Paid:</strong> $${(amount || 0).toFixed(2)} USD</p>
-            <p style="margin: 5px 0;"><strong>Status:</strong> Completed ✅</p>
-          </div>
-
-          <p><strong>Here's what to do next:</strong></p>
-          <ul style="line-height: 1.8;">
-            ${
-              isKingdomLending
-                ? `<li>Download and save the PDF attachment</li>
-                   <li>Print the bonus worksheets for your lending business</li>
-                   <li>Start with the first module and implement as you go</li>`
-                : `<li>Click the access button above to view your guide</li>
-                   <li>Bookmark the link for easy access</li>
-                   <li>Start with Module 1 and take action immediately</li>`
-            }
-            <li>Follow us on Instagram for daily motivation and success stories</li>
-          </ul>
-
-          <p>${
-            isKingdomLending
-              ? "You now hold the blueprint to create Kingdom wealth through lending."
-              : "You now have the roadmap to create digital products and passive income."
-          }</p>
-          
-          <p>Remember — you don't need permission to start; you just need a plan and faith to act.<br/>
-          This guide gives you both.</p>
-
-          <p>I can't wait to see what you create and how your journey unfolds!</p>
-          
-          <p style="margin-top: 30px;">With excitement and belief in you,<br/>
-          <strong>Sandra Nanyonga</strong><br/>
-          #THE CITY ENTREPRENEUR<br/>
-          Kampala, Uganda<br/>
-          Mobile: +256773298586 / 0703983855</p>
-          
-          <p style="font-style: italic; color: #6b7280; margin-top: 20px;">
-            PSALMS 23:1-6<br/>
-            THE LORD IS MY SHEPHERD
-          </p>
-          
-          <hr style="margin-top: 30px; border: none; border-top: 1px solid #e5e7eb;">
-          <p style="font-size: 12px; color: #6b7280;">
-            If you have any questions, contact us at info@tcedigitalinvestments.com
-          </p>
-        </div>
-      `,
-    };
-
-    // Add PDF attachment for Kingdom Lending
-    if (isKingdomLending) {
-      emailConfig.attachments = [
-        {
-          filename: "KINGDOM-LENDING.pdf",
-          path: `${process.cwd()}/public/ebooks/KINGDOM-LENDING.pdf`,
-        },
-      ];
-    }
-
-    await createResend().emails.send(emailConfig);
-    console.log(`✅ eBook email sent to ${email} for ${productTitle}`);
-  } catch (error) {
-    console.error("❌ eBook email send failed:", error);
-    throw error;
+async function fetchPesapalToken() {
+  const res = await fetch(PESAPAL_TOKEN_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json", Accept: "application/json" },
+    body: JSON.stringify({
+      consumer_key: PESAPAL_CONSUMER_KEY,
+      consumer_secret: PESAPAL_CONSUMER_SECRET,
+    }),
+  });
+  if (!res.ok) {
+    const txt = await res.text().catch(() => null);
+    throw new Error(`Pesapal token request failed: ${res.status} ${txt || ""}`);
   }
+  const data = await res.json();
+  if (!data?.token) throw new Error("Pesapal token not returned");
+  return data.token;
 }
 
-// Send COURSE enrollment email with academy instructions
-async function sendCourseEmail(email, name, amount, orderId, productTitle) {
-  try {
-    // Find the course product based on title
-    const courseProduct = products.find((p) => p.title === productTitle);
-    if (!courseProduct) {
-      throw new Error(`Course not found with title: ${productTitle}`);
-    }
-
-    await createResend().emails.send({
-      from: "TCEDigital <no-reply@tcedigitalinvestments.com>",
-      to: email,
-      subject:
-        "Welcome to Wealth Builder's Academy — Let's Start Building Kingdom Wealth Together!",
-      html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #16a34a;">Welcome to Wealth Builder's Academy!</h2>
-          
-          <p>Hi ${name || "there"},</p>
-          
-          <p>Congratulations and welcome to Wealth Builder's Academy!</p>
-          
-          <p>You've just made one of the most powerful investments in your financial future — and I'm so proud of you for taking this step. This is where Kingdom-minded investors are raised, and financial legacies are built with wisdom, excellence, and purpose.</p>
-
-          <div style="background-color: #f3f4f6; padding: 15px; border-radius: 8px; margin: 20px 0;">
-            <p style="margin: 5px 0;"><strong>Order ID:</strong> ${orderId}</p>
-            <p style="margin: 5px 0;"><strong>Amount Paid:</strong> $${(amount || 0).toFixed(2)} USD</p>
-            <p style="margin: 5px 0;"><strong>Status:</strong> Completed ✅</p>
-          </div>
-
-          <p style="font-size: 18px; font-weight: bold; color: #16a34a;">🎉 Your Enrollment Link is Ready!</p>
-
-          <div style="text-align: center; margin: 30px 0;">
-            <a href="${courseProduct.enrollmentLink}" style="background-color: #16a34a; color: white; padding: 12px 25px; text-decoration: none; border-radius: 5px; font-weight: bold;">Begin Your Journey</a>
-          </div>
-
-          <div style="background-color: #dbeafe; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #16a34a;">
-            <p style="margin: 10px 0;"><strong>📧 Important Next Steps:</strong></p>
-            <p style="margin: 10px 0;">1. Click the button above to start your enrollment</p>
-            <p style="margin: 10px 0;">2. Complete your student profile</p>
-            <p style="margin: 10px 0;">3. Join our private community for daily support</p>
-            <p style="margin: 10px 0;">4. Watch for your Welcome Pack email within 24-48 hours</p>
-          </div>
-
-          <p>As a Wealth Builder, you're not just learning about money — you're learning how to steward it God's way, multiply it through venture capital and private equity, and create generational impact.</p>
-
-          <p>I can't wait to walk this journey with you.<br/>
-          Get ready for transformation, growth, and divine financial acceleration!</p>
-          
-          <p style="margin-top: 30px;">With excitement and faith,<br/>
-          <strong>Sandra Nanyonga</strong><br/>
-          Founder, Wealth Builder's Academy<br/>
-          #THE CITY ENTREPRENEUR<br/>
-          Kampala, Uganda<br/>
-          Mobile: +256773298586 / 0703983855</p>
-          
-          <p style="font-style: italic; color: #6b7280; margin-top: 20px;">
-            PSALMS 23:1-6<br/>
-            THE LORD IS MY SHEPHERD
-          </p>
-          
-          <hr style="margin-top: 30px; border: none; border-top: 1px solid #e5e7eb;">
-          <p style="font-size: 12px; color: #6b7280;">
-            Need help? Contact us at info@tcedigitalinvestments.com<br/>
-            #WealthBuildersAcademy #FaithDrivenFinance #KingdomWealth
-          </p>
-        </div>
-      `,
-    });
-    console.log("✅ Course enrollment email sent to", email);
-  } catch (error) {
-    console.error("❌ Course email send failed:", error);
-    throw error;
-  }
-}
-
-// Verify payment status with Pesapal
 async function verifyPaymentStatus(orderTrackingId) {
-  try {
-    console.log("\n🔍 Verifying payment status with Pesapal...");
-
-    // Get authentication token
-    const tokenRes = await fetch(TOKEN_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify({
-        consumer_key: PESAPAL_CONSUMER_KEY,
-        consumer_secret: PESAPAL_CONSUMER_SECRET,
-      }),
-    });
-
-    if (!tokenRes.ok) {
-      throw new Error("Failed to get authentication token");
-    }
-
-    const tokenData = await tokenRes.json();
-
-    if (!tokenData.token) {
-      throw new Error("No token received from Pesapal");
-    }
-
-    // Get transaction status
-    const statusUrl = `${STATUS_URL}?orderTrackingId=${orderTrackingId}`;
-
-    const statusRes = await fetch(statusUrl, {
+  const token = await fetchPesapalToken();
+  const statusRes = await fetch(
+    `${PESAPAL_STATUS_URL}?orderTrackingId=${orderTrackingId}`,
+    {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
-        Authorization: `Bearer ${tokenData.token}`,
+        Authorization: `Bearer ${token}`,
       },
-    });
+    },
+  );
+  if (!statusRes.ok) {
+    const txt = await statusRes.text().catch(() => null);
+    throw new Error(
+      `Pesapal status request failed: ${statusRes.status} ${txt || ""}`,
+    );
+  }
+  const statusData = await statusRes.json();
+  return statusData;
+}
 
-    if (!statusRes.ok) {
-      throw new Error("Failed to get transaction status");
+/**
+ * Try to fetch a public file and return { filename, base64 } or null on failure.
+ * We do this to avoid relying on process.cwd() or local filesystem.
+ */
+async function fetchAttachmentBase64(url) {
+  try {
+    const res = await fetch(url);
+    if (!res.ok) throw new Error(`Failed to fetch file: ${res.status}`);
+    const buffer = await res.arrayBuffer();
+    const bytes = new Uint8Array(buffer);
+    // Convert to base64
+    let binary = "";
+    const chunkSize = 0x8000;
+    for (let i = 0; i < bytes.length; i += chunkSize) {
+      binary += String.fromCharCode.apply(
+        null,
+        Array.prototype.slice.call(
+          bytes,
+          i,
+          Math.min(i + chunkSize, bytes.length),
+        ),
+      );
     }
-
-    const statusData = await statusRes.json();
-    console.log("📦 Payment Status from Pesapal:", statusData);
-
-    return statusData;
-  } catch (error) {
-    console.error("❌ Payment verification failed:", error);
-    throw error;
+    const base64 =
+      typeof btoa === "function"
+        ? btoa(binary)
+        : Buffer.from(binary, "binary").toString("base64");
+    // derive filename from url
+    const filename = url.split("/").pop().split("?")[0] || "attachment.pdf";
+    return { filename, content: base64 };
+  } catch (err) {
+    console.warn("⚠️ fetchAttachmentBase64 failed:", err.message || err);
+    return null;
   }
 }
 
-// Handle GET IPN (Pesapal sends notifications as GET)
+// --------------------------- EMAILS ---------------------------------
+async function sendEbookEmail({ to, name, amount, orderId, product }) {
+  const resend = createResend();
+  const subject = `Your ${product.title} is ready — TCEDigital`;
+  let html = `
+    <div style="font-family: Arial, sans-serif; max-width:600px; margin:0 auto;">
+      <h2 style="color:#16a34a">Your ${product.title} is Ready!</h2>
+      <p>Hi ${name || "there"},</p>
+      <p>Thank you for your purchase. Your order ID is <strong>${orderId}</strong>.</p>
+      <p>Amount: $${(amount || 0).toFixed(2)} USD</p>
+  `;
+
+  // If we have an ebookLink, show an access button and attempt to attach if public
+  if (product.ebookLink) {
+    html += `
+      <p>Please use the link below to access your guide:</p>
+      <div style="text-align:center; margin:20px 0;">
+        <a href="${product.ebookLink}" style="background-color:#16a34a;color:#fff;padding:12px 20px;border-radius:6px;text-decoration:none;font-weight:bold;">Access Your Guide</a>
+      </div>
+    `;
+  }
+
+  html += `
+      <p>Start with the first module and take action immediately.</p>
+      <p>With excitement,<br/><strong>Sandra Nanyonga</strong></p>
+    </div>
+  `;
+
+  // Attempt to fetch & attach file if product has an ebookLink that looks like a direct PDF URL
+  let attachments;
+  if (product.ebookLink && product.ebookLink.toLowerCase().endsWith(".pdf")) {
+    const fetched = await fetchAttachmentBase64(product.ebookLink);
+    if (fetched) {
+      attachments = [
+        {
+          filename: fetched.filename,
+          // Resend accepts base64 in `content`.
+          content: fetched.content,
+          // optional contentType:
+          // contentType: "application/pdf"
+        },
+      ];
+    }
+  }
+
+  // send (attachment if available)
+  await resend.emails.send({
+    from: "TCEDigital <no-reply@tcedigitalinvestments.com>",
+    to,
+    subject,
+    html,
+    ...(attachments ? { attachments } : {}),
+  });
+  return true;
+}
+
+async function sendCourseEmail({ to, name, amount, orderId, product }) {
+  const resend = createResend();
+  const subject = `Welcome to ${product.title} — TCEDigital`;
+  const html = `
+    <div style="font-family: Arial, sans-serif; max-width:600px; margin:0 auto;">
+      <h2 style="color:#16a34a">Welcome to ${product.title}!</h2>
+      <p>Hi ${name || "there"},</p>
+      <p>Thank you for enrolling. Order ID: <strong>${orderId}</strong>.</p>
+      <p>Amount: $${(amount || 0).toFixed(2)} USD</p>
+      <div style="text-align:center; margin:20px 0;">
+        <a href="${product.enrollmentLink}" style="background-color:#16a34a;color:#fff;padding:12px 20px;border-radius:6px;text-decoration:none;font-weight:bold;">Begin Your Journey</a>
+      </div>
+      <p>Our team will activate your account if any manual steps are required.</p>
+      <p>With excitement,<br/><strong>Sandra Nanyonga</strong></p>
+    </div>
+  `;
+  await resend.emails.send({
+    from: "TCEDigital <no-reply@tcedigitalinvestments.com>",
+    to,
+    subject,
+    html,
+  });
+  return true;
+}
+
+// Unified email sender; guarantees an attempt is made, logs result and writes to Firestore.
+async function sendProductEmail(paymentDocRef, paymentData, product) {
+  const to = paymentData.email;
+  const name = paymentData.name || paymentData.firstName || "";
+  const amount = paymentData.amount || 0;
+  const orderId =
+    paymentDocRef.id || paymentData.merchantReference || paymentData.orderId;
+
+  if (!to) throw new Error("No recipient email on payment record");
+
+  try {
+    if (product.type === "course") {
+      await sendCourseEmail({ to, name, amount, orderId, product });
+    } else {
+      await sendEbookEmail({ to, name, amount, orderId, product });
+    }
+    // mark email sent in Firestore
+    await updateDoc(paymentDocRef, {
+      emailSent: true,
+      emailSentAt: new Date().toISOString(),
+    });
+    console.log("📩 Product email sent to", to);
+    return true;
+  } catch (err) {
+    console.error("❌ sendProductEmail failed:", err.message || err);
+    // update Firestore so you can see the failure
+    await updateDoc(paymentDocRef, {
+      emailSent: false,
+      emailError: (err && err.message) || String(err),
+      updatedAt: new Date().toISOString(),
+    });
+    // rethrow so caller can handle if needed
+    throw err;
+  }
+}
+
+// --------------------------- ROUTE HANDLERS -------------------------
+async function handleIpn({ OrderTrackingId, OrderMerchantReference }) {
+  if (!OrderMerchantReference || !OrderTrackingId) {
+    throw new Error("Missing OrderMerchantReference or OrderTrackingId");
+  }
+
+  // load payment record from Firestore
+  const paymentRef = doc(db, "payments", OrderMerchantReference);
+  const snap = await getDoc(paymentRef);
+  if (!snap.exists()) {
+    throw new Error(`Payment record not found: ${OrderMerchantReference}`);
+  }
+  const paymentData = snap.data();
+
+  // if already completed, still attempt to send email if not sent
+  if (paymentData.status === "COMPLETED") {
+    console.log("ℹ️ Payment already completed:", OrderMerchantReference);
+    // if email not sent, try to send
+    const productTitle = paymentData.productTitle;
+    const product =
+      products.find((p) => p.title === productTitle) ||
+      products.find((p) => p.id === paymentData.productId);
+    if (product && !paymentData.emailSent) {
+      await sendProductEmail(paymentRef, paymentData, product).catch((err) => {
+        console.warn(
+          "⚠️ Could not send email for already-completed payment:",
+          err.message || err,
+        );
+      });
+    }
+    return { alreadyCompleted: true };
+  }
+
+  // verify with Pesapal
+  const statusData = await verifyPaymentStatus(OrderTrackingId);
+  console.log("🔎 Pesapal statusData:", statusData);
+
+  // Determining payment status: Pesapal returns payment_status_description or status_code etc.
+  const payment_status_description =
+    statusData.payment_status_description ||
+    statusData.payment_status ||
+    statusData.status_description;
+  const status_code =
+    statusData.status_code ??
+    statusData.payment_status_code ??
+    statusData.status;
+  const isCompleted =
+    payment_status_description === "COMPLETED" ||
+    payment_status_description === "Completed" ||
+    status_code === 1 ||
+    String(status_code) === "1" ||
+    String(payment_status_description).toLowerCase() === "completed";
+
+  const newDocData = {
+    pesapalTrackingId: OrderTrackingId,
+    paymentStatusRaw: statusData,
+    paymentStatus: payment_status_description ?? status_code,
+    updatedAt: new Date().toISOString(),
+  };
+
+  if (isCompleted) {
+    newDocData.status = "COMPLETED";
+    newDocData.completedAt = new Date().toISOString();
+  } else {
+    newDocData.status =
+      payment_status_description === "PENDING" || status_code === 0
+        ? "PENDING"
+        : "FAILED";
+  }
+
+  // Update Firestore with status
+  await updateDoc(paymentRef, newDocData);
+
+  // If completed, send the appropriate email (this is NOT optional)
+  if (isCompleted) {
+    // choose product by productTitle, productId, or fallback to 'ebook'
+    const productTitle = paymentData.productTitle || paymentData.product_name;
+    const productId = paymentData.productId;
+    let product = null;
+    if (productTitle) product = products.find((p) => p.title === productTitle);
+    if (!product && productId)
+      product = products.find((p) => p.id === productId);
+    if (!product) {
+      // fallback to generic ebook if nothing matched
+      product = products.find((p) => p.type === "ebook") || products[0];
+      console.warn(
+        "⚠️ Product not found by title/id; defaulting to:",
+        product.title,
+      );
+    }
+
+    // ensure we attempt to send email and capture result in Firestore
+    try {
+      await sendProductEmail(paymentRef, paymentData, product);
+    } catch (emailErr) {
+      // already recorded in sendProductEmail; continue
+      console.error(
+        "⚠️ Email attempt failed after successful payment:",
+        emailErr.message || emailErr,
+      );
+    }
+  }
+
+  return { processed: true, isCompleted };
+}
+
+// Accept both GET (Pesapal sometimes uses GET) and POST bodies.
 export async function GET(req) {
   try {
-    const searchParams = req.nextUrl.searchParams;
+    const url = new URL(req.url);
+    const OrderTrackingId =
+      url.searchParams.get("OrderTrackingId") ||
+      url.searchParams.get("orderTrackingId");
+    const OrderMerchantReference =
+      url.searchParams.get("OrderMerchantReference") ||
+      url.searchParams.get("merchantReference") ||
+      url.searchParams.get("orderMerchantReference");
 
-    const OrderTrackingId = searchParams.get("OrderTrackingId");
-    const OrderMerchantReference = searchParams.get("OrderMerchantReference");
-    const OrderNotificationType = searchParams.get("OrderNotificationType");
+    console.log("📥 IPN GET:", { OrderTrackingId, OrderMerchantReference });
 
-    console.log("\n💳 IPN Notification (GET):", {
-      OrderTrackingId,
-      OrderMerchantReference,
-      OrderNotificationType,
-    });
-
-    if (!OrderMerchantReference || !OrderTrackingId) {
-      console.error("❌ Missing required parameters");
+    if (!OrderTrackingId || !OrderMerchantReference) {
       return NextResponse.json(
         { error: "Missing parameters" },
         { status: 400 },
       );
     }
 
-    // Get payment record from Firestore
-    const paymentRef = doc(db, "payments", OrderMerchantReference);
-    const snapshot = await getDoc(paymentRef);
-
-    if (!snapshot.exists()) {
-      console.error("❌ Payment record not found:", OrderMerchantReference);
-      return NextResponse.json(
-        { error: "Payment record not found" },
-        { status: 404 },
-      );
-    }
-
-    const paymentData = snapshot.data();
-    console.log("📦 Payment record found:", {
-      id: OrderMerchantReference,
-      currentStatus: paymentData.status,
-      productType: paymentData.productType || "ebook",
-    });
-
-    // Check if already completed
-    if (paymentData.status === "COMPLETED") {
-      console.log("ℹ️ Payment already completed");
-      return NextResponse.json({
-        message: "Payment already completed",
-      });
-    }
-
-    // CRITICAL: Verify payment status with Pesapal
-    let paymentStatus;
-    try {
-      const statusData = await verifyPaymentStatus(OrderTrackingId);
-      paymentStatus =
-        statusData.payment_status_description || statusData.status_code;
-
-      console.log("✅ Verified payment status:", paymentStatus);
-    } catch (verifyError) {
-      console.error("❌ Failed to verify payment:", verifyError);
-
-      // Update as FAILED if verification fails
-      await updateDoc(paymentRef, {
-        status: "FAILED",
-        failureReason: "Payment verification failed",
-        pesapalTrackingId: OrderTrackingId,
-        updatedAt: new Date().toISOString(),
-      });
-
-      return NextResponse.json(
-        { error: "Payment verification failed" },
-        { status: 500 },
-      );
-    }
-
-    // Check if payment was actually completed
-    const isCompleted =
-      paymentStatus === "COMPLETED" ||
-      paymentStatus === "Completed" ||
-      paymentStatus === 1; // Pesapal returns 1 for completed
-
-    if (isCompleted) {
-      // Payment is COMPLETED
-      console.log("✅ Payment verified as COMPLETED");
-
-      await updateDoc(paymentRef, {
-        status: "COMPLETED",
-        pesapalTrackingId: OrderTrackingId,
-        completedAt: new Date().toISOString(),
-        paymentStatus: paymentStatus,
-      });
-
-      // Send confirmation email based on product type
-      if (paymentData.email) {
-        try {
-          const productTitle = paymentData.productTitle;
-          if (!productTitle) {
-            throw new Error("Product title is required for sending emails");
-          }
-
-          // Find product in our catalog
-          const product = products.find((p) => p.title === productTitle);
-          if (!product) {
-            throw new Error(`Product not found with title: ${productTitle}`);
-          }
-
-          console.log(
-            `📧 Sending ${product.type} email to ${paymentData.email} for ${productTitle}`,
-          );
-
-          if (product.type === "course") {
-            await sendCourseEmail(
-              paymentData.email,
-              paymentData.name || paymentData.firstName,
-              paymentData.amount,
-              OrderMerchantReference,
-              productTitle,
-            );
-          } else {
-            await sendEbookEmail(
-              paymentData.email,
-              paymentData.name || paymentData.firstName,
-              paymentData.amount,
-              OrderMerchantReference,
-              productTitle,
-            );
-          }
-        } catch (emailError) {
-          console.error("⚠️ Email failed but payment is complete:", emailError);
-        }
-      }
-
-      return NextResponse.json({
-        message: "Payment completed successfully",
-        orderId: OrderMerchantReference,
-        status: "COMPLETED",
-      });
-    } else {
-      // Payment FAILED or PENDING
-      const status =
-        paymentStatus === "PENDING" || paymentStatus === 0
-          ? "PENDING"
-          : "FAILED";
-
-      console.log(`⚠️ Payment not completed. Status: ${status}`);
-
-      await updateDoc(paymentRef, {
-        status: status,
-        pesapalTrackingId: OrderTrackingId,
-        paymentStatus: paymentStatus,
-        updatedAt: new Date().toISOString(),
-        failureReason:
-          paymentStatus !== "PENDING"
-            ? `Payment ${status.toLowerCase()}`
-            : undefined,
-      });
-
-      return NextResponse.json({
-        message: `Payment status: ${status}`,
-        orderId: OrderMerchantReference,
-        status: status,
-      });
-    }
-  } catch (error) {
-    console.error("❌ IPN Error:", error);
+    const result = await handleIpn({ OrderTrackingId, OrderMerchantReference });
+    return NextResponse.json({ ok: true, result }, { status: 200 });
+  } catch (err) {
+    console.error("🔥 GET IPN ERROR:", err);
     return NextResponse.json(
-      { error: "IPN processing failed", message: error.message },
+      { error: (err && err.message) || String(err) },
       { status: 500 },
     );
   }
 }
 
-// Handle POST IPN (backup)
 export async function POST(req) {
   try {
     const body = await req.json();
-    console.log("\n💳 IPN Notification (POST):", body);
+    console.log("📥 IPN POST raw body:", body);
 
+    // Body shape may vary — check multiple keys
+    const OrderTrackingId =
+      body.OrderTrackingId ||
+      body.order_tracking_id ||
+      body.tracking_id ||
+      body.orderTrackingId;
     const OrderMerchantReference =
       body.OrderMerchantReference ||
       body.order_merchant_reference ||
-      body.merchant_reference;
+      body.merchant_reference ||
+      body.merchantReference;
 
-    const OrderTrackingId =
-      body.OrderTrackingId || body.order_tracking_id || body.tracking_id;
-
-    if (!OrderMerchantReference || !OrderTrackingId) {
+    if (!OrderTrackingId || !OrderMerchantReference) {
+      console.warn("⚠️ IPN POST missing tracking or merchant ref", {
+        OrderTrackingId,
+        OrderMerchantReference,
+        body,
+      });
       return NextResponse.json(
         { error: "Missing parameters" },
         { status: 400 },
       );
     }
 
-    // Get payment record
-    const paymentRef = doc(db, "payments", OrderMerchantReference);
-    const snapshot = await getDoc(paymentRef);
-
-    if (!snapshot.exists()) {
-      console.error("❌ Payment not found:", OrderMerchantReference);
-      return NextResponse.json({ error: "Payment not found" }, { status: 404 });
-    }
-
-    const paymentData = snapshot.data();
-
-    if (paymentData.status === "COMPLETED") {
-      return NextResponse.json({ message: "Already completed" });
-    }
-
-    // Verify payment status
-    let paymentStatus;
-    try {
-      const statusData = await verifyPaymentStatus(OrderTrackingId);
-      paymentStatus =
-        statusData.payment_status_description || statusData.status_code;
-    } catch (verifyError) {
-      await updateDoc(paymentRef, {
-        status: "FAILED",
-        failureReason: "Verification failed",
-        updatedAt: new Date().toISOString(),
-      });
-      return NextResponse.json(
-        { error: "Verification failed" },
-        { status: 500 },
-      );
-    }
-
-    const isCompleted =
-      paymentStatus === "COMPLETED" ||
-      paymentStatus === "Completed" ||
-      paymentStatus === 1;
-
-    if (isCompleted) {
-      await updateDoc(paymentRef, {
-        status: "COMPLETED",
-        pesapalTrackingId: OrderTrackingId,
-        completedAt: new Date().toISOString(),
-      });
-
-      // Send confirmation email based on product type
-      if (paymentData.email) {
-        try {
-          const productType = paymentData.productType || "ebook";
-          const productTitle = paymentData.productTitle || "Your Purchase";
-
-          // Find product in our catalog
-          const product = products.find((p) => p.title === productTitle);
-          if (!product) {
-            throw new Error(`Product not found with title: ${productTitle}`);
-          }
-
-          if (product.type === "course") {
-            await sendCourseEmail(
-              paymentData.email,
-              paymentData.name,
-              paymentData.amount,
-              OrderMerchantReference,
-              productTitle,
-            );
-          } else {
-            await sendEbookEmail(
-              paymentData.email,
-              paymentData.name,
-              paymentData.amount,
-              OrderMerchantReference,
-              productTitle,
-            );
-          }
-        } catch (emailError) {
-          console.error("⚠️ Email failed:", emailError);
-        }
-      }
-
-      return NextResponse.json({ message: "Payment completed" });
-    } else {
-      const status = paymentStatus === "PENDING" ? "PENDING" : "FAILED";
-
-      await updateDoc(paymentRef, {
-        status: status,
-        paymentStatus: paymentStatus,
-        updatedAt: new Date().toISOString(),
-      });
-
-      return NextResponse.json({ message: `Payment ${status}` });
-    }
-  } catch (error) {
-    console.error("❌ POST IPN Error:", error);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    const result = await handleIpn({ OrderTrackingId, OrderMerchantReference });
+    return NextResponse.json({ ok: true, result }, { status: 200 });
+  } catch (err) {
+    console.error("🔥 POST IPN ERROR:", err);
+    return NextResponse.json(
+      { error: (err && err.message) || String(err) },
+      { status: 500 },
+    );
   }
 }
