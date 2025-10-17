@@ -2,7 +2,6 @@
 "use client";
 import { useState, useEffect, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
-import { FiActivity } from "react-icons/fi";
 import { FaSpinner } from "react-icons/fa";
 
 function CheckoutForm() {
@@ -17,22 +16,6 @@ function CheckoutForm() {
     phoneNumber: "256",
   });
   const [errors, setErrors] = useState({});
-
-  // useEffect(() => {
-  //   const ebookId = searchParams.get("id");
-  //   const title = searchParams.get("title");
-  //   const price = searchParams.get("price");
-
-  //   if (ebookId && title && price) {
-  //     setEbook({
-  //       id: parseInt(ebookId),
-  //       title: decodeURIComponent(title),
-  //       price: parseFloat(price),
-  //     });
-  //   } else {
-  //     router.push("/cart");
-  //   }
-  // }, [searchParams, router]);
 
   useEffect(() => {
     const ebookId = searchParams.get("id");
@@ -102,25 +85,13 @@ function CheckoutForm() {
     try {
       console.log("🛒 Processing checkout for:", ebook.title);
 
-      // const res = await fetch("/cart/buy", {
-      //   method: "POST",
-      //   headers: { "Content-Type": "application/json" },
-      //   body: JSON.stringify({
-      //     ebookId: ebook.id,
-      //     customerName: formData.customerName.trim(),
-      //     customerEmail: formData.customerEmail.trim(),
-      //     phoneNumber: formData.phoneNumber.trim(),
-      //     amount: ebook.price,
-      //   }),
-      // });
-
       const res = await fetch("/cart/buy", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ebookId: ebook.id,
-          productType: ebook.type, // ⬅️ ADD THIS LINE
-          productTitle: ebook.title, // ⬅️ ADD THIS LINE (helpful for emails later)
+          productType: ebook.type,
+          productTitle: ebook.title,
           customerName: formData.customerName.trim(),
           customerEmail: formData.customerEmail.trim(),
           phoneNumber: formData.phoneNumber.trim(),
@@ -196,12 +167,6 @@ function CheckoutForm() {
                 </div>
               </div>
             </div>
-
-            {/* <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
-              <p className="text-xs text-blue-800">
-                📧 Your ebook will be delivered to your email after payment.
-              </p>
-            </div> */}
 
             <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
               <p className="text-xs text-blue-800">
@@ -305,8 +270,6 @@ function CheckoutForm() {
                     : "bg-green-600 hover:bg-green-700 text-white"
                 }`}
               >
-                {/* {loading ? "Processing..." : `Pay $${ebook.price.toFixed(2)}`} */}
-
                 {loading
                   ? "Processing..."
                   : ebook.type === "course"
