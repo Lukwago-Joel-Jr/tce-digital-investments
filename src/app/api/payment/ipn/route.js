@@ -33,52 +33,92 @@ async function sendEbookEmail(
       to: email,
       subject: `Your ${productTitle} eBook is Here — Let's Turn Ideas Into Income!`,
       html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #16a34a;">Your eBook is Ready!</h2>
-          
-          <p>Hi ${name || "there"},</p>
-          
-          <p>Congratulations — you just took a powerful step toward financial freedom and online success!</p>
-          
-          <p>Your copy of <strong>${productTitle}</strong> is attached to this email as a PDF.</p>
-           <a href="${productLink}" target="_blank" style="color: #16a34a;">
-            Click here to download your eBook
-          </a>
-          <div style="background-color: #f3f4f6; padding: 15px; border-radius: 8px; margin: 20px 0;">
-            <p style="margin: 5px 0;"><strong>Order ID:</strong> ${orderId}</p>
-            <p style="margin: 5px 0;"><strong>Amount Paid:</strong> $${(amount || 0).toFixed(2)} USD</p>
-            <p style="margin: 5px 0;"><strong>Status:</strong> Completed ✅</p>
-          </div>
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background-color: #ffffff; border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden;">
+    
+    <div style="background-color: #166534; padding: 20px 30px; text-align: center;"> 
+        <h2 style="color: #ffffff; font-size: 28px; margin: 0; font-weight: bold;">
+            🎉 Your eBook is Ready! Get Started Now! 🚀
+        </h2>
+    </div>
 
-          <p><strong>Here's what to do next:</strong></p>
-          <ul style="line-height: 1.8;">
-            <li>Download the PDF attachment below</li>
-            <li>Read one section at a time — take action as you go</li>
-            <li>Follow us on Instagram for daily motivation and success stories</li>
-          </ul>
+    <div style="padding: 20px 30px;">
+        <p style="color: #374151; font-size: 16px; margin-top: 0;">
+            Hi ${name || "there"},
+        </p>
 
-          <p>You now hold the blueprint to create financial transformation.</p>
-          <p>Remember — you don't need permission to start; you just need a plan and faith to act.<br/>
-          This eBook gives you both.</p>
+        <p style="color: #374151; font-size: 16px;">
+            Congratulations — you just took a powerful step toward financial freedom 💰 and online success! We're excited for you to dive in. 🎉
+        </p>
+    </div>
 
-          <p>I can't wait to see what you create and how your journey unfolds!</p>
-          
-          <p style="margin-top: 30px;">With excitement and belief in you,<br/>
-          <strong>Sandra Nanyonga</strong><br/>
-          #THE CITY ENTREPRENEUR<br/>
-          Kampala, Uganda<br/>
-          Mobile: +256773298586 / 0703983855</p>
-          
-          <p style="font-style: italic; color: #6b7280; margin-top: 20px;">
-            PSALMS 23:1-6<br/>
-            THE LORD IS MY SHEPHERD
-          </p>
-          
-          <hr style="margin-top: 30px; border: none; border-top: 1px solid #e5e7eb;">
-          <p style="font-size: 12px; color: #6b7280;">
-            If you have any questions, contact us at info@tcedigitalinvestments.com
-          </p>
+    <div style="width: 100%; background: #e0f2f1; padding: 0; border-top: 5px solid #16a34a;">
+        <img src="https://images.pexels.com/photos/6969962/pexels-photo-6969962.jpeg" alt="Empowerment and Success Image" style="width: 100%; height: auto; display: block; object-fit: cover;">
+    </div>
+
+    <div style="padding: 20px 30px;">
+        <p style="color: #374151; font-size: 16px;">
+            Your exclusive copy of <strong>${productTitle}</strong> is attached to this email as a PDF.
+        </p>
+
+        <div style="text-align: center; margin: 30px 0;">
+            <a href="${productLink}" target="_blank" style="
+                display: inline-block;
+                padding: 15px 30px;
+                background-color: #16a34a;
+                color: #ffffff;
+                text-decoration: none;
+                font-weight: bold;
+                border-radius: 8px;
+                font-size: 18px;
+                border: 1px solid #16a34a;
+                box-shadow: 0 4px 10px rgba(22, 163, 74, 0.4);
+            ">
+                ⬇️ Click Here to Download Your eBook
+            </a>
         </div>
+        
+        <p style="color: #374151; font-size: 16px; font-weight: bold; margin-top: 30px;">
+            Here's what to do next:
+        </p>
+        <ul style="line-height: 1.8; color: #4b5563; padding-left: 20px;">
+            <li style="margin-bottom: 8px;">Download the PDF attachment or use the button above. ✅</li>
+            <li style="margin-bottom: 8px;">Read one section at a time — take action as you go! 🧠</li>
+            <li>
+                <a href="https://www.instagram.com/the.cityentrepreneur/" target="_blank" style="color: #16a34a; text-decoration: none; font-weight: bold;">Follow us on Instagram</a> for daily motivation and success stories. 📸
+            </li>
+        </ul>
+
+        <p style="color: #374151; font-size: 16px; margin-top: 25px;">
+            You now hold the blueprint to create financial transformation.
+        </p>
+        <p style="color: #374151; font-size: 16px;">
+            Remember — you don't need permission to start; you just need a plan and faith to act. This eBook gives you both. I can't wait to see what you create and how your journey unfolds! 🌟
+        </p>
+
+        <p style="margin-top: 40px; color: #374151;">
+            With excitement and belief in you, 💚
+        </p>
+        <p style="margin-top: -10px;">
+            <strong style="color: #16a34a; font-size: 17px;">Sandra Nanyonga</strong><br/>
+            <span style="color: #374151; font-weight: bold;">#THE CITY ENTREPRENEUR</span><br/>
+            <span style="color: #6b7280; font-size: 14px;">Kampala, Uganda | Mobile: +256773298586 / 0703983855</span>
+        </p>
+
+        <div style="margin-top: 20px; padding: 10px; background-color: #f9fafb; border-left: 4px solid #10b981; border-radius: 4px;">
+            <p style="font-style: italic; color: #6b7280; margin: 0; font-size: 14px;">
+                PSALMS 23:1-6<br/>
+                THE LORD IS MY SHEPHERD 🙏
+            </p>
+        </div>
+    </div>
+
+    <div style="background-color: #f3f4f6; padding: 15px 30px; text-align: center; border-top: 1px solid #e5e7eb;">
+        <p style="font-size: 12px; color: #6b7280; margin: 0;">
+            If you have any questions, contact us at <a href="mailto:info@tcedigitalinvestments.com" style="color: #16a34a; text-decoration: none;">info@tcedigitalinvestments.com</a>.
+        </p>
+    </div>
+</div>
+
       `,
       // TODO: Add PDF attachment in next phase
     });
@@ -98,53 +138,107 @@ async function sendCourseEmail(email, name, amount, orderId, productLink) {
       subject:
         "Welcome to Wealth Builder's Academy — Let's Start Building Kingdom Wealth Together!",
       html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #16a34a;">Welcome to Wealth Builder's Academy!</h2>
-          
-          <p>Hi ${name || "there"},</p>
-          
-          <p>Congratulations and welcome to Wealth Builder's Academy!</p>
-          
-          <p>You've just made one of the most powerful investments in your financial future — and I'm so proud of you for taking this step. This is where Kingdom-minded investors are raised, and financial legacies are built with wisdom, excellence, and purpose.</p>
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background-color: #ffffff; border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden;">
+    <!-- Email Header / Title Section (Dark Green Banner) -->
+    <div style="background-color: #166534; padding: 20px 30px; text-align: center;"> 
+        <h2 style="color: #ffffff; font-size: 28px; margin: 0; font-weight: bold;">
+            👑 Welcome to Wealth Builder's Academy! 🚀
+        </h2>
+    </div>
 
-          <div style="background-color: #f3f4f6; padding: 15px; border-radius: 8px; margin: 20px 0;">
-            <p style="margin: 5px 0;"><strong>Order ID:</strong> ${orderId}</p>
-            <p style="margin: 5px 0;"><strong>Amount Paid:</strong> $${(amount || 0).toFixed(2)} USD</p>
-            <p style="margin: 5px 0;"><strong>Status:</strong> Completed ✅</p>
-          </div>
+    <div style="padding: 20px 30px;">
+        <p style="color: #374151; font-size: 16px; margin-top: 0;">
+            Hi ${name || "there"},
+        </p>
 
-          <p style="font-size: 18px; font-weight: bold; color: #16a34a;">Before we officially activate your access to the Academy, please complete these quick steps:</p>
+        <p style="color: #374151; font-size: 16px;">
+            Congratulations! You've just made one of the most powerful investments in your financial future — and I'm so proud of you for taking this step. This is where **Kingdom-minded investors are raised**, and financial legacies are built with wisdom, excellence, and purpose. 💡
+        </p>
+    </div>
 
-          <div style="background-color: #dbeafe; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #16a34a;">
-            <p style="margin: 10px 0;"><strong>📧 Step 1:</strong> Send your payment receipt to <a href="mailto:info@tcedigitalinvestments.com" style="color: #16a34a;">info@tcedigitalinvestments.com</a></p>
-            <p style="margin: 10px 0;"><strong>✉️ Step 2:</strong> Include <strong>${email}</strong> in that message (this is where we'll send your login details)</p>
-            <p style="margin: 10px 0;"><strong>⏰ Step 3:</strong> Our team will set up your account and send your Welcome Pack within 24-48 hours</p>
-          </div>
-           <a href="${productLink}" target="_blank" style="color: #16a34a;">
-            Click here to download your eBook
-          </a>
-          <p>As a Wealth Builder, you're not just learning about money — you're learning how to steward it God's way, multiply it through venture capital and private equity, and create generational impact.</p>
+    <!-- Hero Image Section -->
+    <div style="width: 100%; background: #e0f2f1; padding: 0;">
+        <img src="https://images.pexels.com/photos/6969962/pexels-photo-6969962.jpeg" alt="Empowerment and Success Image" style="width: 100%; height: auto; display: block; object-fit: cover;">
+    </div>
 
-          <p>I can't wait to walk this journey with you.<br/>
-          Get ready for transformation, growth, and divine financial acceleration!</p>
-          
-          <p style="margin-top: 30px;">With excitement and faith,<br/>
-          <strong>Sandra Nanyonga</strong><br/>
-          Founder, Wealth Builder's Academy<br/>
-          #THE CITY ENTREPRENEUR<br/>
-          Kampala, Uganda<br/>
-          Mobile: +256773298586 / 0703983855</p>
-          
-          <p style="font-style: italic; color: #6b7280; margin-top: 20px;">
-            PSALMS 23:1-6<br/>
-            THE LORD IS MY SHEPHERD
-          </p>
-          
-          <hr style="margin-top: 30px; border: none; border-top: 1px solid #e5e7eb;">
-          <p style="font-size: 12px; color: #6b7280;">
-            #WealthBuildersAcademy #FaithDrivenFinance #KingdomWealth
-          </p>
+    <div style="padding: 20px 30px;">
+        
+        <!-- ** NEW PRODUCT LINK/WELCOME GUIDE CTA ** -->
+        <div style="text-align: center; margin: 20px 0 40px 0; border: 1px solid #d1fae5; border-radius: 8px; padding: 15px; background-color: #f0fdf4;">
+            <p style="font-size: 16px; margin-bottom: 10px; color: #065f46; font-weight: bold;">
+                🎁 Your Immediate Enrollment Resource:
+            </p>
+            <a href="${productLink}" target="_blank" style="
+                display: inline-block;
+                padding: 10px 20px;
+                background-color: #16a34a;
+                color: #ffffff;
+                text-decoration: none;
+                font-weight: bold;
+                border-radius: 6px;
+                font-size: 16px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            ">
+                Click to View Your Enrollment Resource
+            </a>
         </div>
+        <!-- ** END NEW PRODUCT LINK/WELCOME GUIDE CTA ** -->
+
+        <!-- Activation Steps - Primary Focus -->
+        <p style="font-size: 18px; font-weight: bold; color: #16a34a; margin-top: 30px;">
+            ⚠️ Quick Action Required: Complete these steps to activate your access:
+        </p>
+
+        <div style="background-color: #e0f2f1; padding: 20px; border-radius: 8px; margin: 20px 0; border: 1px solid #16a34a;">
+            <p style="margin: 10px 0; color: #1f2937;">
+                <strong style="color: #065f46;">1. 📧 Send Your Receipt:</strong> Please forward your full payment receipt to <a href="mailto:info@tcedigitalinvestments.com" style="color: #16a34a; font-weight: bold;">info@tcedigitalinvestments.com</a>.
+            </p>
+            <p style="margin: 10px 0; color: #1f2937;">
+                <strong style="color: #065f46;">2. ✉️ Confirm Your Email:</strong> Include **${email}** in the body of that message (this is the address where we will send your secure login details).
+            </p>
+            <p style="margin: 10px 0; color: #1f2937;">
+                <strong style="color: #065f46;">3. ⏰ Sit Tight:</strong> Our dedicated team will set up your account and send your **Welcome Pack** with your login credentials within 24-48 hours.
+            </p>
+        </div>
+
+        <p style="color: #374151; font-size: 16px; margin-top: 25px;">
+            As a Wealth Builder, you're not just learning about money — you're learning how to steward it God's way, multiply it through venture capital and private equity, and create generational impact.
+        </p>
+
+        <p style="color: #374151; font-size: 16px;">
+            I can't wait to walk this journey with you. Get ready for transformation, growth, and divine financial acceleration! 🔥
+        </p>
+        
+        <!-- Signature Block -->
+        <p style="margin-top: 40px; color: #374151;">
+            With excitement and faith, 💚
+        </p>
+        <p style="margin-top: -10px;">
+            <strong style="color: #16a34a; font-size: 17px;">Sandra Nanyonga</strong><br/>
+            <span style="color: #374151; font-weight: bold;">Founder, Wealth Builder's Academy</span><br/>
+            <span style="color: #374151; font-weight: bold;">#THE CITY ENTREPRENEUR</span><br/>
+            <span style="color: #6b7280; font-size: 14px;">Kampala, Uganda | Mobile: +256773298586 / 0703983855</span>
+        </p>
+
+        <!-- Scripture/PS -->
+        <div style="margin-top: 20px; padding: 10px; background-color: #f9fafb; border-left: 4px solid #10b981; border-radius: 4px;">
+            <p style="font-style: italic; color: #6b7280; margin: 0; font-size: 14px;">
+                PSALMS 23:1-6<br/>
+                THE LORD IS MY SHEPHERD 🙏
+            </p>
+        </div>
+    </div>
+
+    <!-- Footer Disclaimer -->
+    <div style="background-color: #f3f4f6; padding: 15px 30px; text-align: center; border-top: 1px solid #e5e7eb;">
+        <p style="font-size: 12px; color: #6b7280; margin: 0;">
+            Follow us: <a href="https://www.instagram.com/the.cityentrepreneur/" target="_blank" style="color: #16a34a; text-decoration: none; font-weight: bold;">Instagram</a>
+        </p>
+        <p style="font-size: 12px; color: #6b7280; margin: 5px 0 0 0;">
+            #WealthBuildersAcademy #FaithDrivenFinance #KingdomWealth
+        </p>
+    </div>
+</div>
       `,
     });
     console.log("✅ Course enrollment email sent to", email);

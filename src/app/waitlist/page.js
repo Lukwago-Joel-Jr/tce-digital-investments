@@ -48,7 +48,7 @@ export default function WaitlistForm() {
         {!submitted ? (
           <form onSubmit={handleSubmit} className="space-y-6">
             <h2 className="text-3xl font-bold text-green-900">
-              Join the Waitlist 🚀.
+              Join the Waitlist 🚀
             </h2>
             <p className="text-gray-700">
               Be the first to access <strong>Wealth Coaching Program</strong>{" "}
