@@ -260,9 +260,6 @@ function CheckoutForm() {
                     {errors.phoneNumber}
                   </p>
                 )}
-                {/* <p className="text-xs text-gray-500 mt-1">
-                  Format: 256XXXXXXXXX
-                </p> */}
               </div>
 
               <button
@@ -292,11 +289,6 @@ function CheckoutForm() {
           </div>
         </div>
 
-        {/* <div className="mt-6 text-center">
-          <p className="text-sm text-gray-500">
-            🔒 Secure payment powered by Pesapal
-          </p>
-        </div> */}
         <div className="mt-6 text-center p-3 bg-yellow-50 rounded-lg shadow-sm border border-yellow-200">
           <p className="flex items-center justify-center text-sm font-medium text-yellow-800">
             <AiOutlineWarning className="w-5 h-5 mr-2 text-yellow-600" />

@@ -145,8 +145,7 @@ export const products = [
     cover: "/images/DIGITALENTREPRENUURSHIP1.png",
     metacover: "/images/digitalog.png",
 
-    // price: 27,
-    price: 0.15,
+    price: 27,
     author: "Sandra N Sserumaga",
     pages: 35,
     publisher: "Wealth Build Press",
