@@ -8,9 +8,10 @@ export default function Footer() {
     <footer className="bg-gray-100 text-gray-700 text-sm mt-20">
       <div className="max-w-7xl mx-auto px-4 py-8 space-y-6">
         {/* Top row: left text + right logo */}
+
         <div className="flex flex-col sm:flex-row items-center justify-between">
           <p className="mb-4 sm:mb-0 text-center sm:text-left">
-            Empowering individuals to create digital income and freedom.
+            Empowering individuals to create generational income and freedom.
           </p>
           <div className="flex-shrink-0">
             <Image src="/logo.png" alt="Logo" width={180} height={180} />
