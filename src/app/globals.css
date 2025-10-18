@@ -28,7 +28,7 @@ body {
 
 .react-tel-input .form-control {
   /* This is a common class for the input */
-  @apply border-gray-400 focus:ring-2 focus:ring-blue-500 rounded-lg;
+  @apply border-gray-400 focus:ring-2 focus:ring-green-500 rounded-lg;
   width: 100% !important; /* Often necessary for proper width */
 }
 
