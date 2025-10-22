@@ -280,10 +280,10 @@ function CheckoutForm() {
 
               <button
                 type="button"
-                onClick={() => router.push("/cart")}
+                onClick={() => router.push("/")}
                 className="w-full py-2 px-4 border border-gray-300 rounded-lg font-medium text-gray-700 hover:bg-gray-50 transition"
               >
-                Back to Cart
+                Back Home
               </button>
             </form>
           </div>
