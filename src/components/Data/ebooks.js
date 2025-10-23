@@ -5,7 +5,8 @@ export const products = [
     title: "Wealth Builder Academy",
     type: "course",
     deliveryMethod: "enrollment-link",
-    productLink: "https://www.tcedigitalinvestments.com/academy/enroll",
+    productLink:
+      "https://www.skool.com/wealth-builder-academy-6301/about?ref=d36e2660f463403695591834c56e8f57",
 
     shortDescription:
       "Join our comprehensive program to master wealth building strategies.",
