@@ -11,7 +11,7 @@ export const products = [
     shortDescription:
       "Join our comprehensive program to master wealth building strategies.",
 
-    price: 0.15,
+    price: 342,
 
     cover: "/images/ACADEMY.png",
     metacover: "/images/academyog.png",
