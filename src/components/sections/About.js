@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const fadeUpVariant = {
   hidden: { opacity: 0, y: 30 },
@@ -134,9 +135,11 @@ const AboutSection = () => {
           </div>
         </div>
 
-        <button className="bg-green-900 hover:bg-green-800 text-white px-10 py-2 rounded-full text-lg transition">
-          Join Academy
-        </button>
+        <Link href="/wealth-builder-program">
+          <button className="bg-green-900 hover:bg-green-800 text-white px-10 py-2 rounded-full text-lg transition">
+            Join Academy
+          </button>
+        </Link>
       </motion.div>
     </div>
   );
