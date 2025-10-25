@@ -5,7 +5,7 @@ import BackToTopButton from "./Backtotop";
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-100 text-gray-700 text-sm mt-20">
+    <footer className="bg-gray-100 text-gray-700 text-sm">
       <div className="max-w-7xl mx-auto px-4 py-8 space-y-6">
         {/* Top row: left text + right logo */}
 
