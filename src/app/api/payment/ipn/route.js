@@ -114,7 +114,7 @@ async function sendEbookEmail(
 
     <div style="background-color: #f3f4f6; padding: 15px 30px; text-align: center; border-top: 1px solid #e5e7eb;">
         <p style="font-size: 12px; color: #6b7280; margin: 0;">
-            If you have any questions, contact us at <a href="mailto:info@tcedigitalinvestments.com" style="color: #16a34a; text-decoration: none;">info@tcedigitalinvestments.com</a>.
+            If you have any questions, contact us at <a href="mailto:infor@tcedigitalinvestments.com" style="color: #16a34a; text-decoration: none;">infor@tcedigitalinvestments.com</a>.
         </p>
     </div>
 </div>
@@ -191,7 +191,7 @@ async function sendCourseEmail(email, name, amount, orderId, productLink) {
 
         <div style="background-color: #e0f2f1; padding: 20px; border-radius: 8px; margin: 20px 0; border: 1px solid #16a34a;">
             <p style="margin: 10px 0; color: #1f2937;">
-                <strong style="color: #065f46;">1. 📧 Send Your Receipt:</strong> Please forward your full payment receipt to <a href="mailto:info@tcedigitalinvestments.com" style="color: #16a34a; font-weight: bold;">info@tcedigitalinvestments.com</a>.
+                <strong style="color: #065f46;">1. 📧 Send Your Receipt:</strong> Please forward your full payment receipt to <a href="mailto:infor@tcedigitalinvestments.com" style="color: #16a34a; font-weight: bold;">infor@tcedigitalinvestments.com</a>.
             </p>
             <p style="margin: 10px 0; color: #1f2937;">
                 <strong style="color: #065f46;">2. ✉️ Confirm Your Email:</strong> Include **${email}** in the body of that message (this is the address where we will send your secure login details).
