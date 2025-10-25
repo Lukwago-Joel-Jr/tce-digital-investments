@@ -30,7 +30,7 @@ export default function Navbar() {
 
   return (
     <div>
-      <Preheader />
+      {/* <Preheader /> */}
       <header className="fixed top-0 left-0 w-full z-50 mt-5">
         <div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-3">
           {/* Logo Container */}
