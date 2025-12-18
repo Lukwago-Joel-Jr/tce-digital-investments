@@ -16,7 +16,7 @@
     "firebase": "^12.4.0",
     "framer-motion": "^12.23.0",
     "lottie-react": "^2.4.1",
-    "next": "15.3.5",
+    "next": "15.3.8",
     "react": "^19.0.0",
     "react-countries-input": "^0.0.2",
     "react-countup": "^6.5.3",
