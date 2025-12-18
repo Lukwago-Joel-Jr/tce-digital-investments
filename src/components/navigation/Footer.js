@@ -30,7 +30,7 @@ export default function Footer() {
             <Link href="/" className="hover:text-green-900">
               Home
             </Link>
-            <Link href="/about" className="hover:text-green-900">
+            {/* <Link href="/about" className="hover:text-green-900">
               Learn About WBA
             </Link>
             <Link href="/community" className="hover:text-green-900">
@@ -38,7 +38,7 @@ export default function Footer() {
             </Link>
             <Link href="/contact" className="hover:text-green-900">
               Contact
-            </Link>
+            </Link> */}
             <Link
               href="/wealth-builder-program"
               className="hover:text-green-900"
