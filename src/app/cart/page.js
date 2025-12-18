@@ -9,7 +9,7 @@ export default function CartPage() {
       title: "7 Streams of Wealth",
       price: 0.16,
       description:
-        "Learn how to build multiple income streams and achieve lasting financial freedom.",
+        "Learn how to build multiple income streams and achieve lasting financial freedom. sample ",
     },
     {
       id: 2,
