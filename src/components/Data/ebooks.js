@@ -44,7 +44,7 @@ export const products = [
           "This Blueprint gave me confidence. I've created my first repayment plan and contract! This is passive income indeed.",
       },
       {
-        name: "Dan",
+        name: "Dany",
         testimonial:
           "It was the clarity I've been praying for. Thank you Sandy!",
       },
