@@ -56,7 +56,7 @@ export const products = [
     cover: "/images/KINGDOMLENDING.png",
     metacover: "/images/kingdomog.png",
 
-    price: 0.15,
+    price: 84,
     author: "Sandra N Sserumaga",
     pages: 59,
     publisher: "Wealth Build Press",
