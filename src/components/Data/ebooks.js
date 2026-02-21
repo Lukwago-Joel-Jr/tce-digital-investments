@@ -44,7 +44,7 @@ export const products = [
           "This Blueprint gave me confidence. I've created my first repayment plan and contract! This is passive income indeed.",
       },
       {
-        name: "Dany",
+        name: "Dan",
         testimonial:
           "It was the clarity I've been praying for. Thank you Sandy!",
       },
@@ -56,7 +56,7 @@ export const products = [
     cover: "/images/KINGDOMLENDING.png",
     metacover: "/images/kingdomog.png",
 
-    price: 84,
+    price: 0.15,
     author: "Sandra N Sserumaga",
     pages: 59,
     publisher: "Wealth Build Press",
