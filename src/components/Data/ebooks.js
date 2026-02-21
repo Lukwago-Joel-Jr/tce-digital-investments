@@ -24,7 +24,7 @@ export const products = [
 
     deliveryMethod: "email-link",
     productLink:
-      "https://www.tcedigitalinvestments.com/books/kingdom-lending-guide.pdf",
+      "https://www.tcedigitalinvestments.com/kdl92jx9qplx8znvwe83mdkq0rtsu19xvplmczq82nxjw0asldk39rtyu2pqlx8vnczmwe90qplxksjd8xvwoqplksjd93rtuvx",
 
     shortDescription:
       "Build Wealth God's Way Through Lending. Discover How I Grew My Lending Business from 2M to 200M in 3 Years—By Partnering with God.",
