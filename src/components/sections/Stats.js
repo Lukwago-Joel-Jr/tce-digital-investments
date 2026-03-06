@@ -116,12 +116,9 @@ export default function StatsHighlights() {
         >
           <FaChartLine size={48} className="mx-auto mb-4" />
           <div className="text-2xl font-extrabold">
-            UGX{" "}
-            {inView && (
-              <CountUp start={0} end={200000000} separator="," duration={3} />
-            )}
+            Salary Earnings to an 8 figue monthly income
           </div>
-          <h3 className="mt-2 text-lg font-semibold">In 3yrs</h3>
+          {/* <h3 className="mt-2 text-lg font-semibold">In 3yrs</h3> */}
           <p className="mt-2 text-sm opacity-90">
             My personal success story that inspired me to create this academy
           </p>
