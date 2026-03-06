@@ -27,10 +27,10 @@ export const products = [
       "https://www.tcedigitalinvestments.com/kdl92jx9qplx8znvwe83mdkq0rtsu19xvplmczq82nxjw0asldk39rtyu2pqlx8vnczmwe90qplxksjd8xvwoqplksjd93rtuvx",
 
     shortDescription:
-      "Build Wealth God's Way Through Lending. Discover How I Grew My Lending Business from salary earnings to eight figure monthly income in 3 Years—By Partnering with God.",
+      "Build Wealth God's Way Through Lending. Discover How I Grew My Lending Business from salary earnings to an eight figure monthly income in 3 Years—By Partnering with God.",
 
     description:
-      "Build Wealth God's Way Through Lending. Discover How I Grew My Lending Business from salary earnings to eight figure monthly incme in 3 Years—By Partnering with God. A powerful, biblical blueprint to help you start and grow a profitable, God-honoring lending business—without fear, confusion, or guesswork.",
+      "Build Wealth God's Way Through Lending. Discover How I Grew My Lending Business from salary earnings to an eight figure monthly incme in 3 Years—By Partnering with God. A powerful, biblical blueprint to help you start and grow a profitable, God-honoring lending business—without fear, confusion, or guesswork.",
 
     testimonials: [
       {
