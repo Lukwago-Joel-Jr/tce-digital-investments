@@ -116,7 +116,7 @@ export default function StatsHighlights() {
         >
           <FaChartLine size={48} className="mx-auto mb-4" />
           <div className="text-2xl font-extrabold">
-            Salary Earnings to an 8 figue monthly income
+            Salary Earnings to an 8 figure monthly income
           </div>
           {/* <h3 className="mt-2 text-lg font-semibold">In 3yrs</h3> */}
           <p className="mt-2 text-sm opacity-90">
