@@ -10,9 +10,8 @@ const DownloadBook = () => {
       </p>
 
       <a
-        href="/ebooks/KINGDOM-LENDING-GUIDE.pdf"
+        href="/api/ebook/download?ebook=KINGDOM-LENDING-GUIDE"
         className="bg-green-900 text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-green-800 transition-colors shadow-lg"
-        download
       >
         Download Now
       </a>
