@@ -7,25 +7,34 @@ export async function GET(req) {
     const ebook =
       req.nextUrl.searchParams.get("ebook") || "KINGDOM-LENDING-GUIDE";
 
+    // Validate ebook name to prevent directory traversal
+    if (!ebook.match(/^[a-zA-Z0-9\-_]+$/)) {
+      return NextResponse.json(
+        { error: "Invalid ebook name" },
+        { status: 400 },
+      );
+    }
+
     const filePath = path.join(process.cwd(), "public/ebooks", `${ebook}.pdf`);
 
     const fileBuffer = await readFile(filePath);
 
-    return new NextResponse(fileBuffer, {
+    const response = new NextResponse(fileBuffer, {
       status: 200,
-      headers: {
-        "Content-Type": "application/pdf",
-        "Content-Disposition": `attachment; filename="${ebook}.pdf"`,
-        "Content-Length": fileBuffer.length.toString(),
-        "Cache-Control": "no-cache, no-store, must-revalidate",
-        Pragma: "no-cache",
-        Expires: "0",
-      },
     });
+
+    response.headers.set("Content-Type", "application/pdf");
+    response.headers.set(
+      "Content-Disposition",
+      `attachment; filename="${ebook}.pdf"`,
+    );
+    response.headers.set("Content-Length", fileBuffer.length.toString());
+
+    return response;
   } catch (error) {
     console.error("❌ PDF download error:", error);
     return NextResponse.json(
-      { error: "Failed to download ebook" },
+      { error: "Failed to download ebook: " + error.message },
       { status: 500 },
     );
   }
