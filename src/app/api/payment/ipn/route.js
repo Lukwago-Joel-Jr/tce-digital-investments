@@ -26,8 +26,13 @@ async function sendEbookEmail(
   orderId,
   productTitle,
   productLink,
+  coverUrl,
 ) {
   try {
+    const imageUrl =
+      coverUrl ||
+      "https://images.pexels.com/photos/6969962/pexels-photo-6969962.jpeg";
+
     await createResend().emails.send({
       from: "TCEDigital <no-reply@tcedigitalinvestments.com>",
       to: email,
@@ -52,7 +57,7 @@ async function sendEbookEmail(
     </div>
 
     <div style="width: 100%; background: #e0f2f1; padding: 0; border-top: 5px solid #16a34a;">
-        <img src="https://images.pexels.com/photos/6969962/pexels-photo-6969962.jpeg" alt="Empowerment and Success Image" style="width: 100%; height: auto; display: block; object-fit: cover;">
+        <img src="${imageUrl}" alt="${productTitle} Cover" style="width: 100%; height: auto; display: block; object-fit: cover;">
     </div>
 
     <div style="padding: 20px 30px;">
@@ -410,7 +415,7 @@ export async function GET(req) {
               paymentData.name || paymentData.firstName,
               paymentData.amount,
               OrderMerchantReference,
-              paymentData.productLink || "", // ⬅️ ADD THIS
+              paymentData.productLink || "",
             );
           } else {
             await sendEbookEmail(
@@ -419,7 +424,8 @@ export async function GET(req) {
               paymentData.amount,
               OrderMerchantReference,
               productTitle,
-              paymentData.productLink || "", // ⬅️ ADD THIS
+              paymentData.productLink || "",
+              paymentData.cover || paymentData.items?.[0]?.cover || "",
             );
           }
         } catch (emailError) {
@@ -545,7 +551,7 @@ export async function POST(req) {
               paymentData.name,
               paymentData.amount,
               OrderMerchantReference,
-              paymentData.productLink || "", // ⬅️ ADD THIS
+              paymentData.productLink || "",
             );
           } else {
             await sendEbookEmail(
@@ -554,7 +560,8 @@ export async function POST(req) {
               paymentData.amount,
               OrderMerchantReference,
               productTitle,
-              paymentData.productLink || "", // ⬅️ ADD THIS
+              paymentData.productLink || "",
+              paymentData.cover || paymentData.items?.[0]?.cover || "",
             );
           }
         } catch (emailError) {

@@ -56,7 +56,8 @@ export const products = [
     cover: "/images/KINGDOMLENDING33.png",
     metacover: "/images/kingdomog.png",
 
-    price: 30,
+    // price: 30,
+    price: 0.14,
     author: "Sandra N Sserumaga",
     pages: 59,
     publisher: "Wealth Build Press",
@@ -146,7 +147,8 @@ export const products = [
     cover: "/images/DIGITALENTREPRENUURSHIP1.png",
     metacover: "/images/digitalog.png",
 
-    price: 27,
+    // price: 27,
+    price: 0.14,
     author: "Sandra N Sserumaga",
     pages: 35,
     publisher: "Wealth Build Press",

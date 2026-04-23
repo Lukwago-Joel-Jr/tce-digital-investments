@@ -2,7 +2,7 @@
 
 export default function BuyNowButton({ book }) {
   const handleBuy = () => {
-    const checkoutUrl = `/checkout?id=${book.id}&title=${encodeURIComponent(book.title)}&price=${book.price}&type=${book.type}&productLink=${encodeURIComponent(book.productLink || "")}`;
+    const checkoutUrl = `/checkout?id=${book.id}&title=${encodeURIComponent(book.title)}&price=${book.price}&type=${book.type}&productLink=${encodeURIComponent(book.productLink || "")}&cover=${encodeURIComponent(book.cover || "")}`;
     window.location.href = checkoutUrl;
   };
 

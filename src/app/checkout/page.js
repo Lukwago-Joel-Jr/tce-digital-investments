@@ -21,16 +21,18 @@ function CheckoutForm() {
     const ebookId = searchParams.get("id");
     const title = searchParams.get("title");
     const price = searchParams.get("price");
-    const productLink = searchParams.get("productLink"); // ⬅️ ADD THIS LINE
-    const type = searchParams.get("type"); // ⬅️ ADD THIS LINE
+    const productLink = searchParams.get("productLink");
+    const cover = searchParams.get("cover");
+    const type = searchParams.get("type");
 
     if (ebookId && title && price) {
       setEbook({
-        id: ebookId, // ⬅️ CHANGED: Keep as string (works for both ebooks & courses)
+        id: ebookId,
         title: decodeURIComponent(title),
         price: parseFloat(price),
-        type: type || "ebook", // ⬅️ ADD THIS LINE
-        productLink: productLink || "", // ⬅️ ADD THIS LINE
+        type: type || "ebook",
+        productLink: productLink || "",
+        cover: cover || "",
       });
     } else {
       router.push("/cart");
@@ -100,6 +102,7 @@ function CheckoutForm() {
           productType: ebook.type,
           productTitle: ebook.title,
           productLink: ebook.productLink,
+          cover: ebook.cover,
           customerName: formData.customerName.trim(),
           customerEmail: formData.customerEmail.trim(),
           phoneNumber: formData.phoneNumber.trim(),

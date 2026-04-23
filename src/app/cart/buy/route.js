@@ -38,9 +38,10 @@ export async function POST(req) {
     const {
       cartItems,
       ebookId,
-      productType, // ⬅️ ADD THIS LINE
-      productTitle, // ⬅️ ADD THIS LINE
+      productType,
+      productTitle,
       productLink,
+      cover,
       customerName,
       customerEmail,
       phoneNumber,
@@ -147,15 +148,17 @@ export async function POST(req) {
           ? [
               {
                 id: ebookId,
-                type: productType || "ebook", // ⬅️ ADD THIS LINE
-                title: productTitle || "Product", // ⬅️ ADD THIS LINE
-                productLink: productLink || "", // ⬅️ ADD THIS
+                type: productType || "ebook",
+                title: productTitle || "Product",
+                productLink: productLink || "",
+                cover: cover || "",
               },
             ]
           : [],
-      productType: productType || "ebook", // ⬅️ ADD THIS LINE
-      productTitle: productTitle || "Product", // ⬅️ ADD THIS LINE
-      productLink: productLink || "", // ⬅️ ADD THIS
+      cover: cover || "",
+      productType: productType || "ebook",
+      productTitle: productTitle || "Product",
+      productLink: productLink || "",
       name: customerName,
       firstName,
       lastName,
