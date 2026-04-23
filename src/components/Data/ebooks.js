@@ -13,8 +13,10 @@ export const products = [
 
     price: 342,
 
-    cover: "/images/ACADEMY.png",
-    metacover: "/images/academyog.png",
+    cover:
+      "https://res.cloudinary.com/dgdxb5nqt/image/upload/v1758626474/original_fcass0.png",
+    metacover:
+      "https://res.cloudinary.com/dgdxb5nqt/image/upload/v1758626474/original_fcass0.png",
   },
 
   {
@@ -53,8 +55,10 @@ export const products = [
     Whothisisfor:
       "This eBook is for you if:\n- You feel called to lend and build wealth in a Kingdom-aligned way.\n- You've lost money from lending casually or without structure.\n- You want passive income but don't know where to start.\n- You've been praying for guidance to grow your finances with faith.\n- You're ready to turn your giving heart into a sustainable business.",
 
-    cover: "/images/KINGDOMLENDING33.png",
-    metacover: "/images/kingdomog.png",
+    cover:
+      "https://res.cloudinary.com/dgdxb5nqt/image/upload/v1776963907/KINGDOMLENDING33_vs8lkn.png",
+    metacover:
+      "https://res.cloudinary.com/dgdxb5nqt/image/upload/v1776963907/KINGDOMLENDING33_vs8lkn.png",
 
     // price: 30,
     price: 0.14,
@@ -144,8 +148,10 @@ export const products = [
     Whothisisfor:
       "This is perfect for:\n- Stay-at-home moms\n- Creatives & coaches\n- Side hustlers\n- Students & fresh graduates\n- Anyone tired of 9-5 and wants an online income.",
 
-    cover: "/images/DIGITALENTREPRENUURSHIP1.png",
-    metacover: "/images/digitalog.png",
+    cover:
+      "https://res.cloudinary.com/dgdxb5nqt/image/upload/v1776964190/digital_shlz5p.png",
+    metacover:
+      "https://res.cloudinary.com/dgdxb5nqt/image/upload/v1776964190/digital_shlz5p.png",
 
     // price: 27,
     price: 0.14,
