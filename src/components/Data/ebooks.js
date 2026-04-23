@@ -60,8 +60,8 @@ export const products = [
     metacover:
       "https://res.cloudinary.com/dgdxb5nqt/image/upload/v1776963907/KINGDOMLENDING33_vs8lkn.png",
 
-    // price: 30,
-    price: 0.14,
+    price: 30,
+    // price: 0.14,
     author: "Sandra N Sserumaga",
     pages: 59,
     publisher: "Wealth Build Press",
@@ -153,8 +153,8 @@ export const products = [
     metacover:
       "https://res.cloudinary.com/dgdxb5nqt/image/upload/v1776964190/digital_shlz5p.png",
 
-    // price: 27,
-    price: 0.14,
+    price: 27,
+    // price: 0.14,
     author: "Sandra N Sserumaga",
     pages: 35,
     publisher: "Wealth Build Press",
